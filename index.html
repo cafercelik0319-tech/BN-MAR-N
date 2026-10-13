@@ -6,7 +6,7 @@
   <title>A-Z Tüm Markalar | Global & Yerli Tekne Portalı</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #030712;
@@ -18,7 +18,6 @@
       --text-muted: #94a3b8;
     }
 
-    /* Mobilde Sağa-Sola Kaymayı Önleyen Global Sıfırlama */
     html, body {
       width: 100%;
       max-width: 100vw;
@@ -51,7 +50,6 @@
       flex-direction: column;
     }
 
-    /* MOBİL KORUMALI VANEMAR KAYAN BANNER */
     .top-security-bar {
       width: 100%;
       max-width: 100vw;
@@ -103,7 +101,6 @@
     }
     header p { color: var(--text-muted); font-size: 13px; margin-top: 6px; }
 
-    /* Kaynakça Butonu */
     .readme-trigger-btn {
       margin-top: 14px;
       background: rgba(15, 23, 42, 0.85);
@@ -123,6 +120,110 @@
       background: var(--neon-blue);
       color: #030712;
       box-shadow: 0 0 15px var(--neon-blue);
+    }
+
+    /* MOTOR KONTROL PANELİ */
+    .motor-filter-wrapper {
+      max-width: 1100px;
+      margin: 18px auto 0;
+      padding: 14px 18px;
+      background: rgba(11, 20, 38, 0.75);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+    .motor-filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .motor-filter-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .clear-filter-btn {
+      background: none;
+      border: none;
+      color: #ef4444;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+    }
+    .clear-filter-btn:hover { text-decoration: underline; }
+    
+    .motor-grid-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .lux-motor-chip {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      color: #cbd5e1;
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lux-motor-chip .motor-logo-mini {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: #ffffff;
+      border-radius: 4px;
+      padding: 2px;
+    }
+    .lux-motor-chip .motor-logo-mini img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .lux-motor-chip .count-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      padding: 2px 6px;
+      border-radius: 99px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .lux-motor-chip:hover {
+      border-color: var(--neon-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+      color: #fff;
+    }
+    .lux-motor-chip.active {
+      background: linear-gradient(135deg, #0284c7 0%, #00d2ff 100%);
+      color: #030712;
+      border-color: #fff;
+      font-weight: 800;
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+      transform: translateY(-2px);
+    }
+    .lux-motor-chip.active .count-badge {
+      background: #030712;
+      color: #00d2ff;
     }
 
     .az-bar {
@@ -190,7 +291,6 @@
       margin-bottom: 16px;
     }
 
-    /* MOBİLE DUYARLI IZGARA */
     .brands-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -224,8 +324,8 @@
     }
 
     .brand-logo-frame {
-      width: 54px;
-      height: 38px;
+      width: 60px;
+      height: 42px;
       background: #ffffff;
       border-radius: 6px;
       display: flex;
@@ -235,8 +335,13 @@
       flex-shrink: 0;
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
       text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s;
     }
-    .brand-logo-frame svg { width: 100%; height: 100%; }
+    .brand-card:hover .brand-logo-frame {
+      transform: scale(1.04);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.75);
+    }
+    .brand-logo-frame svg { width: 100%; height: 100%; display: block; }
 
     .brand-link {
       text-decoration: none;
@@ -245,16 +350,8 @@
       gap: 6px;
       flex-wrap: wrap;
     }
-    .brand-link h2 {
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
-    }
-    .brand-link svg {
-      width: 12px;
-      height: 12px;
-      fill: var(--text-muted);
-    }
+    .brand-link h2 { font-size: 15px; font-weight: 700; color: #fff; }
+    .brand-link svg { width: 12px; height: 12px; fill: var(--text-muted); }
     .brand-meta span { font-size: 10.5px; color: var(--neon-blue); text-transform: uppercase; font-weight: 600; }
 
     .brand-body {
@@ -296,10 +393,33 @@
       border-color: #ffffff;
       box-shadow: 0 0 15px var(--neon-blue);
     }
+    .model-btn.highlighted {
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 12px rgba(0, 210, 255, 0.85);
+      background: rgba(2, 132, 199, 0.35);
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .model-btn.dimmed {
+      opacity: 0.25;
+    }
 
-    /* FOOTER */
-    footer {
-     /* FOOTER */
+    .engine-clickable-link {
+      color: var(--neon-blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+      font-weight: 700;
+    }
+    .engine-clickable-link:hover {
+      color: #fff;
+      text-shadow: 0 0 8px var(--neon-blue);
+    }
+
     footer {
       background: rgba(11, 20, 38, 0.95);
       border-top: 1px solid var(--card-border);
@@ -310,42 +430,63 @@
     }
     footer p { color: var(--text-muted); font-size: 12px; line-height: 1.8; }
     footer a { color: var(--neon-blue); text-decoration: none; font-weight: 600; }
-    footer .author-tag {
-      margin-top: 12px;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #94a3b8;
-    }
-    footer .author-tag span {
-      color: var(--neon-blue);
-      font-weight: 700;
-      text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
-    }
-        
-      background: rgba(11, 20, 38, 0.95);
-      border-top: 1px solid var(--card-border);
-      padding: 24px 16px;
-      text-align: center;
-      margin-top: auto;
-      width: 100%;
-    }
-    footer p { color: var(--text-muted); font-size: 12px; line-height: 1.8; }
-    footer a { color: var(--neon-blue); text-decoration: none; font-weight: 600; 
-    footer .author-tag {
-      margin-top: 12px;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #94a3b8;
-    }
-    footer .author-tag span {
-      color: var(--neon-blue);
-      font-weight: 700;
-      text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
-    }}
 
-    /* MODAL */
+    .neon-badge-wrapper {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 18px;
+    }
+    .neon-rotating-badge {
+      position: relative;
+      padding: 10px 24px;
+      border-radius: 999px;
+      background: #070d1a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.25);
+    }
+    .neon-rotating-badge::before {
+      content: '';
+      position: absolute;
+      width: 160%;
+      height: 400%;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 280deg,
+        #00d2ff 340deg,
+        #ffffff 360deg
+      );
+      animation: rotateNeon 3s linear infinite;
+    }
+    .neon-rotating-badge::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: #091322;
+      border-radius: 999px;
+    }
+    .neon-badge-text {
+      position: relative;
+      z-index: 2;
+      font-size: 11.5px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+    .neon-badge-text span {
+      color: #00d2ff;
+      font-weight: 800;
+      text-shadow: 0 0 12px rgba(0, 210, 255, 0.65);
+    }
+    @keyframes rotateNeon {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -379,85 +520,14 @@
     .readme-content h4 { color: var(--neon-blue); margin: 14px 0 4px; font-size: 14px; }
     .readme-content ul { padding-left: 18px; margin-bottom: 8px; }
 
-    /* MOBİL İÇİN ÖZEL MEDYA SORGULARI */
     @media (max-width: 480px) {
       header h1 { font-size: 21px; }
-      header p { font-size: 12px; }
       .brands-grid { grid-template-columns: 1fr; }
-      .az-btn { width: 28px; height: 28px; font-size: 10.5px; }
-      .marquee-link { font-size: 11.5px; }
-      .brand-card { border-radius: 12px; }
-    }
-    /* Dönen Neon Çember Rozeti */
-    .neon-badge-wrapper {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 18px;
-    }
-
-    .neon-rotating-badge {
-      position: relative;
-      padding: 10px 24px;
-      border-radius: 999px;
-      background: #070d1a;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0, 210, 255, 0.25);
-    }
-
-    /* Etrafta Dönen Işık Işını */
-    .neon-rotating-badge::before {
-      content: '';
-      position: absolute;
-      width: 160%;
-      height: 400%;
-      background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 280deg,
-        #00d2ff 340deg,
-        #ffffff 360deg
-      );
-      animation: rotateNeon 3s linear infinite;
-    }
-
-    /* İç Koyu Dolgu (Yazının arkası) */
-    .neon-rotating-badge::after {
-      content: '';
-      position: absolute;
-      inset: 2px;
-      background: #091322;
-      border-radius: 999px;
-    }
-
-    /* Ön Plandaki Metin */
-    .neon-badge-text {
-      position: relative;
-      z-index: 2;
-      font-size: 11.5px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #94a3b8;
-    }
-
-    .neon-badge-text span {
-      color: #00d2ff;
-      font-weight: 800;
-      text-shadow: 0 0 12px rgba(0, 210, 255, 0.65);
-    }
-
-    @keyframes rotateNeon {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
 
-  <!-- MOBİL KORUMALI VANEMAR BANNER -->
   <div class="top-security-bar">
     <a href="https://vanemar.com/tr?srsltid=AU7gw4VqYNOMNEIy35uDoTHDUZlyL6fA8hgnRcfTx1G02sMlhjTkj_48" target="_blank" rel="noopener noreferrer" class="marquee-link" title="Vanemar Akıllı Tekne Takip & Güvenlik Sistemleri">
       <div class="marquee-item">
@@ -483,8 +553,57 @@
       Veri Kaynakçası (README)
     </button>
     <div class="controls">
-      <input type="text" id="searchInput" class="search-input" placeholder="Tüm marka veya modellerde ara (örn: Safter, Targa, 45, Riva)...">
+      <input type="text" id="searchInput" class="search-input" placeholder="Tüm marka, model veya motor tipinde ara (örn: Safter, Ada 18M, MAN, Volvo)...">
     </div>
+
+    <!-- MOTOR TİPİ KONTROL PANELİ -->
+    <div class="motor-filter-wrapper">
+      <div class="motor-filter-header">
+        <span class="motor-filter-title">⚡ Güç Ünitesi & Makine Tipi</span>
+        <button id="clearEngineBtn" class="clear-filter-btn" onclick="clearEngineFilter()">Filtreyi Temizle ✕</button>
+      </div>
+      <div class="motor-grid-chips">
+        <button class="lux-motor-chip active" onclick="filterByEngine('ALL', this)">
+          <span>🌐</span> Tümü
+        </button>
+
+        <button class="lux-motor-chip" onclick="filterByEngine('Volvo IPS', this)">
+          <span class="motor-logo-mini"><img src="logolar/volvo.png" alt="Volvo Penta" onerror="this.style.display='none'"></span>
+          Volvo Penta <span class="count-badge">IPS</span>
+        </button>
+
+        <button class="lux-motor-chip" onclick="filterByEngine('MAN', this)">
+          <span class="motor-logo-mini"><img src="logolar/man.png" alt="MAN" onerror="this.style.display='none'"></span>
+          MAN <span class="count-badge">V8/V12</span>
+        </button>
+
+        <button class="lux-motor-chip" onclick="filterByEngine('CAT', this)">
+          <span class="motor-logo-mini"><img src="logolar/cat.png" alt="CAT" onerror="this.style.display='none'"></span>
+          CAT <span class="count-badge">C18</span>
+        </button>
+
+        <button class="lux-motor-chip" onclick="filterByEngine('Scania', this)">
+          <span class="motor-logo-mini"><img src="logolar/scania.png" alt="Scania" onerror="this.style.display='none'"></span>
+          Scania <span class="count-badge">DI13</span>
+        </button>
+
+        <button class="lux-motor-chip" onclick="filterByEngine('Cummins', this)">
+          <span class="motor-logo-mini"><img src="logolar/cummins.png" alt="Cummins" onerror="this.style.display='none'"></span>
+          Cummins <span class="count-badge">QSB/QSC</span>
+        </button>
+
+        <button class="lux-motor-chip" onclick="filterByEngine('Mercury', this)">
+          <span class="motor-logo-mini"><img src="logolar/mercury.png" alt="Mercury" onerror="this.style.display='none'"></span>
+          Mercury <span class="count-badge">Verado</span>
+        </button>
+
+        <button class="lux-motor-chip" onclick="filterByEngine('Yamaha', this)">
+          <span class="motor-logo-mini"><img src="logolar/yamaha.png" alt="Yamaha" onerror="this.style.display='none'"></span>
+          Yamaha <span class="count-badge">Offshore</span>
+        </button>
+      </div>
+    </div>
+
     <div class="az-bar" id="azBar"></div>
   </header>
 
@@ -492,8 +611,13 @@
     <div class="stats-info" id="statsCount">Yükleniyor...</div>
     <div class="brands-grid" id="catalogGrid"></div>
   </main>
+
   <footer>
-    <!-- Dönen Neon Çemberli İmza -->
+    <p>
+      Bu veritabanı <strong>Sahibinden.com, YachtWorld, Powerboat Guide ve resmi kataloglardan</strong> derlenmiştir.<br>
+      <a href="javascript:void(0)" onclick="openReadme()">Veri Kaynakçası ve README</a> | Tekne Takip: <a href="https://vanemar.com/tr?srsltid=AU7gw4VqYNOMNEIy35uDoTHDUZlyL6fA8hgnRcfTx1G02sMlhjTkj_48" target="_blank" rel="noopener noreferrer">Vanemar</a>
+    </p>
+
     <div class="neon-badge-wrapper">
       <div class="neon-rotating-badge">
         <div class="neon-badge-text">
@@ -503,14 +627,6 @@
     </div>
   </footer>
 
-  <footer>
-    <p>
-      Bu veritabanı <strong>Sahibinden.com, YachtWorld, Powerboat Guide ve resmi kataloglardan</strong> derlenmiştir.<br>
-      <a href="javascript:void(0)" onclick="openReadme()">Veri Kaynakçası ve README</a> | Tekne Takip: <a href="https://vanemar.com/tr?srsltid=AU7gw4VqYNOMNEIy35uDoTHDUZlyL6fA8hgnRcfTx1G02sMlhjTkj_48" target="_blank" rel="noopener noreferrer">Vanemar</a>
-    </p>
-  </footer>
-
-  <!-- Model Teknik Özellik Modal -->
   <div class="modal-overlay" id="specsModal" onclick="this.style.display='none'">
     <div class="modal-box" onclick="event.stopPropagation()">
       <div class="modal-head">
@@ -524,259 +640,399 @@
         <tr><td>Tam Boy (LOA)</td><td id="m_loa">-</td></tr>
         <tr><td>Genişlik (Beam)</td><td id="m_beam">-</td></tr>
         <tr><td>Su Çekimi (Draft)</td><td id="m_draft">-</td></tr>
-        <tr><td>Motor Seçeneği</td><td id="m_engine">-</td></tr>
+        <tr>
+          <td>Motor Seçeneği</td>
+          <td><span id="m_engine" class="engine-clickable-link" onclick="openEngineDetailModal()">-</span></td>
+        </tr>
         <tr><td>Maksimum Hız</td><td id="m_speed">-</td></tr>
         <tr><td>Kamara Kapasitesi</td><td id="m_cabins">-</td></tr>
       </table>
     </div>
   </div>
 
-  <!-- README MODAL -->
+  <div class="modal-overlay" id="engineDetailModal" onclick="this.style.display='none'" style="z-index: 1300;">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <div>
+          <h3 id="eTitle">Motor Teknik Özellikleri</h3>
+          <p id="eSubtitle" style="font-size: 11.5px; color: var(--neon-blue); margin-top: 2px;">Denizcilik Güç Ünitesi Föyü</p>
+        </div>
+        <button onclick="document.getElementById('engineDetailModal').style.display='none'">&times;</button>
+      </div>
+      <table class="specs-table">
+        <tr><td>Güç (Toplam HP)</td><td id="e_hp">-</td></tr>
+        <tr><td>Silindir Konfigürasyonu</td><td id="e_cylinders">-</td></tr>
+        <tr><td>Silindir Hacmi</td><td id="e_displacement">-</td></tr>
+        <tr><td>Yakıt Tipi</td><td id="e_fuel">-</td></tr>
+        <tr><td>Hava / Besleme</td><td id="e_aspiration">-</td></tr>
+        <tr><td>Tahrik / Şanzıman Tipi</td><td id="e_propulsion">-</td></tr>
+        <tr><td>Ağırlık (Kuru)</td><td id="e_weight">-</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- README MODAL (GÜNCEL KAYNAKÇA) -->
   <div class="modal-overlay" id="readmeModal" onclick="this.style.display='none'">
     <div class="modal-box large" onclick="event.stopPropagation()">
       <div class="modal-head">
-        <h3>📌 Proje & Veri Kaynakçası</h3>
+        <h3>📌 Proje & Kapsamlı Veri Kaynakçası (README)</h3>
         <button onclick="document.getElementById('readmeModal').style.display='none'">&times;</button>
       </div>
       <div class="readme-content">
-        <p>Türkiye'de ve dünyada faaliyet gösteren 160'tan fazla tersanenin, model serilerinin ve teknik şartnamelerinin listelendiği açık kaynaklı bir denizcilik bilgi bankasıdır.</p>
-        <h4>1. Yerli Piyasa & Portallar</h4>
+        <p>Türkiye'de ve dünyada faaliyet gösteren 160'tan fazla tersanenin, model serilerinin, gövde hidrostatiklerinin ve güç ünitelerinin listelendiği açık kaynaklı bir denizcilik bilgi bankasıdır.</p>
+        
+        <h4>1. Tekne & Tersane Veri Tabanı</h4>
         <ul>
-          <li><strong>Sahibinden.com:</strong> Türkiye'deki yerli polyester atölyeleri (Safter, Rota, Yerliyurt, Isatek vb.) ve popüler seriler.</li>
-          <li><strong>Yatvitrini & Denizbülten:</strong> Türkiye sularındaki geleneksel sac/ahşap trawler ve lüks motoryatlar (Mengi Yay, Bilgin, Ada Yatçılık vb.).</li>
+          <li><strong>Sahibinden.com (Deniz Araçları > Motoryat):</strong> Türkiye piyasasındaki tescilli yerli polyester atölyeleri (Safter, Rota, Yerliyurt, Isatek, Mursan vb.) ve popüler ithal seriler.</li>
+          <li><strong>Yatvitrini & Denizbülten:</strong> Türkiye sularındaki geleneksel sac/ahşap trawler ve lüks motoryatlar (Mengi Yay, Bilgin, Ada Yatçılık, Kargı Trawler vb.).</li>
+          <li><strong>YachtWorld & Powerboat Guide:</strong> 10.000+ motoryatın fabrika arşivleri, LOA, beam, draft ve kabin kapasiteleri.</li>
         </ul>
-        <h4>2. Uluslararası Kaynaklar</h4>
+
+        <h4>2. Motor & Güç Ünitesi Teknik Kaynakçası (YENİ)</h4>
+        <p>Modellerde yer alan beygir gücü (HP), silindir hacmi (CC), silindir dizilimi, besleme tipi ve tahrik/şanzıman mekanizmaları doğrudan üretici marin servis dokümantasyonlarından derlenmiştir:</p>
         <ul>
-          <li><strong>YachtWorld & Boats.com:</strong> 10.000+ motoryatın fabrika arşivleri ve teknik ölçümleri.</li>
-          <li><strong>Powerboat Guide:</strong> Standart boy, en, draft ve motor föyleri.</li>
+          <li><strong>Volvo Penta Marine:</strong> D4/D6 Aquamatic ve D6/D11/D13 IPS Pod Drive teknik ürün föyleri.</li>
+          <li><strong>MAN Engines:</strong> V8-1000/1200 ve V12-1400/1900/2000 lüks yat serisi yüksek hızlı marin dizel arşivleri.</li>
+          <li><strong>Caterpillar Marine (CAT):</strong> C18 ACERT ağır hizmet deplasman ve semi-displacement makine şartnameleri.</li>
+          <li><strong>Scania & Cummins Marine:</strong> Scania DI13 Heavy Duty ve Cummins Quantum Serisi (QSB 6.7 / QSC 8.3) trawler güç üniteleri.</li>
+          <li><strong>Mercury Marine:</strong> Verado V8 (4.6L) ve V12 (7.6L) AMS dıştan takma şanzıman ve motor verileri.</li>
+          <li><strong>Yamaha Motor Marine:</strong> F300 / F350 Offshore V6/V8 çok noktalı elektronik enjeksiyon (EFI) servis kılavuzları.</li>
         </ul>
-        <h4>3. Resmi Üretici Katalogları</h4>
-        <p>Her markanın adına tıklayarak doğrudan resmi web sayfasına ulaşabilirsiniz.</p>
+
+        <h4>3. Güvenlik & Donanım Sponsorluğu</h4>
+        <p><strong>Vanemar Akıllı Tekne Takip:</strong> Limandaki teknelerin 7/24 sintine seviyesi, akü voltajı, GPS konumu ve sahil besleme güvenliği entegrasyonu.</p>
       </div>
     </div>
   </div>
 
   <script>
-    function makeLogo(name, bg="#0b172a", fg="#ffffff", sub="") {
-      return `<svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-        <rect width="100" height="60" fill="#ffffff"/>
-        <rect x="2" y="2" width="96" height="56" rx="4" fill="${bg}"/>
-        <text x="50" y="${sub ? '32' : '36'}" font-family="'Montserrat', sans-serif" font-weight="800" font-size="${name.length > 8 ? '10' : '12'}" fill="${fg}" text-anchor="middle" letter-spacing="1">${name}</text>
-        ${sub ? `<text x="50" y="46" font-family="'Montserrat', sans-serif" font-weight="600" font-size="7" fill="#38bdf8" text-anchor="middle" letter-spacing="0.5">${sub}</text>` : ''}
+    function getBrandVectorLogo(brandName) {
+      const b = brandName.toLowerCase();
+
+      if (b.includes("riva")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#042f2e"/><text x="50" y="38" font-family="'Cinzel', serif" font-weight="700" font-size="20" fill="#2dd4bf" text-anchor="middle" font-style="italic" letter-spacing="2">Riva</text></svg>`;
+      }
+      if (b.includes("ferretti")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M22 18h56v3H22zm0 8h38v3H22zm0 8h24v3H22z" fill="#38bdf8"/><text x="50" y="50" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1">FERRETTI</text></svg>`;
+      }
+      if (b.includes("pershing")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#18181b"/><polygon points="20,16 50,28 20,40" fill="#71717a"/><polygon points="35,16 65,28 35,40" fill="#e4e4e7"/><polygon points="50,16 80,28 50,40" fill="#38bdf8"/><text x="50" y="52" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">PERSHING</text></svg>`;
+      }
+      if (b.includes("sunseeker")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#07111e"/><circle cx="50" cy="22" r="9" fill="none" stroke="#38bdf8" stroke-width="2.5"/><circle cx="50" cy="22" r="4" fill="#38bdf8"/><text x="50" y="47" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">SUNSEEKER</text></svg>`;
+      }
+      if (b.includes("fairline")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f1c33"/><path d="M30 20 L50 28 L70 20 L50 34 Z" fill="#38bdf8"/><circle cx="50" cy="18" r="3" fill="#ffffff"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="1">FAIRLINE</text></svg>`;
+      }
+      if (b.includes("princess")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f2b48"/><path d="M25 32 L32 18 L50 26 L68 18 L75 32 Z" fill="#ffffff"/><circle cx="32" cy="16" r="2" fill="#38bdf8"/><circle cx="50" cy="24" r="2" fill="#38bdf8"/><circle cx="68" cy="16" r="2" fill="#38bdf8"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9.5" fill="#ffffff" text-anchor="middle" letter-spacing="2">PRINCESS</text></svg>`;
+      }
+      if (b.includes("azimut")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0a1120"/><circle cx="42" cy="22" r="7" fill="none" stroke="#ffffff" stroke-width="2.5"/><circle cx="58" cy="22" r="7" fill="none" stroke="#38bdf8" stroke-width="2.5"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="11" fill="#ffffff" text-anchor="middle" letter-spacing="2">AZIMUT</text></svg>`;
+      }
+      if (b.includes("sanlorenzo")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><text x="50" y="28" font-family="'Cinzel', serif" font-weight="700" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="2">SANLORENZO</text><line x1="25" y1="36" x2="75" y2="36" stroke="#94a3b8" stroke-width="1.5"/><text x="50" y="47" font-family="'Montserrat', sans-serif" font-size="6" fill="#38bdf8" text-anchor="middle" letter-spacing="1">YACHTS</text></svg>`;
+      }
+      if (b.includes("wally")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#000000"/><text x="50" y="38" font-family="'Montserrat', sans-serif" font-weight="800" font-size="17" fill="#ffffff" text-anchor="middle" letter-spacing="2">wally</text><circle cx="82" cy="27" r="3" fill="#00d2ff"/></svg>`;
+      }
+      if (b.includes("axopar")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#000000"/><path d="M22 18 L78 42 M78 18 L22 42" stroke="#ffffff" stroke-width="3"/><rect x="42" y="24" width="16" height="12" fill="#000000"/><text x="50" y="34" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8" fill="#38bdf8" text-anchor="middle">AXOPAR</text></svg>`;
+      }
+      if (b.includes("sea ray")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0369a1"/><path d="M20 28 Q 35 15, 50 28 T 80 28" fill="none" stroke="#ffffff" stroke-width="3"/><path d="M20 36 Q 35 23, 50 36 T 80 36" fill="none" stroke="#bae6fd" stroke-width="2"/><text x="50" y="50" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8" fill="#ffffff" text-anchor="middle" letter-spacing="1">SEA RAY</text></svg>`;
+      }
+      if (b.includes("whaler")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#1e3a5f"/><polygon points="50,12 60,32 40,32" fill="#dc2626"/><text x="50" y="44" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle">BOSTON</text><text x="50" y="52" font-family="'Montserrat', sans-serif" font-weight="700" font-size="6.5" fill="#f87171" text-anchor="middle">WHALER</text></svg>`;
+      }
+      if (b.includes("viking")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M28 16 L50 38 L72 16 L62 16 L50 28 L38 16 Z" fill="#f59e0b"/><text x="50" y="50" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">VIKING</text></svg>`;
+      }
+      if (b.includes("sirena")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M50 14 L74 30 L50 24 L26 30 Z" fill="#38bdf8"/><text x="50" y="47" font-family="'Montserrat', sans-serif" font-weight="800" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="2">SIRENA</text></svg>`;
+      }
+      if (b.includes("numarine")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#111827"/><circle cx="50" cy="22" r="10" fill="none" stroke="#ef4444" stroke-width="3"/><path d="M46 16 L54 28" stroke="#ffffff" stroke-width="2.5"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">NUMARINE</text></svg>`;
+      }
+      if (b.includes("vicem")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#451a03"/><circle cx="50" cy="22" r="9" fill="none" stroke="#fef3c7" stroke-width="2"/><text x="50" y="26" font-family="'Cinzel', serif" font-weight="700" font-size="9" fill="#fef3c7" text-anchor="middle">V</text><text x="50" y="47" font-family="'Cinzel', serif" font-weight="700" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1">VICEM</text></svg>`;
+      }
+      if (b.includes("ada yat")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#78350f"/><path d="M22 30 L32 20 L68 20 L78 30 L70 36 L30 36 Z" fill="#fef3c7"/><text x="50" y="49" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">ADA YAT</text></svg>`;
+      }
+      if (b.includes("safter")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#991b1b"/><circle cx="50" cy="22" r="8" fill="#ffffff"/><polygon points="46,18 56,22 46,26" fill="#991b1b"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">SAFTER</text></svg>`;
+      }
+      if (b.includes("rota")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#1e3a8a"/><circle cx="50" cy="21" r="8" fill="none" stroke="#ffffff" stroke-width="2.5"/><path d="M50 10v22M39 21h22" stroke="#38bdf8" stroke-width="2"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">ROTA</text></svg>`;
+      }
+      if (b.includes("yerliyurt")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0369a1"/><circle cx="50" cy="18" r="4" fill="#ffffff"/><path d="M50 22v10M40 28q10 8 20 0" stroke="#ffffff" stroke-width="2.5" fill="none"/><text x="50" y="50" font-family="'Montserrat', sans-serif" font-weight="800" font-size="7.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">YERLİYURT</text></svg>`;
+      }
+      if (b.includes("williams")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><circle cx="50" cy="21" r="9" fill="none" stroke="#38bdf8" stroke-width="2.5"/><circle cx="50" cy="21" r="3" fill="#ffffff"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">WILLIAMS</text></svg>`;
+      }
+      if (b.includes("zodiac")) {
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M30 16h40l-36 16h36" stroke="#ef4444" stroke-width="3" fill="none"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1">ZODIAC</text></svg>`;
+      }
+
+      const initials = brandName.substring(0, 3).toUpperCase();
+      return `<svg viewBox="0 0 100 60">
+        <rect width="100" height="60" fill="#0f172a"/>
+        <rect x="6" y="6" width="88" height="48" rx="6" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <text x="50" y="32" font-family="'Montserrat', sans-serif" font-weight="800" font-size="${brandName.length > 9 ? '8.5' : '10.5'}" fill="#ffffff" text-anchor="middle" letter-spacing="1">${brandName.substring(0, 11).toUpperCase()}</text>
+        <text x="50" y="44" font-family="'Montserrat', sans-serif" font-weight="700" font-size="6.5" fill="#38bdf8" text-anchor="middle" letter-spacing="0.5">${initials} YACHT</text>
       </svg>`;
     }
 
+    const engineDatabase = {
+      "2x MAN V8 / V12 1400": {
+        title: "MAN Marine V8 / V12",
+        hp: "2x 1.200 - 1.400 HP (2.800 HP Toplam)",
+        cylinders: "V8 & V12 Silindir 90°",
+        displacement: "16.2L - 24.2L (24.200 cc)",
+        fuel: "Marin Dizel (Common Rail)",
+        aspiration: "Biturbo & Intercooler",
+        propulsion: "Şaft Tahrikli (Direct / V-Drive)",
+        weight: "Yaklaşık 2.270 kg"
+      },
+      "2x CAT C18 ACERT": {
+        title: "Caterpillar C18 ACERT",
+        hp: "2x 1.150 HP (2.300 HP Toplam)",
+        cylinders: "Sıralı 6 Silindir",
+        displacement: "18.100 cc (18.1L)",
+        fuel: "Marin Dizel",
+        aspiration: "Turboşarjlı & Su Soğutmalı",
+        propulsion: "Ağır Hizmet Düz Şaft",
+        weight: "Yaklaşık 1.950 kg"
+      },
+      "2x Scania DI13 Heavy Duty": {
+        title: "Scania Marine DI13 550",
+        hp: "2x 550 HP (1.100 HP Toplam)",
+        cylinders: "Sıralı 6 Silindir Trawler Dizeli",
+        displacement: "12.700 cc (12.7L)",
+        fuel: "Marin Dizel",
+        aspiration: "Turboşarjlı & Intercooler",
+        propulsion: "Ağır Deplasman Şaft Sistemi",
+        weight: "Yaklaşık 1.285 kg"
+      },
+      "2x Cummins QSB / QSC": {
+        title: "Cummins Marine QSB / QSC",
+        hp: "2x 425 - 550 HP",
+        cylinders: "Sıralı 6 Silindir 4-Zamanlı",
+        displacement: "6.700 cc - 8.300 cc",
+        fuel: "Marin Dizel (Quantum Serisi)",
+        aspiration: "Turboşarjlı & Aftercooler",
+        propulsion: "V-Drive / Düz Şaft",
+        weight: "Yaklaşık 890 kg"
+      },
+      "2x Volvo Penta IPS 650": {
+        title: "Volvo Penta D6-IPS 650",
+        hp: "2x 480 HP Krank (650 HP Efektif İtki)",
+        cylinders: "Sıralı 6 Silindir",
+        displacement: "5.500 cc (5.5L)",
+        fuel: "Marin Dizel (Common Rail)",
+        aspiration: "Kompresör + Turboşarj",
+        propulsion: "Pod Drive (Çift Karşı Dönen Pervane)",
+        weight: "Yaklaşık 920 kg"
+      },
+      "Mercury Verado V8 Outboard": {
+        title: "Mercury Verado 300 / 400 V8",
+        hp: "300 - 400 HP (Tek / Çift / Üçlü)",
+        cylinders: "V8 Silindir (32 Sübap DOHC)",
+        displacement: "4.600 cc (4.6L)",
+        fuel: "Benzin (Kurşunsuz 95 Oktan)",
+        aspiration: "Doğal Emişli / Transient Spark EFI",
+        propulsion: "Dıştan Takma (AMS Kademeli Trim)",
+        weight: "Yaklaşık 272 kg"
+      },
+      "Yamaha V6 Offshore Outboard": {
+        title: "Yamaha F300 / F350 V6 Offshore",
+        hp: "250 - 350 HP",
+        cylinders: "V6 Silindir 60° (24 Sübap)",
+        displacement: "4.200 cc (4.2L)",
+        fuel: "Benzin (Kurşunsuz 95 Oktan)",
+        aspiration: "Elektronik Çok Noktalı Enjeksiyon (EFI)",
+        propulsion: "Dıştan Takma (Helm Master Entegre)",
+        weight: "Yaklaşık 260 kg"
+      }
+    };
+
+    let activeSelectedEngine = "";
+
+    // 160+ TERSANENİN TAM LİSTESİ
     const rawBrands = [
-      // A
-      { name: "Absolute Yachts", url: "https://www.absoluteyachts.com", country: "İtalya", logo: makeLogo("ABSOLUTE", "#0c4a6e", "#38bdf8"), series: [{ name: "Navetta & Fly", models: ["45 Navetta", "52 Navetta", "58 Navetta", "47 Fly", "52 Fly", "60 Fly"] }] },
-      { name: "Ada Yatçılık", url: "https://adayacht.com", country: "Türkiye", logo: makeLogo("ADA YAT", "#78350f", "#fef3c7"), series: [{ name: "Ahşap & Sac Trawler", models: ["Ada 18M", "Ada 24M", "Ada 30M"] }] },
-      { name: "Alen Yacht", url: "https://alenyacht.com", country: "Türkiye", logo: makeLogo("ALEN", "#0284c7", "#ffffff"), series: [{ name: "Alen Serisi", models: ["Alen 45", "Alen 55", "Alen 68"] }] },
-      { name: "Alfastreet Marine", url: "https://alfastreet-marine.com", country: "Slovenya", logo: makeLogo("ALFASTREET", "#1e293b", "#38bdf8"), series: [{ name: "Hydraulic Hardtop", models: ["18 Open", "21 Open", "25 Cabin", "28 Cabin"] }] },
-      { name: "Amer Yachts", url: "https://www.ameryachts.it", country: "İtalya", logo: makeLogo("AMER", "#1e293b", "#f59e0b"), series: [{ name: "Superyachts", models: ["Amer 94", "Amer 100", "Amer 120"] }] },
-      { name: "Angel Yachts", url: "https://www.angelyachts.com", country: "Türkiye", logo: makeLogo("ANGEL", "#831843", "#fbcfe8"), series: [{ name: "Lobster & Baby", models: ["Angel Baby", "Angel Lobster 15", "Angel Giant"] }] },
-      { name: "Anka Tekne", url: "https://ankatekne.com", country: "Türkiye", logo: makeLogo("ANKA", "#064e3b", "#a7f3d0"), series: [{ name: "Fiber Cruiser", models: ["Anka 5.50", "Anka 6.80", "Anka 8.50"] }] },
-      { name: "Antares (Bénéteau)", url: "https://www.beneteau.com", country: "Fransa", logo: makeLogo("ANTARES", "#0f172a", "#38bdf8"), series: [{ name: "Weekender", models: ["Antares 7", "Antares 8", "Antares 9", "Antares 11", "Antares 12"] }] },
-      { name: "Apreamare", url: "https://www.apreamare.it", country: "İtalya", logo: makeLogo("APREAMARE", "#365314", "#bef264", "GOZZO"), series: [{ name: "Gozzo & Maestro", models: ["Gozzo 35", "Gozzo 45", "Maestro 56", "Maestro 65"] }] },
-      { name: "Aquila Power Catamarans", url: "https://www.aquilaboats.com", country: "Çin / ABD", logo: makeLogo("AQUILA", "#0f172a", "#38bdf8"), series: [{ name: "Power Cat", models: ["Aquila 28", "Aquila 32", "Aquila 36", "Aquila 44", "Aquila 54"] }] },
-      { name: "Arcadia Yachts", url: "https://www.arcadiayachts.it", country: "İtalya", logo: makeLogo("ARCADIA", "#064e3b", "#a7f3d0", "SOLAR"), series: [{ name: "Sherpa & A-Line", models: ["Sherpa 60", "Sherpa 80", "A85", "A105"] }] },
-      { name: "Astondoa", url: "https://astondoa.com", country: "İspanya", logo: makeLogo("ASTONDOA", "#450a0a", "#fecaca"), series: [{ name: "Flybridge & AS", models: ["377 Coupe", "AS5", "AS8", "66 Flybridge"] }] },
-      { name: "Axopar", url: "https://www.axopar.com", country: "Finlandiya", logo: makeLogo("AXOPAR", "#000000", "#ffffff", "ADVENTURE"), series: [{ name: "Cross Cabin & Sun-Top", models: ["Axopar 28 (T-Top/Cabin)", "Axopar 37 (Sun-Top/XC)", "Axopar 45"] }] },
-      { name: "Azimut Yachts", url: "https://www.azimutyachts.com", country: "İtalya", logo: makeLogo("AZIMUT", "#0a1120", "#ffffff", "YACHTS"), series: [
+      { name: "Absolute Yachts", url: "https://www.absoluteyachts.com", country: "İtalya", series: [{ name: "Navetta & Fly", models: ["45 Navetta", "52 Navetta", "58 Navetta", "47 Fly", "52 Fly", "60 Fly"] }] },
+      { name: "Ada Yatçılık", url: "https://adayacht.com", country: "Türkiye", series: [{ name: "Ahşap & Sac Trawler", models: ["Ada 18M", "Ada 24M", "Ada 30M"] }] },
+      { name: "Alen Yacht", url: "https://alenyacht.com", country: "Türkiye", series: [{ name: "Alen Serisi", models: ["Alen 45", "Alen 55", "Alen 68"] }] },
+      { name: "Alfastreet Marine", url: "https://alfastreet-marine.com", country: "Slovenya", series: [{ name: "Hydraulic Hardtop", models: ["18 Open", "21 Open", "25 Cabin", "28 Cabin"] }] },
+      { name: "Amer Yachts", url: "https://www.ameryachts.it", country: "İtalya", series: [{ name: "Superyachts", models: ["Amer 94", "Amer 100", "Amer 120"] }] },
+      { name: "Angel Yachts", url: "https://www.angelyachts.com", country: "Türkiye", series: [{ name: "Lobster & Baby", models: ["Angel Baby", "Angel Lobster 15", "Angel Giant"] }] },
+      { name: "Anka Tekne", url: "https://ankatekne.com", country: "Türkiye", series: [{ name: "Fiber Cruiser", models: ["Anka 5.50", "Anka 6.80", "Anka 8.50"] }] },
+      { name: "Antares (Bénéteau)", url: "https://www.beneteau.com", country: "Fransa", series: [{ name: "Weekender", models: ["Antares 7", "Antares 8", "Antares 9", "Antares 11", "Antares 12"] }] },
+      { name: "Apreamare", url: "https://www.apreamare.it", country: "İtalya", series: [{ name: "Gozzo & Maestro", models: ["Gozzo 35", "Gozzo 45", "Maestro 56", "Maestro 65"] }] },
+      { name: "Aquila Power Catamarans", url: "https://www.aquilaboats.com", country: "Çin / ABD", series: [{ name: "Power Cat", models: ["Aquila 28", "Aquila 32", "Aquila 36", "Aquila 44", "Aquila 54"] }] },
+      { name: "Arcadia Yachts", url: "https://www.arcadiayachts.it", country: "İtalya", series: [{ name: "Sherpa & A-Line", models: ["Sherpa 60", "Sherpa 80", "A85", "A105"] }] },
+      { name: "Astondoa", url: "https://astondoa.com", country: "İspanya", series: [{ name: "Flybridge & AS", models: ["377 Coupe", "AS5", "AS8", "66 Flybridge"] }] },
+      { name: "Axopar", url: "https://www.axopar.com", country: "Finlandiya", series: [{ name: "Cross Cabin & Sun-Top", models: ["Axopar 28 (T-Top/Cabin)", "Axopar 37 (Sun-Top/XC)", "Axopar 45"] }] },
+      { name: "Azimut Yachts", url: "https://www.azimutyachts.com", country: "İtalya", series: [
         { name: "Atlantis (Sport)", models: ["34", "43", "45", "47", "51", "55"] },
         { name: "Flybridge", models: ["39 Fly", "43 Fly", "46", "50", "53", "55", "58", "62", "64", "66", "72", "80"] },
         { name: "S Serisi (Coupe)", models: ["55S", "68S", "77S", "S6", "S7", "S8"] },
         { name: "Magellano (Trawler)", models: ["43", "53", "60", "66"] }
       ]},
-
-      // B
-      { name: "Baglietto", url: "https://www.baglietto.com", country: "İtalya", logo: makeLogo("BAGLIETTO", "#0d1b2a", "#e0e1dd"), series: [{ name: "DOM & T-Line", models: ["DOM 133", "T52", "FAST 43"] }] },
-      { name: "Bavaria Yachts", url: "https://www.bavariayachts.com", country: "Almanya", logo: makeLogo("BAVARIA", "#1e293b", "#38bdf8"), series: [{ name: "Sport & SR Serisi", models: ["29 Sport", "32 Sport", "35 Sport", "37 Sport", "SR36", "SR41", "Virtess 420"] }] },
-      { name: "Bayliner", url: "https://www.bayliner.com", country: "ABD", logo: makeLogo("BAYLINER", "#1e3a8a", "#ffffff"), series: [{ name: "Ciera / Discovery", models: ["245", "265", "2855", "3055", "3255"] }] },
-      { name: "Benetti", url: "https://www.benettiyachts.it", country: "İtalya", logo: makeLogo("BENETTI", "#1b263b", "#e0a96d", "1873"), series: [{ name: "Class & B.Now", models: ["Delfino 95", "Mediterraneo 116", "Oasis 40M", "B.Now 50M"] }] },
-      { name: "Bénéteau", url: "https://www.beneteau.com", country: "Fransa", logo: makeLogo("BENETEAU", "#0369a1", "#ffffff"), series: [
+      { name: "Baglietto", url: "https://www.baglietto.com", country: "İtalya", series: [{ name: "DOM & T-Line", models: ["DOM 133", "T52", "FAST 43"] }] },
+      { name: "Bavaria Yachts", url: "https://www.bavariayachts.com", country: "Almanya", series: [{ name: "Sport & SR Serisi", models: ["29 Sport", "32 Sport", "35 Sport", "37 Sport", "SR36", "SR41", "Virtess 420"] }] },
+      { name: "Bayliner", url: "https://www.bayliner.com", country: "ABD", series: [{ name: "Ciera / Discovery", models: ["245", "265", "2855", "3055", "3255"] }] },
+      { name: "Benetti", url: "https://www.benettiyachts.it", country: "İtalya", series: [{ name: "Class & B.Now", models: ["Delfino 95", "Mediterraneo 116", "Oasis 40M", "B.Now 50M"] }] },
+      { name: "Bénéteau", url: "https://www.beneteau.com", country: "Fransa", series: [
         { name: "Gran Turismo (GT)", models: ["GT 32", "GT 36", "GT 40", "GT 41", "GT 46", "GT 50"] },
         { name: "Swift Trawler", models: ["30", "34", "35", "41", "44", "47", "50"] }
       ]},
-      { name: "Bertram", url: "https://www.bertram.com", country: "ABD", logo: makeLogo("BERTRAM", "#1e3a8a", "#ffffff"), series: [{ name: "Moppie & Flybridge", models: ["Bertram 28", "Bertram 31", "Bertram 35", "Bertram 50", "Bertram 61"] }] },
-      { name: "Bilgin Yachts", url: "https://bilginyacht.com", country: "Türkiye", logo: makeLogo("BILGIN", "#030712", "#e5e7eb"), series: [{ name: "Bilgin Custom", models: ["Tatiana 80M", "Bilgin 163", "Bilgin 263", "Leona 80M"] }] },
-      { name: "Bluegame", url: "https://bluegame.it", country: "İtalya", logo: makeLogo("BLUEGAME", "#1e293b", "#38bdf8", "SANLORENZO"), series: [{ name: "BG & BGX", models: ["BG42", "BG54", "BG72", "BGX60", "BGX70"] }] },
-      { name: "Boston Whaler", url: "https://www.bostonwhaler.com", country: "ABD", logo: makeLogo("WHALER", "#1e3a5f", "#ef4444"), series: [{ name: "Conquest & Outrage", models: ["285 Conquest", "325 Conquest", "345 Conquest", "420 Outrage"] }] },
-      { name: "Brabus Marine", url: "https://www.brabusmarine.com", country: "Almanya", logo: makeLogo("BRABUS", "#000000", "#ef4444", "SHADOW"), series: [{ name: "Shadow Serisi", models: ["Shadow 500", "Shadow 900", "Shadow 1000"] }] },
-      { name: "Brig Boats", url: "https://brigboats.com", country: "Ukrayna", logo: makeLogo("BRIG", "#0f172a", "#ef4444", "RIB"), series: [{ name: "Eagle Serisi", models: ["Eagle 6.7", "Eagle 8", "Eagle 10"] }] },
-
-      // C
-      { name: "Canados", url: "https://www.canados.com", country: "İtalya", logo: makeLogo("CANADOS", "#18181b", "#fbbf24"), series: [{ name: "Gladiator & Oceanic", models: ["Gladiator 411", "Gladiator 631", "Oceanic 76", "Canados 88"] }] },
-      { name: "Cantieri di Pisa", url: "https://www.cantieridipisa.com", country: "İtalya", logo: makeLogo("PISA", "#0f172a", "#ffffff"), series: [{ name: "Akhir Serisi", models: ["Akhir 85", "Akhir 108", "Akhir 118"] }] },
-      { name: "Capelli", url: "https://www.cantiericapelli.com", country: "İtalya", logo: makeLogo("CAPELLI", "#0284c7", "#ffffff", "TEMPEST"), series: [{ name: "Tempest RIB", models: ["Tempest 38", "Tempest 40", "Tempest 44", "Tempest 50"] }] },
-      { name: "Carnevali", url: "https://www.carnevaliyachts.com", country: "İtalya", logo: makeLogo("CARNEVALI", "#1e293b", "#38bdf8"), series: [{ name: "Flybridge", models: ["Carnevali 130", "Carnevali 145", "Carnevali 160"] }] },
-      { name: "Carniti", url: "https://www.carnitimotors.com", country: "İtalya", logo: makeLogo("CARNITI", "#1e293b", "#38bdf8"), series: [{ name: "Klasik Cruiser", models: ["Carniti 24", "Carniti 30"] }] },
-      { name: "Carver Yachts", url: "https://www.carveryachts.com", country: "ABD", logo: makeLogo("CARVER", "#0f172a", "#94a3b8"), series: [{ name: "Voyager & C Serisi", models: ["C34", "C37", "C40", "C52 Coupe", "444 Aft Cabin"] }] },
-      { name: "CCN (Cerri)", url: "https://www.cerricantierinavali.it", country: "İtalya", logo: makeLogo("CERRI", "#0f172a", "#f1f5f9"), series: [{ name: "FlyingSport", models: ["Cerri 86", "Cerri 102 FlyingSport"] }] },
-      { name: "Chaparral", url: "https://www.chaparralboats.com", country: "ABD", logo: makeLogo("CHAPARRAL", "#b91c1c", "#ffffff"), series: [{ name: "Signature", models: ["250", "270", "280", "290", "310", "330", "350"] }] },
-      { name: "Chris-Craft", url: "https://www.chriscraft.com", country: "ABD", logo: makeLogo("CHRIS CRAFT", "#7c2d12", "#ffffff"), series: [{ name: "Corsair & Launch", models: ["Corsair 28", "Launch 32", "Launch 36", "Catalina 30"] }] },
-      { name: "Cobalt Boats", url: "https://cobaltboats.com", country: "ABD", logo: makeLogo("COBALT", "#0284c7", "#ffffff"), series: [{ name: "R & A Serisi", models: ["R30", "R35", "A36", "A40"] }] },
-      { name: "Cobra Yacht", url: "https://www.cobrayacht.com", country: "Türkiye", logo: makeLogo("COBRA", "#1e293b", "#f97316"), series: [{ name: "Custom Trawler & Yat", models: ["Cobra King 38M", "Infinity 46M", "Maestro 24M"] }] },
-      { name: "Cranchi", url: "https://www.cranchi.com", country: "İtalya", logo: makeLogo("CRANCHI", "#18181b", "#ffffff"), series: [{ name: "Cruiser & Hardtop", models: ["E26", "CSL 27", "Z35", "Endurance 30", "M44 HT", "50 Mediterranee", "Settantotto 78"] }] },
-      { name: "Crownline", url: "https://crownline.com", country: "ABD", logo: makeLogo("CROWNLINE", "#0f172a", "#ef4444"), series: [{ name: "CR Cruiser", models: ["250 CR", "270 CR", "315 CR", "335 SS"] }] },
-      { name: "Cruisers Yachts", url: "https://www.cruisersyachts.com", country: "ABD", logo: makeLogo("CRUISERS", "#1e3a8a", "#60a5fa"), series: [{ name: "Cantius & Express", models: ["338 Bowrider", "390 Express", "42 Cantius", "50 Cantius", "60 Cantius"] }] },
-      { name: "Custom Line", url: "https://www.customline-yacht.com", country: "İtalya", logo: makeLogo("CUSTOM LINE", "#1f2937", "#f3f4f6"), series: [{ name: "Navetta & Planante", models: ["Navetta 30", "Navetta 33", "Navetta 37", "Custom Line 106", "Custom Line 140"] }] },
-
-      // D
-      { name: "Delta Powerboats", url: "https://deltapowerboats.se", country: "İsveç", logo: makeLogo("DELTA", "#0f172a", "#ef4444", "CARBON"), series: [{ name: "Carbon Serisi", models: ["26 Open", "33 Coupé", "54 Carbon", "60 Open", "88 Carbon"] }] },
-      { name: "Derya Tekne", url: "https://www.deryatekne.com", country: "Türkiye", logo: makeLogo("DERYA", "#0369a1", "#ffffff"), series: [{ name: "Balıkçı & Gezi", models: ["Derya 4.80", "Derya 5.80", "Derya 7.50"] }] },
-      { name: "Dominator Yachts", url: "https://www.dominatoryachts.com", country: "İtalya / Avusturya", logo: makeLogo("DOMINATOR", "#18181b", "#fbbf24"), series: [{ name: "Ilumen", models: ["680", "720", "780", "Ilumen 28M"] }] },
-      { name: "Doral", url: "https://www.doralboats.com", country: "Kanada", logo: makeLogo("DORAL", "#1e3a8a", "#93c5fd"), series: [{ name: "Cruiser", models: ["Monticello", "Intrigue", "Boca Grande", "Alegria"] }] },
-      { name: "Dromeas Yachts", url: "https://dromeasyachts.com", country: "Türkiye", logo: makeLogo("DROMEAS", "#164e63", "#a5f3fc"), series: [{ name: "Center Console & SUV", models: ["D28 WA", "D28 CC", "D33 SUV"] }] },
-
-      // E
-      { name: "Eligor Tekne", url: "https://eligortekne.com", country: "Türkiye", logo: makeLogo("ELIGOR", "#1e293b", "#38bdf8"), series: [{ name: "Kabinli Motoryat", models: ["Eligor 28", "Eligor 32"] }] },
-      { name: "Enma Marine", url: "https://www.enmamarine.com", country: "Türkiye", logo: makeLogo("ENMA", "#0f172a", "#f97316"), series: [{ name: "Sport Cruiser", models: ["Barracuda 590", "Enma 700", "Enma 850 Sundeck"] }] },
-      { name: "Evo Yachts", url: "https://www.evoyachts.com", country: "İtalya", logo: makeLogo("EVO", "#000000", "#38bdf8", "TRANSFORMER"), series: [{ name: "R & V Serisi", models: ["Evo R4", "Evo R6", "Evo V8"] }] },
-
-      // F
-      { name: "Fairline", url: "https://www.fairline.com", country: "İngiltere", logo: makeLogo("FAIRLINE", "#0f1c33", "#ffffff", "YACHTS"), series: [
+      { name: "Bertram", url: "https://www.bertram.com", country: "ABD", series: [{ name: "Moppie & Flybridge", models: ["Bertram 28", "Bertram 31", "Bertram 35", "Bertram 50", "Bertram 61"] }] },
+      { name: "Bilgin Yachts", url: "https://bilginyacht.com", country: "Türkiye", series: [{ name: "Bilgin Custom", models: ["Tatiana 80M", "Bilgin 163", "Bilgin 263", "Leona 80M"] }] },
+      { name: "Bluegame", url: "https://bluegame.it", country: "İtalya", series: [{ name: "BG & BGX", models: ["BG42", "BG54", "BG72", "BGX60", "BGX70"] }] },
+      { name: "Boston Whaler", url: "https://www.bostonwhaler.com", country: "ABD", series: [{ name: "Conquest & Outrage", models: ["285 Conquest", "325 Conquest", "345 Conquest", "420 Outrage"] }] },
+      { name: "Brabus Marine", url: "https://www.brabusmarine.com", country: "Almanya", series: [{ name: "Shadow Serisi", models: ["Shadow 500", "Shadow 900", "Shadow 1000"] }] },
+      { name: "Brig Boats", url: "https://brigboats.com", country: "Ukrayna", series: [{ name: "Eagle Serisi", models: ["Eagle 6.7", "Eagle 8", "Eagle 10"] }] },
+      { name: "Canados", url: "https://www.canados.com", country: "İtalya", series: [{ name: "Gladiator & Oceanic", models: ["Gladiator 411", "Gladiator 631", "Oceanic 76", "Canados 88"] }] },
+      { name: "Cantieri di Pisa", url: "https://www.cantieridipisa.com", country: "İtalya", series: [{ name: "Akhir Serisi", models: ["Akhir 85", "Akhir 108", "Akhir 118"] }] },
+      { name: "Capelli", url: "https://www.cantiericapelli.com", country: "İtalya", series: [{ name: "Tempest RIB", models: ["Tempest 38", "Tempest 40", "Tempest 44", "Tempest 50"] }] },
+      { name: "Carnevali", url: "https://www.carnevaliyachts.com", country: "İtalya", series: [{ name: "Flybridge", models: ["Carnevali 130", "Carnevali 145", "Carnevali 160"] }] },
+      { name: "Carniti", url: "https://www.carnitimotors.com", country: "İtalya", series: [{ name: "Klasik Cruiser", models: ["Carniti 24", "Carniti 30"] }] },
+      { name: "Carver Yachts", url: "https://www.carveryachts.com", country: "ABD", series: [{ name: "Voyager & C Serisi", models: ["C34", "C37", "C40", "C52 Coupe", "444 Aft Cabin"] }] },
+      { name: "CCN (Cerri)", url: "https://www.cerricantierinavali.it", country: "İtalya", series: [{ name: "FlyingSport", models: ["Cerri 86", "Cerri 102 FlyingSport"] }] },
+      { name: "Chaparral", url: "https://www.chaparralboats.com", country: "ABD", series: [{ name: "Signature", models: ["250", "270", "280", "290", "310", "330", "350"] }] },
+      { name: "Chris-Craft", url: "https://www.chriscraft.com", country: "ABD", series: [{ name: "Corsair & Launch", models: ["Corsair 28", "Launch 32", "Launch 36", "Catalina 30"] }] },
+      { name: "Cobalt Boats", url: "https://cobaltboats.com", country: "ABD", series: [{ name: "R & A Serisi", models: ["R30", "R35", "A36", "A40"] }] },
+      { name: "Cobra Yacht", url: "https://www.cobrayacht.com", country: "Türkiye", series: [{ name: "Custom Trawler & Yat", models: ["Cobra King 38M", "Infinity 46M", "Maestro 24M"] }] },
+      { name: "Cranchi", url: "https://www.cranchi.com", country: "İtalya", series: [{ name: "Cruiser & Hardtop", models: ["E26", "CSL 27", "Z35", "Endurance 30", "M44 HT", "50 Mediterranee", "Settantotto 78"] }] },
+      { name: "Crownline", url: "https://crownline.com", country: "ABD", series: [{ name: "CR Cruiser", models: ["250 CR", "270 CR", "315 CR", "335 SS"] }] },
+      { name: "Cruisers Yachts", url: "https://www.cruisersyachts.com", country: "ABD", series: [{ name: "Cantius & Express", models: ["338 Bowrider", "390 Express", "42 Cantius", "50 Cantius", "60 Cantius"] }] },
+      { name: "Custom Line", url: "https://www.customline-yacht.com", country: "İtalya", series: [{ name: "Navetta & Planante", models: ["Navetta 30", "Navetta 33", "Navetta 37", "Custom Line 106", "Custom Line 140"] }] },
+      { name: "Delta Powerboats", url: "https://deltapowerboats.se", country: "İsveç", series: [{ name: "Carbon Serisi", models: ["26 Open", "33 Coupé", "54 Carbon", "60 Open", "88 Carbon"] }] },
+      { name: "Derya Tekne", url: "https://www.deryatekne.com", country: "Türkiye", series: [{ name: "Balıkçı & Gezi", models: ["Derya 4.80", "Derya 5.80", "Derya 7.50"] }] },
+      { name: "Dominator Yachts", url: "https://www.dominatoryachts.com", country: "İtalya / Avusturya", series: [{ name: "Ilumen", models: ["680", "720", "780", "Ilumen 28M"] }] },
+      { name: "Doral", url: "https://www.doralboats.com", country: "Kanada", series: [{ name: "Cruiser", models: ["Monticello", "Intrigue", "Boca Grande", "Alegria"] }] },
+      { name: "Dromeas Yachts", url: "https://dromeasyachts.com", country: "Türkiye", series: [{ name: "Center Console & SUV", models: ["D28 WA", "D28 CC", "D33 SUV"] }] },
+      { name: "Eligor Tekne", url: "https://eligortekne.com", country: "Türkiye", series: [{ name: "Kabinli Motoryat", models: ["Eligor 28", "Eligor 32"] }] },
+      { name: "Enma Marine", url: "https://www.enmamarine.com", country: "Türkiye", series: [{ name: "Sport Cruiser", models: ["Barracuda 590", "Enma 700", "Enma 850 Sundeck"] }] },
+      { name: "Evo Yachts", url: "https://www.evoyachts.com", country: "İtalya", series: [{ name: "R & V Serisi", models: ["Evo R4", "Evo R6", "Evo V8"] }] },
+      { name: "Fairline", url: "https://www.fairline.com", country: "İngiltere", series: [
         { name: "Targa", models: ["27", "33", "38", "40", "43", "44", "45 OPEN/GT", "48", "50", "62", "65 GT"] },
         { name: "Squadron", models: ["42", "50", "53", "55", "58", "65", "68", "74"] },
         { name: "Phantom", models: ["38", "40", "46", "65"] }
       ]},
-      { name: "Falcon Yachts", url: "https://www.falconyachts.it", country: "İtalya", logo: makeLogo("FALCON", "#1e293b", "#ffffff"), series: [{ name: "Flybridge", models: ["Falcon 76", "Falcon 86", "Falcon 90", "Falcon 100"] }] },
-      { name: "Feadship", url: "https://www.feadship.nl", country: "Hollanda", logo: makeLogo("FEADSHIP", "#0f172a", "#fbbf24", "ROYAL"), series: [{ name: "Custom Superyachts", models: ["Vanish 66M", "Savannah 83M", "Zen 88M", "Lonian 87M"] }] },
-      { name: "Ferretti Yachts", url: "https://www.ferretti-yachts.com", country: "İtalya", logo: makeLogo("FERRETTI", "#1e293b", "#38bdf8"), series: [{ name: "Flybridge", models: ["430", "450", "500", "530", "550", "592", "620", "670", "720", "780", "850"] }] },
-      { name: "Fiart", url: "https://fiart.com", country: "İtalya", logo: makeLogo("FIART", "#064e3b", "#6ee7b7"), series: [{ name: "Seawalker Serisi", models: ["35 Seawalker", "39 Seawalker", "43 Seawalker"] }] },
-      { name: "Fjord Yachts", url: "https://www.hanseyachtsag.com/fjord", country: "Almanya", logo: makeLogo("FJORD", "#1e293b", "#f59e0b"), series: [{ name: "Open Serisi", models: ["38 Open", "41 XL", "44 Open", "53 XL"] }] },
-      { name: "Formula Boats", url: "https://www.formulaboats.com", country: "ABD", logo: makeLogo("FORMULA", "#dc2626", "#ffffff"), series: [{ name: "FAS3TECH & SSC", models: ["330 CBR", "380 SSC", "430 SSC", "500 SSC"] }] },
-      { name: "Four Winns", url: "https://www.fourwinns.com", country: "ABD", logo: makeLogo("4 WINNS", "#047857", "#ffffff"), series: [{ name: "Vista Serisi", models: ["V255", "V275", "V288", "V318", "V358", "V375"] }] },
-      { name: "Franchini", url: "https://www.franchiniyachts.com", country: "İtalya", logo: makeLogo("FRANCHINI", "#0f172a", "#38bdf8"), series: [{ name: "Mia & Custom", models: ["Mia 63", "Custom 55"] }] },
-
-      // G
-      { name: "Galeon", url: "https://galeon.pl", country: "Polonya", logo: makeLogo("GALEON", "#831843", "#fbcfe8"), series: [{ name: "Fly & HTS Serisi", models: ["325 GTO", "380 FLY", "400 FLY", "420 FLY", "425 HTS", "460 FLY", "500 FLY", "640 FLY"] }] },
-      { name: "Gianetti", url: "https://www.gianettiyacht.com", country: "İtalya", logo: makeLogo("GIANETTI", "#1e293b", "#f1f5f9"), series: [{ name: "Navetta & Star", models: ["Gianetti 48", "Gianetti 68", "Navetta 24"] }] },
-      { name: "Gobbi", url: "https://www.azimutyachts.com", country: "İtalya", logo: makeLogo("GOBBI", "#1e3a5f", "#ffffff"), series: [{ name: "Atlantis Öncesi", models: ["Gobbi 315 SC", "Gobbi 345 SC", "Gobbi 375 SC", "Gobbi 425 SC"] }] },
-      { name: "Grady-White", url: "https://www.gradywhite.com", country: "ABD", logo: makeLogo("GRADY WHITE", "#14532d", "#86efac"), series: [{ name: "Canyon & Express", models: ["Canyon 336", "Canyon 456", "Express 330", "Express 370"] }] },
-      { name: "Grand Banks", url: "https://www.grandbanks.com", country: "ABD / Singapur", logo: makeLogo("GRAND BANKS", "#312e81", "#e0e7ff"), series: [{ name: "Heritage & Eastbay", models: ["GB 42", "GB 54", "Eastbay 44", "Eastbay 60"] }] },
-      { name: "Greenline Yachts", url: "https://greenlinehybrid.com", country: "Slovenya", logo: makeLogo("GREENLINE", "#065f46", "#34d399", "HYBRID"), series: [{ name: "Solar Hybrid", models: ["Greenline 39", "Greenline 40", "Greenline 45", "Greenline 48"] }] },
-
-      // H
-      { name: "Hardanger Trawler", url: "https://www.hardanger-yachting.com", country: "Türkiye / Norveç", logo: makeLogo("HARDANGER", "#0f172a", "#ffffff"), series: [{ name: "Sac Trawler", models: ["Hardanger 15M", "Hardanger 18M"] }] },
-      { name: "Hatteras", url: "https://www.hatterasyachts.com", country: "ABD", logo: makeLogo("HATTERAS", "#1e3a8a", "#fbbf24"), series: [{ name: "Convertible & Motor Yacht", models: ["GT45X", "GT54", "GT70", "M75 Panacera"] }] },
-      { name: "Heesen Yachts", url: "https://www.heesenyachts.com", country: "Hollanda", logo: makeLogo("HEESEN", "#1e293b", "#38bdf8"), series: [{ name: "Fast & Steel", models: ["47M Steel", "50M Aluminium", "55M Steel", "60M Fast"] }] },
-      { name: "Highfield Boats", url: "https://www.highfieldboats.com", country: "Avustralya / Çin", logo: makeLogo("HIGHFIELD", "#b91c1c", "#ffffff", "ALU RIB"), series: [{ name: "Patrol & Sport", models: ["Sport 650", "Sport 760", "Sport 800", "Patrol 860"] }] },
-      { name: "Horizon Yachts", url: "https://www.horizonyacht.com", country: "Tayvan", logo: makeLogo("HORIZON", "#0f172a", "#f3f4f6"), series: [{ name: "FD & E Serisi", models: ["FD75", "FD80", "FD90", "E88"] }] },
-
-      // I - İ
-      { name: "Invictus Yacht", url: "https://www.invictusyacht.com", country: "İtalya", logo: makeLogo("INVICTUS", "#1e1b4b", "#e9d5ff"), series: [{ name: "TT & GT", models: ["TT280", "TT460", "GT320", "GT370"] }] },
-      { name: "Isatek Tekne", url: "https://www.isatektekne.com", country: "Türkiye", logo: makeLogo("ISATEK", "#0284c7", "#ffffff"), series: [{ name: "Gezi & Balıkçı", models: ["Isatek 4.90", "Isatek 6.00", "Smyrna 7.50"] }] },
-      { name: "Itama", url: "https://www.itama-yacht.com", country: "İtalya", logo: makeLogo("ITAMA", "#1e3a8a", "#60a5fa", "OPEN"), series: [{ name: "Open Safkan", models: ["Itama 45S", "Itama 62RS", "Itama 75"] }] },
-
-      // J
-      { name: "Jeanneau", url: "https://www.jeanneau.com", country: "Fransa", logo: makeLogo("JEANNEAU", "#1e3a8a", "#ffffff"), series: [
+      { name: "Falcon Yachts", url: "https://www.falconyachts.it", country: "İtalya", series: [{ name: "Flybridge", models: ["Falcon 76", "Falcon 86", "Falcon 90", "Falcon 100"] }] },
+      { name: "Feadship", url: "https://www.feadship.nl", country: "Hollanda", series: [{ name: "Custom Superyachts", models: ["Vanish 66M", "Savannah 83M", "Zen 88M", "Lonian 87M"] }] },
+      { name: "Ferretti Yachts", url: "https://www.ferretti-yachts.com", country: "İtalya", series: [{ name: "Flybridge", models: ["430", "450", "500", "530", "550", "592", "620", "670", "720", "780", "850"] }] },
+      { name: "Fiart", url: "https://fiart.com", country: "İtalya", series: [{ name: "Seawalker Serisi", models: ["35 Seawalker", "39 Seawalker", "43 Seawalker"] }] },
+      { name: "Fjord Yachts", url: "https://www.hanseyachtsag.com/fjord", country: "Almanya", series: [{ name: "Open Serisi", models: ["38 Open", "41 XL", "44 Open", "53 XL"] }] },
+      { name: "Formula Boats", url: "https://www.formulaboats.com", country: "ABD", series: [{ name: "FAS3TECH & SSC", models: ["330 CBR", "380 SSC", "430 SSC", "500 SSC"] }] },
+      { name: "Four Winns", url: "https://www.fourwinns.com", country: "ABD", series: [{ name: "Vista Serisi", models: ["V255", "V275", "V288", "V318", "V358", "V375"] }] },
+      { name: "Franchini", url: "https://www.franchiniyachts.com", country: "İtalya", series: [{ name: "Mia & Custom", models: ["Mia 63", "Custom 55"] }] },
+      { name: "Galeon", url: "https://galeon.pl", country: "Polonya", series: [{ name: "Fly & HTS Serisi", models: ["325 GTO", "380 FLY", "400 FLY", "420 FLY", "425 HTS", "460 FLY", "500 FLY", "640 FLY"] }] },
+      { name: "Gianetti", url: "https://www.gianettiyacht.com", country: "İtalya", series: [{ name: "Navetta & Star", models: ["Gianetti 48", "Gianetti 68", "Navetta 24"] }] },
+      { name: "Gobbi", url: "https://www.azimutyachts.com", country: "İtalya", series: [{ name: "Atlantis Öncesi", models: ["Gobbi 315 SC", "Gobbi 345 SC", "Gobbi 375 SC", "Gobbi 425 SC"] }] },
+      { name: "Grady-White", url: "https://www.gradywhite.com", country: "ABD", series: [{ name: "Canyon & Express", models: ["Canyon 336", "Canyon 456", "Express 330", "Express 370"] }] },
+      { name: "Grand Banks", url: "https://www.grandbanks.com", country: "ABD / Singapur", series: [{ name: "Heritage & Eastbay", models: ["GB 42", "GB 54", "Eastbay 44", "Eastbay 60"] }] },
+      { name: "Greenline Yachts", url: "https://greenlinehybrid.com", country: "Slovenya", series: [{ name: "Solar Hybrid", models: ["Greenline 39", "Greenline 40", "Greenline 45", "Greenline 48"] }] },
+      { name: "Hardanger Trawler", url: "https://www.hardanger-yachting.com", country: "Türkiye / Norveç", series: [{ name: "Sac Trawler", models: ["Hardanger 15M", "Hardanger 18M"] }] },
+      { name: "Hatteras", url: "https://www.hatterasyachts.com", country: "ABD", series: [{ name: "Convertible & Motor Yacht", models: ["GT45X", "GT54", "GT70", "M75 Panacera"] }] },
+      { name: "Heesen Yachts", url: "https://www.heesenyachts.com", country: "Hollanda", series: [{ name: "Fast & Steel", models: ["47M Steel", "50M Aluminium", "55M Steel", "60M Fast"] }] },
+      { name: "Highfield Boats", url: "https://www.highfieldboats.com", country: "Avustralya / Çin", series: [{ name: "Patrol & Sport", models: ["Sport 650", "Sport 760", "Sport 800", "Patrol 860"] }] },
+      { name: "Horizon Yachts", url: "https://www.horizonyacht.com", country: "Tayvan", series: [{ name: "FD & E Serisi", models: ["FD75", "FD80", "FD90", "E88"] }] },
+      { name: "Invictus Yacht", url: "https://www.invictusyacht.com", country: "İtalya", series: [{ name: "TT & GT", models: ["TT280", "TT460", "GT320", "GT370"] }] },
+      { name: "Isatek Tekne", url: "https://www.isatektekne.com", country: "Türkiye", series: [{ name: "Gezi & Balıkçı", models: ["Isatek 4.90", "Isatek 6.00", "Smyrna 7.50"] }] },
+      { name: "Itama", url: "https://www.itama-yacht.com", country: "İtalya", series: [{ name: "Open Safkan", models: ["Itama 45S", "Itama 62RS", "Itama 75"] }] },
+      { name: "Jeanneau", url: "https://www.jeanneau.com", country: "Fransa", series: [
         { name: "Leader", models: ["Leader 8", "30", "33", "36", "40", "46"] },
         { name: "Merry Fisher", models: ["795", "895", "1095", "1295 Fly"] },
         { name: "Cap Camarat & NC", models: ["NC 9", "NC 11", "NC 14", "Cap Camarat 10.5 WA"] }
       ]},
-      { name: "Joker Boat", url: "https://www.jokerboat.it", country: "İtalya", logo: makeLogo("JOKER BOAT", "#000000", "#ef4444", "CLUBMAN"), series: [{ name: "Clubman", models: ["Clubman 28", "Clubman 30", "Clubman 35"] }] },
-
-      // K
-      { name: "Kargı Trawler", url: "https://kargiyatcilik.com", country: "Türkiye", logo: makeLogo("KARGI", "#78350f", "#fef3c7"), series: [{ name: "Geleneksel Sac/Ahşap", models: ["Kargı 16M", "Kargı 20M", "Kargı 24M"] }] },
-      { name: "Karnic Powerboats", url: "https://karnicboats.com", country: "Kıbrıs", logo: makeLogo("KARNIC", "#1e293b", "#38bdf8"), series: [{ name: "Cruiser & Open", models: ["SL601", "SL651", "SL800"] }] },
-
-      // L
-      { name: "Larson Boats", url: "https://www.larsonboats.com", country: "ABD", logo: makeLogo("LARSON", "#0369a1", "#ffffff"), series: [{ name: "Cabrio Cruiser", models: ["Cabrio 240", "Cabrio 274", "Cabrio 310", "Cabrio 330"] }] },
-      { name: "Lekker Boats", url: "https://lekkerboats.com", country: "Hollanda / Avustralya", logo: makeLogo("LEKKER", "#0f172a", "#f97316"), series: [{ name: "Damsko Serisi", models: ["Damsko 750", "Damsko 1000"] }] },
-      { name: "Liman Tekne", url: "https://www.limantekne.com", country: "Türkiye", logo: makeLogo("LIMAN", "#1e3a5f", "#ffffff"), series: [{ name: "Ahşap & Fiber", models: ["Liman 6.50", "Liman 8.20"] }] },
-      { name: "Linssen Yachts", url: "https://www.linssenyachts.com", country: "Hollanda", logo: makeLogo("LINSSEN", "#14532d", "#bbf7d0", "STEEL"), series: [{ name: "Grand Sturdy", models: ["35.0 AC", "40.0 AC", "45.0 AC", "500 AC"] }] },
-      { name: "Lürssen", url: "https://www.luerssen.com", country: "Almanya", logo: makeLogo("LURSSEN", "#020617", "#e2e8f0"), series: [{ name: "Mega Yachts", models: ["Azzam 180M", "Dilbar 156M", "Nord 142M", "Scheherazade 140M"] }] },
-
-      // M
-      { name: "Magazzu", url: "https://www.magazzu.com", country: "İtalya", logo: makeLogo("MAGAZZU", "#0f172a", "#f59e0b", "MAXI RIB"), series: [{ name: "MX Serisi", models: ["MX-11", "MX-13", "MX-14 Classic"] }] },
-      { name: "Maiora", url: "https://maiora.it", country: "İtalya", logo: makeLogo("MAIORA", "#1e293b", "#38bdf8"), series: [{ name: "Exuma & Classic", models: ["Maiora 24S", "Maiora 30 Walkaround", "Exuma 35"] }] },
-      { name: "Mano Marine", url: "https://www.manomarine.com", country: "İtalya", logo: makeLogo("MANO", "#1e3a8a", "#ffffff"), series: [{ name: "Cruiser", models: ["Mano 22.50", "Mano 24.50", "Mano 28.50", "Mano 32.50"] }] },
-      { name: "Mangusta", url: "https://www.mangustayachts.com", country: "İtalya", logo: makeLogo("MANGUSTA", "#7f1d1d", "#fca5a5"), series: [{ name: "Maxi Open & Oceano", models: ["Mangusta 72", "Mangusta 92", "Mangusta 108", "Oceano 44", "GranSport 54"] }] },
-      { name: "Maral Marin", url: "https://www.maralmarin.com", country: "Türkiye", logo: makeLogo("MARAL", "#0f172a", "#38bdf8"), series: [{ name: "Fisherman", models: ["Maral 5.80", "Maral 7.20"] }] },
-      { name: "Mar-Co Marine", url: "https://www.mar-co.com", country: "İtalya", logo: makeLogo("MAR CO", "#18181b", "#ef4444"), series: [{ name: "Emotion RIB", models: ["Emotion 32", "Emotion 36"] }] },
-      { name: "Maxum", url: "https://www.maxumboats.com", country: "ABD", logo: makeLogo("MAXUM", "#1e3a5f", "#ffffff"), series: [{ name: "SCR Serisi", models: ["2400 SCR", "2700 SCR", "3000 SCR", "3300 SCR"] }] },
-      { name: "Mazu Yachts", url: "https://mazuyachts.com", country: "Türkiye", logo: makeLogo("MAZU", "#1e293b", "#38bdf8"), series: [{ name: "Hardtop & Alpha", models: ["38 ST", "42 Alpha", "52", "82", "92 DS"] }] },
-      { name: "Mengi Yay", url: "https://mengiyay.com", country: "Türkiye", logo: makeLogo("MENGI YAY", "#0f172a", "#f59e0b"), series: [{ name: "Virtus Serisi", models: ["Virtus 44M", "Virtus 47M", "Seaspan 40M", "Aquarius 45M"] }] },
-      { name: "Moonday Yachts", url: "https://www.moonday.com.tr", country: "Türkiye", logo: makeLogo("MOONDAY", "#1e1b4b", "#c084fc"), series: [{ name: "Retro & Sloop", models: ["Moonday 21", "Moonday 27", "Moonday 31 Bosphorus"] }] },
-      { name: "Monterey", url: "https://www.montereyboats.com", country: "ABD", logo: makeLogo("MONTEREY", "#1e293b", "#ffffff"), series: [{ name: "Sport Yacht", models: ["270 CR", "290 CR", "320 CR", "335 SY", "355 SY"] }] },
-      { name: "Moonen Yachts", url: "https://www.moonen.com", country: "Hollanda", logo: makeLogo("MOONEN", "#0f172a", "#f1f5f9"), series: [{ name: "Explorer", models: ["Moonen 110", "Moonen 122 Martinique"] }] },
-      { name: "Mursan", url: "https://www.mursan.com.tr", country: "Türkiye", logo: makeLogo("MURSAN", "#064e3b", "#ffffff"), series: [{ name: "Fiber Cruiser", models: ["Mursan 24", "Mursan 28", "Mursan 32"] }] },
-
-      // N
-      { name: "Nimbus", url: "https://nimbus.se", country: "İsveç", logo: makeLogo("NIMBUS", "#1e3a5f", "#ffffff"), series: [{ name: "Weekender & Coupé", models: ["Weekender W9", "Tender T11", "Commuter C9", "365 Coupé", "405 Coupé"] }] },
-      { name: "Nobiskrug", url: "https://www.nobiskrug.com", country: "Almanya", logo: makeLogo("NOBISKRUG", "#0f172a", "#ffffff"), series: [{ name: "Mega Yat", models: ["Sailing Yacht A", "Artefact 80M"] }] },
-      { name: "Nordhavn", url: "https://nordhavn.com", country: "ABD", logo: makeLogo("NORDHAVN", "#14532d", "#bbf7d0", "EXPEDITION"), series: [{ name: "Okyanus Trawler", models: ["N41", "N51", "N60", "N80"] }] },
-      { name: "Northstar Boats", url: "https://www.northstarboats.com", country: "Türkiye", logo: makeLogo("NORTHSTAR", "#0f172a", "#38bdf8", "RIB"), series: [{ name: "Orion & Axis", models: ["Orion 6", "Orion 8", "Ion 10.5", "Axis 3.8"] }] },
-      { name: "Numarine", url: "https://numarine.com", country: "Türkiye", logo: makeLogo("NUMARINE", "#111827", "#ef4444"), series: [{ name: "Flybridge & Explorer (XP)", models: ["52 Fly", "55 HT", "62 Fly", "68 Fly", "78 HT/Fly", "22XP", "26XP", "32XP", "37XP", "40XP"] }] },
-
-      // O - Ö
-      { name: "Oceanco", url: "https://www.oceancoyacht.com", country: "Hollanda", logo: makeLogo("OCEANCO", "#030712", "#fbbf24"), series: [{ name: "Giga Yacht", models: ["Black Pearl 106M", "Koru 125M", "Bravo Eugenia 109M"] }] },
-      { name: "Ocean Alexander", url: "https://oceanalexander.com", country: "Tayvan / ABD", logo: makeLogo("OCEAN ALEX", "#0f172a", "#fbbf24"), series: [{ name: "Revolution & Legend", models: ["28R", "32L", "35R"] }] },
-      { name: "Otam", url: "https://www.otam.it", country: "İtalya", logo: makeLogo("OTAM", "#450a0a", "#f87171"), series: [{ name: "Millennium", models: ["Otam 58 GTS", "Otam 65 HT", "Otam 80", "Otam 85 GTS"] }] },
-      { name: "Özel Yapım Sac/Ahşap", url: "https://www.sahibinden.com/motoryat", country: "Türkiye", logo: makeLogo("ÖZEL YAPIM", "#991b1b", "#ffffff", "CUSTOM TR"), series: [{ name: "Bodrum/Tuzla İmalat", models: ["Bodrum Guleti", "Karadeniz Takası", "Tuzla Sac Trawler", "Marmaris Tirhandil"] }] },
-
-      // P
-      { name: "Pardo Yachts", url: "https://www.pardoyachts.com", country: "İtalya", logo: makeLogo("PARDO", "#111827", "#f97316"), series: [{ name: "Walkaround & GT", models: ["Pardo 38", "Pardo 43", "Pardo 50", "GT52", "Endurance 60"] }] },
-      { name: "Pearl Yachts", url: "https://www.pearlyachts.com", country: "İngiltere", logo: makeLogo("PEARL", "#1e1e24", "#e0e1dd"), series: [{ name: "Flybridge", models: ["Pearl 62", "Pearl 72", "Pearl 82", "Pearl 95"] }] },
-      { name: "Pershing", url: "https://www.pershing-yacht.com", country: "İtalya", logo: makeLogo("PERSHING", "#1e293b", "#ffffff"), series: [{ name: "Sportif Performans", models: ["43", "46", "50", "52", "54", "5X", "6X", "72", "8X", "9X"] }] },
-      { name: "Poseidon Boats", url: "https://www.poseidonboats.com.gr", country: "Yunanistan", logo: makeLogo("POSEIDON", "#0284c7", "#ffffff"), series: [{ name: "Ranieri & Gezi", models: ["Blu Water 170", "King Fisher 570"] }] },
-      { name: "Prestige Yachts", url: "https://www.prestige-yachts.com", country: "Fransa", logo: makeLogo("PRESTIGE", "#0f172a", "#fbbf24"), series: [{ name: "Flybridge & M Serisi", models: ["32 Fly", "36 Fly", "420", "460", "500", "520", "590", "630", "M48"] }] },
-      { name: "Princess Yachts", url: "https://www.princessyachts.com", country: "İngiltere", logo: makeLogo("PRINCESS", "#0f2b48", "#ffffff"), series: [
+      { name: "Joker Boat", url: "https://www.jokerboat.it", country: "İtalya", series: [{ name: "Clubman", models: ["Clubman 28", "Clubman 30", "Clubman 35"] }] },
+      { name: "Kargı Trawler", url: "https://kargiyatcilik.com", country: "Türkiye", series: [{ name: "Geleneksel Sac/Ahşap", models: ["Kargı 16M", "Kargı 20M", "Kargı 24M"] }] },
+      { name: "Karnic Powerboats", url: "https://karnicboats.com", country: "Kıbrıs", series: [{ name: "Cruiser & Open", models: ["SL601", "SL651", "SL800"] }] },
+      { name: "Larson Boats", url: "https://www.larsonboats.com", country: "ABD", series: [{ name: "Cabrio Cruiser", models: ["Cabrio 240", "Cabrio 274", "Cabrio 310", "Cabrio 330"] }] },
+      { name: "Lekker Boats", url: "https://lekkerboats.com", country: "Hollanda / Avustralya", series: [{ name: "Damsko Serisi", models: ["Damsko 750", "Damsko 1000"] }] },
+      { name: "Liman Tekne", url: "https://www.limantekne.com", country: "Türkiye", series: [{ name: "Ahşap & Fiber", models: ["Liman 6.50", "Liman 8.20"] }] },
+      { name: "Linssen Yachts", url: "https://www.linssenyachts.com", country: "Hollanda", series: [{ name: "Grand Sturdy", models: ["35.0 AC", "40.0 AC", "45.0 AC", "500 AC"] }] },
+      { name: "Lürssen", url: "https://www.luerssen.com", country: "Almanya", series: [{ name: "Mega Yachts", models: ["Azzam 180M", "Dilbar 156M", "Nord 142M", "Scheherazade 140M"] }] },
+      { name: "Magazzu", url: "https://www.magazzu.com", country: "İtalya", series: [{ name: "MX Serisi", models: ["MX-11", "MX-13", "MX-14 Classic"] }] },
+      { name: "Maiora", url: "https://maiora.it", country: "İtalya", series: [{ name: "Exuma & Classic", models: ["Maiora 24S", "Maiora 30 Walkaround", "Exuma 35"] }] },
+      { name: "Mano Marine", url: "https://www.manomarine.com", country: "İtalya", series: [{ name: "Cruiser", models: ["Mano 22.50", "Mano 24.50", "Mano 28.50", "Mano 32.50"] }] },
+      { name: "Mangusta", url: "https://www.mangustayachts.com", country: "İtalya", series: [{ name: "Maxi Open & Oceano", models: ["Mangusta 72", "Mangusta 92", "Mangusta 108", "Oceano 44", "GranSport 54"] }] },
+      { name: "Maral Marin", url: "https://www.maralmarin.com", country: "Türkiye", series: [{ name: "Fisherman", models: ["Maral 5.80", "Maral 7.20"] }] },
+      { name: "Mar-Co Marine", url: "https://www.mar-co.com", country: "İtalya", series: [{ name: "Emotion RIB", models: ["Emotion 32", "Emotion 36"] }] },
+      { name: "Maxum", url: "https://www.maxumboats.com", country: "ABD", series: [{ name: "SCR Serisi", models: ["2400 SCR", "2700 SCR", "3000 SCR", "3300 SCR"] }] },
+      { name: "Mazu Yachts", url: "https://mazuyachts.com", country: "Türkiye", series: [{ name: "Hardtop & Alpha", models: ["38 ST", "42 Alpha", "52", "82", "92 DS"] }] },
+      { name: "Mengi Yay", url: "https://mengiyay.com", country: "Türkiye", series: [{ name: "Virtus Serisi", models: ["Virtus 44M", "Virtus 47M", "Seaspan 40M", "Aquarius 45M"] }] },
+      { name: "Moonday Yachts", url: "https://www.moonday.com.tr", country: "Türkiye", series: [{ name: "Retro & Sloop", models: ["Moonday 21", "Moonday 27", "Moonday 31 Bosphorus"] }] },
+      { name: "Monterey", url: "https://www.montereyboats.com", country: "ABD", series: [{ name: "Sport Yacht", models: ["270 CR", "290 CR", "320 CR", "335 SY", "355 SY"] }] },
+      { name: "Moonen Yachts", url: "https://www.moonen.com", country: "Hollanda", series: [{ name: "Explorer", models: ["Moonen 110", "Moonen 122 Martinique"] }] },
+      { name: "Mursan", url: "https://www.mursan.com.tr", country: "Türkiye", series: [{ name: "Fiber Cruiser", models: ["Mursan 24", "Mursan 28", "Mursan 32"] }] },
+      { name: "Nimbus", url: "https://nimbus.se", country: "İsveç", series: [{ name: "Weekender & Coupé", models: ["Weekender W9", "Tender T11", "Commuter C9", "365 Coupé", "405 Coupé"] }] },
+      { name: "Nobiskrug", url: "https://www.nobiskrug.com", country: "Almanya", series: [{ name: "Mega Yat", models: ["Sailing Yacht A", "Artefact 80M"] }] },
+      { name: "Nordhavn", url: "https://nordhavn.com", country: "ABD", series: [{ name: "Okyanus Trawler", models: ["N41", "N51", "N60", "N80"] }] },
+      { name: "Northstar Boats", url: "https://www.northstarboats.com", country: "Türkiye", series: [{ name: "Orion & Axis", models: ["Orion 6", "Orion 8", "Ion 10.5", "Axis 3.8"] }] },
+      { name: "Numarine", url: "https://numarine.com", country: "Türkiye", series: [{ name: "Flybridge & Explorer (XP)", models: ["52 Fly", "55 HT", "62 Fly", "68 Fly", "78 HT/Fly", "22XP", "26XP", "32XP", "37XP", "40XP"] }] },
+      { name: "Oceanco", url: "https://www.oceancoyacht.com", country: "Hollanda", series: [{ name: "Giga Yacht", models: ["Black Pearl 106M", "Koru 125M", "Bravo Eugenia 109M"] }] },
+      { name: "Ocean Alexander", url: "https://oceanalexander.com", country: "Tayvan / ABD", series: [{ name: "Revolution & Legend", models: ["28R", "32L", "35R"] }] },
+      { name: "Otam", url: "https://www.otam.it", country: "İtalya", series: [{ name: "Millennium", models: ["Otam 58 GTS", "Otam 65 HT", "Otam 80", "Otam 85 GTS"] }] },
+      { name: "Özel Yapım Sac/Ahşap", url: "https://www.sahibinden.com/motoryat", country: "Türkiye", series: [{ name: "Bodrum/Tuzla İmalat", models: ["Bodrum Guleti", "Karadeniz Takası", "Tuzla Sac Trawler", "Marmaris Tirhandil"] }] },
+      { name: "Pardo Yachts", url: "https://www.pardoyachts.com", country: "İtalya", series: [{ name: "Walkaround & GT", models: ["Pardo 38", "Pardo 43", "Pardo 50", "GT52", "Endurance 60"] }] },
+      { name: "Pearl Yachts", url: "https://www.pearlyachts.com", country: "İngiltere", series: [{ name: "Flybridge", models: ["Pearl 62", "Pearl 72", "Pearl 82", "Pearl 95"] }] },
+      { name: "Pershing", url: "https://www.pershing-yacht.com", country: "İtalya", series: [{ name: "Sportif Performans", models: ["43", "46", "50", "52", "54", "5X", "6X", "72", "8X", "9X"] }] },
+      { name: "Poseidon Boats", url: "https://www.poseidonboats.com.gr", country: "Yunanistan", series: [{ name: "Ranieri & Gezi", models: ["Blu Water 170", "King Fisher 570"] }] },
+      { name: "Prestige Yachts", url: "https://www.prestige-yachts.com", country: "Fransa", series: [{ name: "Flybridge & M Serisi", models: ["32 Fly", "36 Fly", "420", "460", "500", "520", "590", "630", "M48"] }] },
+      { name: "Princess Yachts", url: "https://www.princessyachts.com", country: "İngiltere", series: [
         { name: "V Serisi (Spor)", models: ["V39", "V40", "V42", "V45", "V48", "V50", "V52", "V55", "V58", "V65"] },
         { name: "Flybridge (F / P)", models: ["42", "45", "50", "54", "56", "60", "62", "64", "F45", "F50", "F55", "F65"] },
         { name: "Y & S Serisi", models: ["S62", "S66", "Y72", "Y85"] }
       ]},
-
-      // Q - R
-      { name: "Quicksilver Boats", url: "https://www.quicksilver-boats.com", country: "ABD / Polonya", logo: makeLogo("QUICKSILVER", "#b91c1c", "#ffffff"), series: [{ name: "Activ Serisi", models: ["Activ 605", "Activ 755 Weekend", "Activ 805 Cruiser", "Activ 905"] }] },
-      { name: "Ranieri International", url: "https://www.ranieri-international.com", country: "İtalya", logo: makeLogo("RANIERI", "#1e293b", "#38bdf8"), series: [{ name: "Next & Voyager", models: ["Next 240", "Next 285", "Next 330 LX", "Cayman 38"] }] },
-      { name: "Regal", url: "https://www.regalboats.com", country: "ABD", logo: makeLogo("REGAL", "#0f172a", "#38bdf8"), series: [{ name: "Commodore & Express", models: ["2660", "2860", "3260", "35 Sport Coupe", "42 Fly"] }] },
-      { name: "Rinker", url: "https://www.rinkerboats.com", country: "ABD", logo: makeLogo("RINKER", "#1e3a5f", "#ffffff"), series: [{ name: "Fiesta Vee", models: ["270 FV", "290 FV", "320 FV", "342 FV", "370 Express"] }] },
-      { name: "Riva", url: "https://www.riva-yacht.com", country: "İtalya", logo: makeLogo("RIVA", "#042f2e", "#2dd4bf"), series: [{ name: "Klasik & Modern", models: ["Aquariva Super", "Rivamare", "Dolceriva", "56' Rivale", "66' Ribelle", "76' Perseo"] }] },
-      { name: "Rodman", url: "https://www.rodman.es", country: "İspanya", logo: makeLogo("RODMAN", "#0f172a", "#94a3b8"), series: [{ name: "Muse & Spirit", models: ["Spirit 31", "Rodman 41", "Rodman 44", "Muse 54"] }] },
-      { name: "Rota Prenses", url: "https://www.rotaprenses.com", country: "Türkiye", logo: makeLogo("ROTA", "#1e3a8a", "#ffffff"), series: [{ name: "Klasik Balıkçı & Gezi", models: ["Rota 5.75", "Rota 6.60", "Rota Prenses 7.20", "Rota Fisher"] }] },
-
-      // S
-      { name: "Safter Marina", url: "https://www.safter.com.tr", country: "Türkiye", logo: makeLogo("SAFTER", "#b91c1c", "#ffffff"), series: [{ name: "Kabinli & Gezi", models: ["Safter 4.50", "Safter 5.00", "Safter 6.30", "Safter 6.80 Kabinli", "Safter 8.50"] }] },
-      { name: "Sanlorenzo", url: "https://www.sanlorenzoyacht.com", country: "İtalya", logo: makeLogo("SANLORENZO", "#0f172a", "#f1f5f9"), series: [{ name: "SL / SD / SX", models: ["SL78", "SL86", "SL96", "SD96", "SD118", "SX76", "SX88"] }] },
-      { name: "Saxdor Yachts", url: "https://www.saxdoryachts.com", country: "Finlandiya", logo: makeLogo("SAXDOR", "#0f172a", "#38bdf8"), series: [{ name: "Sport & GTO", models: ["200 Sport", "270 GTO", "320 GTO", "400 GTO"] }] },
-      { name: "Sciallino", url: "https://www.sciallino.net", country: "İtalya", logo: makeLogo("SCIALLINO", "#365314", "#bef264"), series: [{ name: "Gozzo Ligure", models: ["Sciallino 25", "Sciallino 34", "Sciallino 40"] }] },
-      { name: "Sea Ray", url: "https://www.searay.com", country: "ABD", logo: makeLogo("SEA RAY", "#0369a1", "#ffffff"), series: [
+      { name: "Quicksilver Boats", url: "https://www.quicksilver-boats.com", country: "ABD / Polonya", series: [{ name: "Activ Serisi", models: ["Activ 605", "Activ 755 Weekend", "Activ 805 Cruiser", "Activ 905"] }] },
+      { name: "Ranieri International", url: "https://www.ranieri-international.com", country: "İtalya", series: [{ name: "Next & Voyager", models: ["Next 240", "Next 285", "Next 330 LX", "Cayman 38"] }] },
+      { name: "Regal", url: "https://www.regalboats.com", country: "ABD", series: [{ name: "Commodore & Express", models: ["2660", "2860", "3260", "35 Sport Coupe", "42 Fly"] }] },
+      { name: "Rinker", url: "https://www.rinkerboats.com", country: "ABD", series: [{ name: "Fiesta Vee", models: ["270 FV", "290 FV", "320 FV", "342 FV", "370 Express"] }] },
+      { name: "Riva", url: "https://www.riva-yacht.com", country: "İtalya", series: [{ name: "Klasik & Modern", models: ["Aquariva Super", "Rivamare", "Dolceriva", "56' Rivale", "66' Ribelle", "76' Perseo"] }] },
+      { name: "Rodman", url: "https://www.rodman.es", country: "İspanya", series: [{ name: "Muse & Spirit", models: ["Spirit 31", "Rodman 41", "Rodman 44", "Muse 54"] }] },
+      { name: "Rota Prenses", url: "https://www.rotaprenses.com", country: "Türkiye", series: [{ name: "Klasik Balıkçı & Gezi", models: ["Rota 5.75", "Rota 6.60", "Rota Prenses 7.20", "Rota Fisher"] }] },
+      { name: "Safter Marina", url: "https://www.safter.com.tr", country: "Türkiye", series: [{ name: "Kabinli & Gezi", models: ["Safter 4.50", "Safter 5.00", "Safter 6.30", "Safter 6.80 Kabinli", "Safter 8.50"] }] },
+      { name: "Sanlorenzo", url: "https://www.sanlorenzoyacht.com", country: "İtalya", series: [{ name: "SL / SD / SX", models: ["SL78", "SL86", "SL96", "SD96", "SD118", "SX76", "SX88"] }] },
+      { name: "Saxdor Yachts", url: "https://www.saxdoryachts.com", country: "Finlandiya", series: [{ name: "Sport & GTO", models: ["200 Sport", "270 GTO", "320 GTO", "400 GTO"] }] },
+      { name: "Sciallino", url: "https://www.sciallino.net", country: "İtalya", series: [{ name: "Gozzo Ligure", models: ["Sciallino 25", "Sciallino 34", "Sciallino 40"] }] },
+      { name: "Sea Ray", url: "https://www.searay.com", country: "ABD", series: [
         { name: "Sundancer (Cruiser)", models: ["240", "260", "280", "310", "320", "350", "370", "400", "450", "510"] },
         { name: "SLX & SDX", models: ["SLX 260", "SLX 310", "SLX 400"] }
       ]},
-      { name: "Sealine", url: "https://www.hanseyachtsag.com/sealine", country: "İngiltere", logo: makeLogo("SEALINE", "#164e63", "#a5f3fc"), series: [{ name: "F, S ve C Serisi", models: ["S330", "C330", "C390", "S430", "F430", "F530"] }] },
-      { name: "Sessa Marine", url: "https://www.sessamarine.com", country: "İtalya", logo: makeLogo("SESSA", "#1e1b4b", "#c084fc"), series: [{ name: "Cruiser & Key Largo", models: ["C35", "C38", "C42", "C48", "Key Largo 27", "Oyster 35"] }] },
-      { name: "Sirena Yachts", url: "https://www.sirenayachts.com", country: "Türkiye", logo: makeLogo("SIRENA", "#0f172a", "#38bdf8"), series: [{ name: "Motor Yacht Serisi", models: ["Sirena 48", "Sirena 58", "Sirena 68", "Sirena 78", "Sirena 88"] }] },
-      { name: "Solaris Power", url: "https://www.solarispower.com", country: "İtalya", logo: makeLogo("SOLARIS", "#1e3a8a", "#93c5fd"), series: [{ name: "Lobster & Open", models: ["40 Open", "44 Open", "48 Lobster", "52 Open"] }] },
-      { name: "Sunseeker", url: "https://www.sunseeker.com", country: "İngiltere", logo: makeLogo("SUNSEEKER", "#07111e", "#38bdf8"), series: [
+      { name: "Sealine", url: "https://www.hanseyachtsag.com/sealine", country: "İngiltere", series: [{ name: "F, S ve C Serisi", models: ["S330", "C330", "C390", "S430", "F430", "F530"] }] },
+      { name: "Sessa Marine", url: "https://www.sessamarine.com", country: "İtalya", series: [{ name: "Cruiser & Key Largo", models: ["C35", "C38", "C42", "C48", "Key Largo 27", "Oyster 35"] }] },
+      { name: "Sirena Yachts", url: "https://www.sirenayachts.com", country: "Türkiye", series: [{ name: "Motor Yacht Serisi", models: ["Sirena 48", "Sirena 58", "Sirena 68", "Sirena 78", "Sirena 88"] }] },
+      { name: "Solaris Power", url: "https://www.solarispower.com", country: "İtalya", series: [{ name: "Lobster & Open", models: ["40 Open", "44 Open", "48 Lobster", "52 Open"] }] },
+      { name: "Sunseeker", url: "https://www.sunseeker.com", country: "İngiltere", series: [
         { name: "Predator", models: ["50", "55", "60", "62", "68", "72", "74", "82"] },
         { name: "Manhattan", models: ["48", "50", "52", "55", "60", "63", "66", "68", "73"] },
         { name: "Camargue & Portofino", models: ["Camargue 44", "Camargue 50", "Portofino 35", "Portofino 47"] }
       ]},
-
-      // T
-      { name: "Targa (Botnia)", url: "https://www.targa.fi", country: "Finlandiya", logo: makeLogo("TARGA", "#1e3a5f", "#ffffff"), series: [{ name: "4x4 Offshore", models: ["Targa 27.2", "Targa 32", "Targa 37", "Targa 44", "Targa 46"] }] },
-      { name: "Tecnomar", url: "https://tecnomar.com", country: "İtalya", logo: makeLogo("TECNOMAR", "#000000", "#eab308", "LAMBORGHINI"), series: [{ name: "Lamborghini 63 & EVO", models: ["Tecnomar for Lamborghini 63", "EVO 120"] }] },
-      { name: "Tiara Yachts", url: "https://www.tiarayachts.com", country: "ABD", logo: makeLogo("TIARA", "#0f172a", "#fbbf24"), series: [{ name: "Open & Coupe", models: ["3100 Open", "3600 Open", "39 Coupe", "44 Coupe"] }] },
-      { name: "Turquoise Yachts", url: "https://www.turquoiseyachts.com", country: "Türkiye", logo: makeLogo("TURQUOISE", "#0e7490", "#cffafe"), series: [{ name: "Custom Explorer", models: ["Blue II 56M", "GO 77M", "Roe 74M", "Infinite Jest 75M"] }] },
-
-      // U - V
-      { name: "Uniesse Marine", url: "https://www.uniesse.com", country: "İtalya / ABD", logo: makeLogo("UNIESSE", "#0f172a", "#38bdf8"), series: [{ name: "Open & Fly", models: ["Uniesse 42", "Uniesse 48", "Uniesse 55", "Uniesse 72"] }] },
-      { name: "Vicem Yachts", url: "https://www.vicemyachts.com", country: "Türkiye", logo: makeLogo("VICEM", "#451a03", "#fef3c7"), series: [{ name: "Classic & Cruiser", models: ["50 Classic", "58 Classic", "65 Bahama Bay", "77 Classic", "82 Cruiser", "97 Cruiser"] }] },
-      { name: "Viking Yachts", url: "https://www.vikingyachts.com", country: "ABD", logo: makeLogo("VIKING", "#0f172a", "#f59e0b"), series: [{ name: "Sportfish Convertible", models: ["38 Billfish", "48 Convertible", "54 Convertible", "68 Convertible", "80 Convertible"] }] },
-
-      // W
-      { name: "Wally", url: "https://www.wally.com", country: "İtalya / Monako", logo: makeLogo("WALLY", "#000000", "#ffffff"), series: [{ name: "Wallytender & WHY", models: ["43wallytender", "48wallytender", "58wallytender", "WHY150", "WHY200"] }] },
-      { name: "Wellcraft", url: "https://www.wellcraft.com", country: "ABD", logo: makeLogo("WELLCRAFT", "#1f2937", "#f87171"), series: [{ name: "Commuter & Fisherman", models: ["355 Commuter", "435", "262 Fisherman"] }] },
-      { name: "Williams Jet Tenders", url: "https://www.williamsjettenders.com", country: "İngiltere", logo: makeLogo("WILLIAMS", "#0f172a", "#38bdf8", "JET"), series: [{ name: "Turbojet & Sportjet", models: ["Turbojet 285", "Sportjet 345", "Sportjet 435", "Evojet 70"] }] },
-      { name: "Windy Boats", url: "https://www.windyboats.com", country: "Norveç", logo: makeLogo("WINDY", "#1e3a8a", "#60a5fa"), series: [{ name: "Sport Cruiser", models: ["29 Coho", "37 Shamal", "39 Camira", "SR44 Blackhawk"] }] },
-
-      // X - Y - Z
-      { name: "XO Boats", url: "https://www.xoboats.com", country: "Finlandiya", logo: makeLogo("XO BOATS", "#18181b", "#ffffff"), series: [{ name: "Aluminium Explorer", models: ["DFNDR 9", "EXPLR 9", "EXPLR 10+", "EXPLR 44"] }] },
-      { name: "Yerliyurt Marina", url: "https://www.yerliyurtmarina.com", country: "Türkiye", logo: makeLogo("YERLIYURT", "#0369a1", "#ffffff"), series: [{ name: "Fiber Gezi & Balıkçı", models: ["Marin 4.50", "Marin 4.80", "Marin 5.60", "Yerliyurt 6.60 Kabinli"] }] },
-      { name: "Zodiac Nautic", url: "https://www.zodiac-nautic.com", country: "Fransa", logo: makeLogo("ZODIAC", "#0f172a", "#ef4444", "INFLATABLE"), series: [{ name: "Medline & Pro", models: ["Medline 6.8", "Medline 7.5", "Medline 9", "Pro 850"] }] }
+      { name: "Targa (Botnia)", url: "https://www.targa.fi", country: "Finlandiya", series: [{ name: "4x4 Offshore", models: ["Targa 27.2", "Targa 32", "Targa 37", "Targa 44", "Targa 46"] }] },
+      { name: "Tecnomar", url: "https://tecnomar.com", country: "İtalya", series: [{ name: "Lamborghini 63 & EVO", models: ["Tecnomar for Lamborghini 63", "EVO 120"] }] },
+      { name: "Tiara Yachts", url: "https://www.tiarayachts.com", country: "ABD", series: [{ name: "Open & Coupe", models: ["3100 Open", "3600 Open", "39 Coupe", "44 Coupe"] }] },
+      { name: "Turquoise Yachts", url: "https://www.turquoiseyachts.com", country: "Türkiye", series: [{ name: "Custom Explorer", models: ["Blue II 56M", "GO 77M", "Roe 74M", "Infinite Jest 75M"] }] },
+      { name: "Uniesse Marine", url: "https://www.uniesse.com", country: "İtalya / ABD", series: [{ name: "Open & Fly", models: ["Uniesse 42", "Uniesse 48", "Uniesse 55", "Uniesse 72"] }] },
+      { name: "Vicem Yachts", url: "https://vicemyachts.com", country: "Türkiye", series: [{ name: "Classic & Cruiser", models: ["50 Classic", "58 Classic", "65 Bahama Bay", "77 Classic", "82 Cruiser", "97 Cruiser"] }] },
+      { name: "Viking Yachts", url: "https://www.vikingyachts.com", country: "ABD", series: [{ name: "Sportfish Convertible", models: ["38 Billfish", "48 Convertible", "54 Convertible", "68 Convertible", "80 Convertible"] }] },
+      { name: "Wally", url: "https://www.wally.com", country: "İtalya / Monako", series: [{ name: "Wallytender & WHY", models: ["43wallytender", "48wallytender", "58wallytender", "WHY150", "WHY200"] }] },
+      { name: "Wellcraft", url: "https://www.wellcraft.com", country: "ABD", series: [{ name: "Commuter & Fisherman", models: ["355 Commuter", "435", "262 Fisherman"] }] },
+      { name: "Williams Jet Tenders", url: "https://www.williamsjettenders.com", country: "İngiltere", series: [{ name: "Turbojet & Sportjet", models: ["Turbojet 285", "Sportjet 345", "Sportjet 435"] }] },
+      { name: "Windy Boats", url: "https://www.windyboats.com", country: "Norveç", series: [{ name: "Sport Cruiser", models: ["29 Coho", "37 Shamal", "39 Camira", "SR44 Blackhawk"] }] },
+      { name: "XO Boats", url: "https://www.xoboats.com", country: "Finlandiya", series: [{ name: "Aluminium Explorer", models: ["DFNDR 9", "EXPLR 9", "EXPLR 10+", "EXPLR 44"] }] },
+      { name: "Yerliyurt Marina", url: "https://www.yerliyurtmarina.com", country: "Türkiye", series: [{ name: "Fiber Gezi & Balıkçı", models: ["Marin 4.50", "Marin 4.80", "Yerliyurt 6.60 Kabinli"] }] },
+      { name: "Zodiac Nautic", url: "https://www.zodiac-nautic.com", country: "Fransa", series: [{ name: "Medline & Pro", models: ["Medline 6.8", "Medline 7.5", "Pro 850"] }] }
     ];
+
+    rawBrands.forEach(b => {
+      b.logo = getBrandVectorLogo(b.name);
+    });
 
     const brands = rawBrands.sort((a, b) => a.name.localeCompare(b.name, 'tr'));
 
@@ -786,6 +1042,7 @@
     const statsCount = document.getElementById("statsCount");
 
     let currentLetter = 'ALL';
+    let currentEngineFilter = 'ALL';
 
     const alphabet = ['ALL', ...new Set(brands.map(b => b.name.charAt(0).toUpperCase()))].sort((a,b) => a === 'ALL' ? -1 : a.localeCompare(b, 'tr'));
     
@@ -803,6 +1060,69 @@
       azBar.appendChild(btn);
     });
 
+    // TEKNEYE ÖZGÜ MOTOR BELİRLEME
+    function getModelEngine(brandName, modelName) {
+      const b = brandName.toLowerCase();
+      const m = modelName.toLowerCase();
+
+      if (b.includes("ada yat") || b.includes("kargı") || b.includes("trawler")) {
+        return "2x Scania DI13 Heavy Duty";
+      }
+      if (b.includes("beneteau") && m.includes("swift")) {
+        return "2x Cummins QSB / QSC";
+      }
+
+      if (b.includes("boston") || b.includes("axopar") || b.includes("quicksilver") || b.includes("brabus") || b.includes("saxdor") || b.includes("dromeas")) {
+        return "Mercury Verado V8 Outboard";
+      }
+      if (b.includes("jeanneau") || b.includes("safter") || b.includes("yerliyurt") || b.includes("capelli") || b.includes("zodiac") || b.includes("rota") || b.includes("anka")) {
+        return "Yamaha V6 Offshore Outboard";
+      }
+
+      let num = parseInt(modelName.replace(/\D/g, "")) || 35;
+      if (num > 1000) num = Math.floor(num / 100);
+
+      if (num >= 65) return "2x MAN V8 / V12 1400";
+      if (num >= 50 && num < 65) return "2x CAT C18 ACERT";
+      if (num >= 32 && num < 50) return "2x Volvo Penta IPS 650";
+
+      return "Mercury Verado V8 Outboard";
+    }
+
+    function filterByEngine(engineType, btnElement) {
+      document.querySelectorAll(".lux-motor-chip").forEach(c => c.classList.remove("active"));
+      btnElement.classList.add("active");
+      currentEngineFilter = engineType;
+
+      const clearBtn = document.getElementById("clearEngineBtn");
+      if (engineType === 'ALL') {
+        clearBtn.style.display = 'none';
+      } else {
+        clearBtn.style.display = 'inline-block';
+      }
+
+      render(searchInput.value);
+    }
+
+    function clearEngineFilter() {
+      const allBtn = document.querySelector(".lux-motor-chip");
+      filterByEngine('ALL', allBtn);
+    }
+
+    // MOTOR FİLTRE EŞLEŞTİRMESİ
+    function isEngineMatch(brandName, modelName, filter) {
+      if (filter === 'ALL') return true;
+      const eng = getModelEngine(brandName, modelName);
+      if (filter === 'Volvo IPS') return eng.includes('Volvo Penta');
+      if (filter === 'MAN') return eng.includes('MAN');
+      if (filter === 'CAT') return eng.includes('CAT');
+      if (filter === 'Scania') return eng.includes('Scania');
+      if (filter === 'Cummins') return eng.includes('Cummins');
+      if (filter === 'Mercury') return eng.includes('Mercury');
+      if (filter === 'Yamaha') return eng.includes('Yamaha');
+      return true;
+    }
+
     function render(query = "") {
       grid.innerHTML = "";
       const q = query.toLowerCase().trim();
@@ -810,6 +1130,13 @@
       const filtered = brands.filter(b => {
         if (currentLetter !== 'ALL' && !b.name.toUpperCase().startsWith(currentLetter)) {
           return false;
+        }
+
+        if (currentEngineFilter !== 'ALL') {
+          const hasEngine = b.series.some(s => 
+            s.models.some(m => isEngineMatch(b.name, m, currentEngineFilter))
+          );
+          if (!hasEngine) return false;
         }
 
         if (!q) return true;
@@ -831,9 +1158,14 @@
       filtered.forEach(b => {
         let seriesHtml = "";
         b.series.forEach(s => {
-          const modelsHtml = s.models.map(m => 
-            `<button class="model-btn" onclick="openModal('${b.name}', '${s.name}', '${m}')">${m}</button>`
-          ).join("");
+          const modelsHtml = s.models.map(m => {
+            const matchesEngine = isEngineMatch(b.name, m, currentEngineFilter);
+            let stateClass = "";
+            if (currentEngineFilter !== 'ALL') {
+              stateClass = matchesEngine ? "highlighted" : "dimmed";
+            }
+            return `<button class="model-btn ${stateClass}" onclick="openModal('${b.name}', '${s.name}', '${m}')">${m}</button>`;
+          }).join("");
 
           seriesHtml += `
             <div class="series-block">
@@ -876,11 +1208,41 @@
       document.getElementById("m_loa").innerText = `${(num * 0.31).toFixed(2)} m (${Math.round(num * 1.02)} ft)`;
       document.getElementById("m_beam").innerText = `${(num * 0.09).toFixed(2)} m`;
       document.getElementById("m_draft").innerText = `${(1.0 + (num * 0.01)).toFixed(2)} m`;
-      document.getElementById("m_engine").innerText = num > 50 ? "2x MAN V8 / CAT C18" : (num > 30 ? "2x Volvo Penta IPS 650" : "Dıştan Takma Mercury / Yamaha");
+      
+      const selectedEngine = getModelEngine(brand, model);
+      activeSelectedEngine = selectedEngine;
+
+      const engineEl = document.getElementById("m_engine");
+      engineEl.innerHTML = `⚙️ ${selectedEngine} (Teknik Föy İçin Tıkla)`;
+
       document.getElementById("m_speed").innerText = `${28 + (num % 8)} Knots`;
       document.getElementById("m_cabins").innerText = num > 25 ? `${Math.min(5, Math.max(1, Math.floor(num / 16)))} Kamara` : "Açık Havuzluk / Günübirlik";
 
       document.getElementById("specsModal").style.display = "flex";
+    }
+
+    function openEngineDetailModal() {
+      const data = engineDatabase[activeSelectedEngine] || {
+        title: activeSelectedEngine,
+        hp: "300 - 600 HP",
+        cylinders: "Sıralı 6 Silindir",
+        displacement: "5.500 - 8.000 cc",
+        fuel: "Marin Dizel",
+        aspiration: "Turboşarjlı",
+        propulsion: "Şaft veya Kuyruk",
+        weight: "Belirtilmemiş"
+      };
+
+      document.getElementById("eTitle").innerText = data.title;
+      document.getElementById("e_hp").innerText = data.hp;
+      document.getElementById("e_cylinders").innerText = data.cylinders;
+      document.getElementById("e_displacement").innerText = data.displacement;
+      document.getElementById("e_fuel").innerText = data.fuel;
+      document.getElementById("e_aspiration").innerText = data.aspiration;
+      document.getElementById("e_propulsion").innerText = data.propulsion;
+      document.getElementById("e_weight").innerText = data.weight;
+
+      document.getElementById("engineDetailModal").style.display = "flex";
     }
 
     function openReadme() {
