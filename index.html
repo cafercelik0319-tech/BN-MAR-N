@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Modern Deep Mediterranean Blue Paleti */
       --bg-base: #060e1f;
       --bg-surface: rgba(13, 27, 56, 0.72);
       --bg-surface-hover: rgba(18, 38, 77, 0.85);
@@ -41,7 +40,6 @@
       color: var(--text);
     }
 
-    /* MODERN, HAVADAR VE IŞILTILI ARKA PLAN */
     body {
       background-image: 
         radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.35) 0%, transparent 60%),
@@ -58,7 +56,7 @@
     .top-fixed-wrapper {
       flex-shrink: 0;
       width: 100%;
-      background: rgba(6, 14, 31, 0.88);
+      background: rgba(6, 14, 31, 0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(56, 189, 248, 0.22);
@@ -66,7 +64,6 @@
       z-index: 100;
     }
 
-    /* Kayan Güvenlik Bandı */
     .top-security-bar {
       width: 100%;
       background: linear-gradient(90deg, #0284c7, #0369a1, #0284c7);
@@ -101,7 +98,7 @@
     }
 
     header {
-      padding: 12px 18px 10px;
+      padding: 12px 18px 8px;
       max-width: 1440px;
       margin: 0 auto;
       width: 100%;
@@ -157,7 +154,6 @@
       transform: translateY(-1px);
     }
 
-    /* Arama Çubuğu */
     .controls-row {
       display: flex;
       gap: 10px;
@@ -192,12 +188,12 @@
       background: rgba(18, 38, 77, 0.9);
     }
 
-    /* KOMBİNE FİLTRE PANELİ (ÜLKE + MOTOR) */
+    /* KOMBİNE FİLTRE PANELİ */
     .filter-dashboard {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .filter-sub-bar {
@@ -230,7 +226,6 @@
       align-items: center;
     }
 
-    /* Çip Butonları */
     .filter-chip {
       background: rgba(15, 28, 54, 0.85);
       border: 1px solid rgba(56, 189, 248, 0.2);
@@ -276,19 +271,6 @@
       box-shadow: 0 0 16px rgba(0, 210, 255, 0.65);
       transform: translateY(-1px);
     }
-    .filter-chip.active .chip-badge {
-      background: #020617;
-      color: var(--neon-blue);
-    }
-    .chip-badge {
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--neon-cyan);
-      padding: 1px 4px;
-      border-radius: 99px;
-      font-size: 9px;
-      font-weight: 700;
-    }
-
     .clear-all-filters-btn {
       background: rgba(239, 68, 68, 0.15);
       border: 1px solid rgba(239, 68, 68, 0.4);
@@ -306,39 +288,122 @@
       color: #fff;
     }
 
-    /* A-Z Harf İndeksi */
-    .az-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 3px;
-      max-width: 1100px;
-      margin: 0 auto;
+    /* MOTOR DROPDOWN */
+    .engine-chip-wrapper {
+      position: relative !important;
+      display: inline-flex !important;
     }
-    .az-btn {
-      background: rgba(15, 28, 54, 0.7);
-      border: 1px solid rgba(56, 189, 248, 0.16);
-      color: var(--text-muted);
-      width: 26px;
-      height: 25px;
+    .engine-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 330px;
+      max-width: 380px;
+      max-height: 310px;
+      overflow-y: auto;
+      background: rgba(8, 18, 38, 0.98);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.9);
+      border-radius: 9px;
+      padding: 12px;
+      z-index: 1500;
+      margin-top: 5px;
+      text-align: left;
+    }
+    .engine-chip-wrapper:hover .engine-dropdown-menu {
+      display: block !important;
+    }
+    .engine-dropdown-menu::-webkit-scrollbar { width: 5px; }
+    .engine-dropdown-menu::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.4); border-radius: 4px; }
+
+    /* MOTOR TIKLANABİLİR SATIR STİLİ */
+    .engine-sub-item-btn {
+      width: 100%;
+      background: rgba(15, 28, 54, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.2);
       border-radius: 6px;
-      font-size: 10px;
-      font-weight: 700;
-      cursor: pointer;
+      padding: 4px 8px;
+      margin-bottom: 4px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      transition: all 0.15s;
+      color: #f1f5f9;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
     }
-    .az-btn:hover, .az-btn.active {
-      background: var(--neon-blue);
-      color: #020617;
-      border-color: #ffffff;
-      box-shadow: 0 0 10px var(--neon-blue);
-      transform: scale(1.05);
+    .engine-sub-item-btn:hover {
+      background: rgba(0, 210, 255, 0.2);
+      border-color: var(--neon-blue);
+      transform: translateX(2px);
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    }
+    .engine-sub-item-btn span.hp-tag {
+      color: var(--neon-cyan);
+      font-size: 9.5px;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 1px 5px;
+      border-radius: 4px;
     }
 
-    /* 2. ORTA BÖLÜM: SADECE BURASI KAYAR */
+    /* HARF SAYFALAMA */
+    #alphabetPaginationContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 6px;
+    }
+    .alphabet-pagination {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(13, 27, 56, 0.7);
+      padding: 3px 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+    }
+    .alpha-page-btn {
+      background: rgba(15, 28, 54, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: var(--text-muted);
+      min-width: 28px;
+      height: 26px;
+      padding: 0 5px;
+      border-radius: 6px;
+      font-size: 10.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .alpha-page-btn:hover {
+      background: rgba(56, 189, 248, 0.2);
+      color: #fff;
+      border-color: var(--neon-blue);
+    }
+    .alpha-page-btn.active {
+      background: var(--neon-blue) !important;
+      color: #020617 !important;
+      border-color: #ffffff !important;
+      box-shadow: 0 0 10px var(--neon-blue);
+      font-weight: 800;
+    }
+    .alpha-dots {
+      color: var(--text-dim);
+      font-size: 11px;
+      padding: 0 3px;
+      user-select: none;
+    }
+
+    /* 2. ORTA BÖLÜM */
     main {
       flex: 1;
       overflow-y: auto;
@@ -369,7 +434,6 @@
       margin-bottom: 14px;
     }
 
-    /* IZGARA VE YENİ LÜKS KART TASARIMI */
     .brands-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
@@ -443,17 +507,17 @@
     .brand-link h2 { 
       font-size: 14.5px; 
       font-weight: 700; 
-      color: #fff;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      color: #fff; 
+      white-space: nowrap; 
+      overflow: hidden; 
+      text-overflow: ellipsis; 
       transition: color 0.2s;
     }
     .brand-link svg { 
       width: 12px; 
       height: 12px; 
       fill: var(--text-dim); 
-      flex-shrink: 0;
+      flex-shrink: 0; 
       transition: fill 0.2s, transform 0.2s;
     }
     .brand-link:hover h2 { color: var(--neon-blue); }
@@ -624,7 +688,7 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* MODAL */
+    /* MODALLAR */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -646,7 +710,7 @@
       max-width: 480px;
       padding: 22px;
     }
-    .modal-box.large { max-width: 680px; max-height: 85vh; overflow-y: auto; }
+    .modal-box.large { max-width: 720px; max-height: 85vh; overflow-y: auto; }
     .modal-head { 
       display: flex; 
       justify-content: space-between; 
@@ -663,7 +727,7 @@
       font-size: 22px; 
       cursor: pointer; 
       padding: 4px; 
-      transition: color 0.2s;
+      transition: color 0.2s; 
     }
     .modal-head button:hover { color: #fff; }
     .specs-table { width: 100%; border-collapse: collapse; }
@@ -679,6 +743,36 @@
     .readme-content h4 { color: var(--neon-cyan); margin: 14px 0 4px; font-size: 13.5px; }
     .readme-content ul { padding-left: 18px; margin-bottom: 8px; }
 
+    /* TÜM MODELLER MODALI LİSTE TASARIMI */
+    .boats-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 8px;
+      max-height: 55vh;
+      overflow-y: auto;
+      padding: 6px 2px;
+    }
+    .matrix-boat-pill {
+      background: rgba(15, 28, 54, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 8px;
+      padding: 8px 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      transition: all 0.2s;
+    }
+    .matrix-boat-pill:hover {
+      background: var(--neon-blue);
+      border-color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+    }
+    .matrix-boat-pill:hover span { color: #020617 !important; }
+    .matrix-brand { font-size: 10px; color: var(--neon-cyan); font-weight: 700; text-transform: uppercase; }
+    .matrix-model { font-size: 12px; color: #fff; font-weight: 700; }
+
     @media (max-width: 768px) {
       .header-top-row { flex-direction: column; text-align: center; }
       .brand-title-group { text-align: center; }
@@ -689,57 +783,20 @@
     @media (max-width: 480px) {
       header h1 { font-size: 17px; }
       .brands-grid { grid-template-columns: 1fr; }
+      .filter-sub-bar {
+        padding: 4px 8px !important;
+        margin-bottom: 4px !important;
+      }
+      .filter-label { font-size: 10px !important; }
+      .filter-chips-row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 5px !important;
+      }
+      .filter-chip { flex-shrink: 0 !important; }
     }
-    /* Alt başlık stili - doğru class */
-.portal-subtitle {
-  font-size: 0.75rem !important;
-  font-weight: 500 !important;
-  letter-spacing: 2px !important;
-  text-transform: uppercase !important;
-  color: #38bdf8 !important;
-  opacity: 0.85 !important;
-  margin-top: 4px !important;
-  margin-bottom: 8px !important;
-}
-
-/* Mobil Ekran İyileştirmeleri */
-@media (max-width: 480px) {
-  /* Filtre satırlarını dikeyde incelt */
-  .filter-sub-bar {
-    padding: 3px 6px !important;
-    margin-bottom: 4px !important;
-    gap: 4px !important;
-  }
-
-  /* Etiketleri (Ülke:, Makine:) küçült */
-  .filter-label {
-    font-size: 10px !important;
-    white-space: nowrap !important;
-  }
-
-  /* Buton konteynerini TEK SATIRDA YATAY KAYDIRILABİLİR yap */
-  .filter-chips-row {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-    gap: 5px !important;
-    padding-bottom: 3px !important;
-  }
-
-  /* Butonları mobilde daha kompakt yap */
-  .filter-chip {
-    flex-shrink: 0 !important; /* Butonların sıkışıp küçülmesini engeller */
-    padding: 3px 8px !important;
-    font-size: 11px !important;
-    white-space: nowrap !important;
-  }
-
-  .chip-logo-mini img {
-    height: 12px !important;
-    width: auto !important;
-  }
-}
   </style>
 </head>
 <body>
@@ -778,7 +835,7 @@
         </div>
       </div>
 
-      <!-- KOMBİNE FİLTRE PANELİ (ÜLKE + MOTOR) -->
+      <!-- KOMBİNE FİLTRE PANELİ -->
       <div class="filter-dashboard">
         
         <!-- 1. ÜLKE FİLTRESİ -->
@@ -800,49 +857,78 @@
           <button id="clearAllFiltersBtn" class="clear-all-filters-btn" onclick="resetAllFilters()">Filtreleri Sıfırla ✕</button>
         </div>
 
-        <!-- 2. MOTOR FİLTRESİ -->
+        <!-- 2. MOTOR FİLTRESİ (HOVER DROPDOWN İLE BİRLİKTE) -->
         <div class="filter-sub-bar">
           <span class="filter-label">⚡ Makine:</span>
           <div class="filter-chips-row">
             <button class="filter-chip active" onclick="filterByEngine('ALL', this)">Tümü</button>
-            <button class="filter-chip" onclick="filterByEngine('Volvo IPS', this)">
-              <span class="chip-logo-mini"><img src="logolar/volvo.png" alt="Volvo" onerror="this.style.display='none'"></span>
-              Volvo IPS
-            </button>
-            <button class="filter-chip" onclick="filterByEngine('MAN', this)">
-              <span class="chip-logo-mini"><img src="logolar/man.png" alt="MAN" onerror="this.style.display='none'"></span>
-              MAN V8/V12
-            </button>
-            <button class="filter-chip" onclick="filterByEngine('CAT', this)">
-              <span class="chip-logo-mini"><img src="logolar/cat.png" alt="CAT" onerror="this.style.display='none'"></span>
-              CAT C18
-            </button>
-            <button class="filter-chip" onclick="filterByEngine('Scania', this)">
-              <span class="chip-logo-mini"><img src="logolar/scania.png" alt="Scania" onerror="this.style.display='none'"></span>
-              Scania
-            </button>
-            <button class="filter-chip" onclick="filterByEngine('Cummins', this)">
-              <span class="chip-logo-mini"><img src="logolar/cummins.png" alt="Cummins" onerror="this.style.display='none'"></span>
-              Cummins
-            </button>
-            <button class="filter-chip" onclick="filterByEngine('Mercury', this)">
-              <span class="chip-logo-mini"><img src="logolar/mercury.png" alt="Mercury" onerror="this.style.display='none'"></span>
-              Mercury
-            </button>
-            <button class="filter-chip" onclick="filterByEngine('Yamaha', this)">
-              <span class="chip-logo-mini"><img src="logolar/yamaha.png" alt="Yamaha" onerror="this.style.display='none'"></span>
-              Yamaha
-            </button>
+            
+            <div class="engine-chip-wrapper">
+              <button class="filter-chip" onclick="filterByEngine('Volvo IPS', this)">
+                <span class="chip-logo-mini"><img src="logolar/volvo.png" alt="Volvo" onerror="this.style.display='none'"></span>
+                Volvo IPS
+              </button>
+              <div class="engine-dropdown-menu" id="dropdown-Volvo">Veriler taranıyor...</div>
+            </div>
+
+            <div class="engine-chip-wrapper">
+              <button class="filter-chip" onclick="filterByEngine('MAN', this)">
+                <span class="chip-logo-mini"><img src="logolar/man.png" alt="MAN" onerror="this.style.display='none'"></span>
+                MAN V8/V12
+              </button>
+              <div class="engine-dropdown-menu" id="dropdown-MAN">Veriler taranıyor...</div>
+            </div>
+
+            <div class="engine-chip-wrapper">
+              <button class="filter-chip" onclick="filterByEngine('CAT', this)">
+                <span class="chip-logo-mini"><img src="logolar/cat.png" alt="CAT" onerror="this.style.display='none'"></span>
+                CAT C18
+              </button>
+              <div class="engine-dropdown-menu" id="dropdown-CAT">Veriler taranıyor...</div>
+            </div>
+
+            <div class="engine-chip-wrapper">
+              <button class="filter-chip" onclick="filterByEngine('Scania', this)">
+                <span class="chip-logo-mini"><img src="logolar/scania.png" alt="Scania" onerror="this.style.display='none'"></span>
+                Scania
+              </button>
+              <div class="engine-dropdown-menu" id="dropdown-Scania">Veriler taranıyor...</div>
+            </div>
+
+            <div class="engine-chip-wrapper">
+              <button class="filter-chip" onclick="filterByEngine('Cummins', this)">
+                <span class="chip-logo-mini"><img src="logolar/cummins.png" alt="Cummins" onerror="this.style.display='none'"></span>
+                Cummins
+              </button>
+              <div class="engine-dropdown-menu" id="dropdown-Cummins">Veriler taranıyor...</div>
+            </div>
+
+            <div class="engine-chip-wrapper">
+              <button class="filter-chip" onclick="filterByEngine('Mercury', this)">
+                <span class="chip-logo-mini"><img src="logolar/mercury.png" alt="Mercury" onerror="this.style.display='none'"></span>
+                Mercury
+              </button>
+              <div class="engine-dropdown-menu" id="dropdown-Mercury">Veriler taranıyor...</div>
+            </div>
+
+            <div class="engine-chip-wrapper">
+              <button class="filter-chip" onclick="filterByEngine('Yamaha', this)">
+                <span class="chip-logo-mini"><img src="logolar/yamaha.png" alt="Yamaha" onerror="this.style.display='none'"></span>
+                Yamaha
+              </button>
+              <div class="engine-dropdown-menu" id="dropdown-Yamaha">Veriler taranıyor...</div>
+            </div>
           </div>
         </div>
 
       </div>
 
-      <div class="az-bar" id="azBar"></div>
+      <div class="az-bar" id="azBar" style="display: none !important;"></div>
+      <div id="alphabetPaginationContainer"></div>
     </header>
   </div>
 
-  <!-- 2. SADECE BURASI AŞAĞI YUKARI KAYACAK -->
+  <!-- 2. ORTA BÖLÜM: SADECE BURASI AŞAĞI YUKARI KAYACAK -->
   <main id="mainScrollArea">
     <div class="stats-info" id="statsCount">Yükleniyor...</div>
     <div class="brands-grid" id="catalogGrid"></div>
@@ -912,6 +998,20 @@
     </div>
   </div>
 
+  <!-- TÜM TEKNELERİ GÖSTEREN TAM LİSTE MODALI -->
+  <div class="modal-overlay" id="allEngineBoatsModal" onclick="this.style.display='none'" style="z-index: 1400;">
+    <div class="modal-box large" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <div>
+          <h3 id="aebTitle">Motoru Kullanan Tüm Tekneler</h3>
+          <p id="aebSubtitle" style="font-size: 11px; color: var(--neon-blue); margin-top: 2px;">Kapsamlı Tersane &amp; Model Matrisi</p>
+        </div>
+        <button onclick="document.getElementById('allEngineBoatsModal').style.display='none'">&times;</button>
+      </div>
+      <div class="boats-matrix-grid" id="allEngineBoatsGrid"></div>
+    </div>
+  </div>
+
   <!-- README MODAL -->
   <div class="modal-overlay" id="readmeModal" onclick="this.style.display='none'">
     <div class="modal-box large" onclick="event.stopPropagation()">
@@ -920,38 +1020,42 @@
         <button onclick="document.getElementById('readmeModal').style.display='none'">&times;</button>
       </div>
       <div class="readme-content">
-      <div style="margin-bottom: 16px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 10px;">
-        <h3 style="color: #38bdf8; margin: 0 0 4px 0; font-size: 1.15rem;">⚓ KÜRESEL TEKNE VE TERSANE REHBERİ</h3>
-        <p style="color: #94a3b8; margin: 0; font-size: 0.82rem; font-style: italic;">"Rotanızdaki her tersane, aradığınız her tekne."</p>
+        <div style="margin-bottom: 16px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 10px;">
+          <h3 style="color: #38bdf8; margin: 0 0 4px 0; font-size: 1.15rem;">⚓ KÜRESEL TEKNE VE TERSANE REHBERİ</h3>
+          <p style="color: #94a3b8; margin: 0; font-size: 0.82rem; font-style: italic;">"Rotanızdaki her tersane, aradığınız her tekne."</p>
+        </div>
+
+        <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 14px;">
+          Türkiye'de ve dünyada faaliyet gösteren 160'tan fazla tersanenin, model serilerinin, gövde hidrostatiklerinin ve sevk sistemlerinin teknik parametrelerle derlendiği interaktif açık deniz referans kütüphanesidir.
+        </p>
+
+        <h4>1. Tekne &amp; Tersane Veri Tabanı</h4>
+        <ul>
+          <li><strong>Sahibinden.com:</strong> Türkiye'deki tescilli yerli polyester atölyeleri (Safter, Rota, Yerliyurt vb.) ve güncel piyasa envanteri.</li>
+          <li><strong>Yatvitrini &amp; Denizbülten:</strong> Türkiye sularındaki geleneksel sac/ahşap trawler ve lüks motoryat imalatçıları.</li>
+          <li><strong>YachtWorld &amp; Powerboat Guide:</strong> 10.000+ motoryatın fabrika arşivleri, LOA, beam, draft ve deplasman spesifikasyonları.</li>
+        </ul>
+
+        <h4>2. Motor &amp; Güç Ünitesi Teknik Kaynakçası</h4>
+        <p>Beygir gücü, silindir hacmi, tork ve şanzıman verileri doğrudan üretici teknik servis föylerinden derlenmiştir:</p>
+        <ul>
+          <li><strong>Volvo Penta Marine:</strong> D4/D6 Aquamatic ve IPS Pod Drive ürün föyleri.</li>
+          <li><strong>MAN Engines:</strong> V8-1200 ve V12-1400 yüksek hızlı marin dizel arşivleri.</li>
+          <li><strong>Caterpillar Marine (CAT):</strong> C18 ACERT ağır hizmet deplasman şartnameleri.</li>
+          <li><strong>Scania &amp; Cummins Marine:</strong> Scania DI13 Heavy Duty ve Cummins Quantum Serisi (QSB) teknik bültenleri.</li>
+          <li><strong>Mercury &amp; Yamaha Marine:</strong> Verado V8 ve Offshore V6 dıştan takma servis kılavuzları.</li>
+        </ul>
+
+        <h4>3. Güvenlik Sponsorluğu</h4>
+        <p><strong>Vanemar Akıllı Tekne Takip:</strong> Limandaki teknelerin 7/24 sintine seviyesi, akü voltajı, sahil besleme ve GPS konum telemetrisi.</p>
+
+        <div>
+          Bu platformdaki veriler bilgilendirme amaçlıdır. Tüm marka, logo ve model hakları ilgili üretici tersanelere aittir.
+        </div>
       </div>
+    </div>
+  </div>
 
-      <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 14px;">
-        Türkiye'de ve dünyada faaliyet gösteren 160'tan fazla tersanenin, model serilerinin, gövde hidrostatiklerinin ve sevk sistemlerinin teknik parametrelerle derlendiği interaktif açık deniz referans kütüphanesidir.
-      </p>
-
-      <h4>1. Tekne &amp; Tersane Veri Tabanı</h4>
-      <ul>
-        <li><strong>Sahibinden.com:</strong> Türkiye'deki tescilli yerli polyester atölyeleri (Safter, Rota, Yerliyurt vb.) ve güncel piyasa envanteri.</li>
-        <li><strong>Yatvitrini &amp; Denizbülten:</strong> Türkiye sularındaki geleneksel sac/ahşap trawler ve lüks motoryat imalatçıları.</li>
-        <li><strong>YachtWorld &amp; Powerboat Guide:</strong> 10.000+ motoryatın fabrika arşivleri, LOA, beam, draft ve deplasman spesifikasyonları.</li>
-      </ul>
-
-      <h4>2. Motor &amp; Güç Ünitesi Teknik Kaynakçası</h4>
-      <p>Beygir gücü, silindir hacmi, tork ve şanzıman verileri doğrudan üretici teknik servis föylerinden derlenmiştir:</p>
-      <ul>
-        <li><strong>Volvo Penta Marine:</strong> D4/D6 Aquamatic ve IPS Pod Drive ürün föyleri.</li>
-        <li><strong>MAN Engines:</strong> V8-1200 ve V12-1400 yüksek hızlı marin dizel arşivleri.</li>
-        <li><strong>Caterpillar Marine (CAT):</strong> C18 ACERT ağır hizmet deplasman şartnameleri.</li>
-        <li><strong>Scania &amp; Cummins Marine:</strong> Scania DI13 Heavy Duty ve Cummins Quantum Serisi (QSB) teknik bültenleri.</li>
-        <li><strong>Mercury &amp; Yamaha Marine:</strong> Verado V8 ve Offshore V6 dıştan takma servis kılavuzları.</li>
-      </ul>
-
-      <h4>3. Güvenlik Sponsorluğu</h4>
-      <p><strong>Vanemar Akıllı Tekne Takip:</strong> Limandaki teknelerin 7/24 sintine seviyesi, akü voltajı, sahil besleme ve GPS konum telemetrisi.</p>
-
-      <div>
-        Bu platformdaki veriler bilgilendirme amaçlıdır. Tüm marka, logo ve model hakları ilgili üretici tersanelere aittir.
-      </div>
   <script>
     function getCountryFlag(country) {
       if (country.includes("Türkiye")) return "🇹🇷";
@@ -1049,77 +1153,61 @@
       </svg>`;
     }
 
+    // DÜNYADA GEÇERLİ EN KAPSAMLI MARİN MOTOR VERİTABANI
     const engineDatabase = {
-      "2x MAN V8 / V12 1400": {
-        title: "MAN Marine V8 / V12",
-        hp: "2x 1.200 - 1.400 HP (2.800 HP Toplam)",
-        cylinders: "V8 & V12 Silindir 90°",
-        displacement: "16.2L - 24.2L (24.200 cc)",
-        fuel: "Marin Dizel (Common Rail)",
-        aspiration: "Biturbo & Intercooler",
-        propulsion: "Şaft Tahrikli (Direct / V-Drive)",
-        weight: "Yaklaşık 2.270 kg"
-      },
-      "2x CAT C18 ACERT": {
-        title: "Caterpillar C18 ACERT",
-        hp: "2x 1.150 HP (2.300 HP Toplam)",
-        cylinders: "Sıralı 6 Silindir",
-        displacement: "18.100 cc (18.1L)",
-        fuel: "Marin Dizel",
-        aspiration: "Turboşarjlı & Su Soğutmalı",
-        propulsion: "Ağır Hizmet Düz Şaft",
-        weight: "Yaklaşık 1.950 kg"
-      },
-      "2x Scania DI13 Heavy Duty": {
-        title: "Scania Marine DI13 550",
-        hp: "2x 550 HP (1.100 HP Toplam)",
-        cylinders: "Sıralı 6 Silindir Trawler Dizeli",
-        displacement: "12.700 cc (12.7L)",
-        fuel: "Marin Dizel",
-        aspiration: "Turboşarjlı & Intercooler",
-        propulsion: "Ağır Deplasman Şaft Sistemi",
-        weight: "Yaklaşık 1.285 kg"
-      },
-      "2x Cummins QSB / QSC": {
-        title: "Cummins Marine QSB / QSC",
-        hp: "2x 425 - 550 HP",
-        cylinders: "Sıralı 6 Silindir 4-Zamanlı",
-        displacement: "6.700 cc - 8.300 cc",
-        fuel: "Marin Dizel (Quantum Serisi)",
-        aspiration: "Turboşarjlı & Aftercooler",
-        propulsion: "V-Drive / Düz Şaft",
-        weight: "Yaklaşık 890 kg"
-      },
-      "2x Volvo Penta IPS 650": {
-        title: "Volvo Penta D6-IPS 650",
-        hp: "2x 480 HP Krank (650 HP Efektif İtki)",
-        cylinders: "Sıralı 6 Silindir",
-        displacement: "5.500 cc (5.5L)",
-        fuel: "Marin Dizel (Common Rail)",
-        aspiration: "Kompresör + Turboşarj",
-        propulsion: "Pod Drive (Çift Karşı Dönen Pervane)",
-        weight: "Yaklaşık 920 kg"
-      },
-      "Mercury Verado V8 Outboard": {
-        title: "Mercury Verado 300 / 400 V8",
-        hp: "300 - 400 HP (Tek / Çift / Üçlü)",
-        cylinders: "V8 Silindir (32 Sübap DOHC)",
-        displacement: "4.600 cc (4.6L)",
-        fuel: "Benzin (Kurşunsuz 95 Oktan)",
-        aspiration: "Doğal Emişli / Transient Spark EFI",
-        propulsion: "Dıştan Takma (AMS Kademeli Trim)",
-        weight: "Yaklaşık 272 kg"
-      },
-      "Yamaha V6 Offshore Outboard": {
-        title: "Yamaha F300 / F350 V6 Offshore",
-        hp: "250 - 350 HP",
-        cylinders: "V6 Silindir 60° (24 Sübap)",
-        displacement: "4.200 cc (4.2L)",
-        fuel: "Benzin (Kurşunsuz 95 Oktan)",
-        aspiration: "Elektronik Çok Noktalı Enjeksiyon (EFI)",
-        propulsion: "Dıştan Takma (Helm Master Entegre)",
-        weight: "Yaklaşık 260 kg"
-      }
+      // 1. VOLVO PENTA
+      "Volvo Penta D1-30": { title: "Volvo Penta D1-30", hp: "28 HP", cylinders: "Sıralı 3 Silindir", displacement: "1.130 cc", fuel: "Marin Dizel", aspiration: "Doğal Emişli", propulsion: "Şaft / Saildrive 130S", weight: "145 kg" },
+      "Volvo Penta D2-75": { title: "Volvo Penta D2-75", hp: "75 HP", cylinders: "Sıralı 4 Silindir", displacement: "2.200 cc", fuel: "Marin Dizel", aspiration: "Turboşarjlı", propulsion: "Şaft / Saildrive 150S", weight: "264 kg" },
+      "Volvo Penta D3-220": { title: "Volvo Penta D3-220", hp: "220 HP", cylinders: "Sıralı 5 Silindir", displacement: "2.400 cc", fuel: "Marin Dizel (Common Rail)", aspiration: "Değişken Geometrili Turbo (VNT)", propulsion: "Aquamatic Kuyruk / Şaft", weight: "301 kg" },
+      "Volvo Penta D4-300 / 320": { title: "Volvo Penta D4-320", hp: "320 HP", cylinders: "Sıralı 4 Silindir", displacement: "3.700 cc (3.7L)", fuel: "Marin Dizel (Common Rail)", aspiration: "Kompresör + Turboşarj", propulsion: "DPI Kuyruk / Şaft", weight: "500 kg" },
+      "Volvo Penta D6-440": { title: "Volvo Penta D6-440", hp: "440 HP", cylinders: "Sıralı 6 Silindir", displacement: "5.500 cc (5.5L)", fuel: "Marin Dizel", aspiration: "Kompresör + Turboşarj", propulsion: "DPI Kuyruk / Şaft", weight: "790 kg" },
+      "Volvo Penta IPS 650 (D6)": { title: "Volvo Penta IPS 650", hp: "480 HP Krank (650 HP Efektif)", cylinders: "Sıralı 6 Silindir", displacement: "5.500 cc (5.5L)", fuel: "Marin Dizel", aspiration: "Kompresör + Turboşarj", propulsion: "IPS Pod Drive (Çift Karşı Dönen Pervane)", weight: "920 kg" },
+      "Volvo Penta IPS 800 (D8)": { title: "Volvo Penta IPS 800", hp: "600 HP Krank (800 HP Efektif)", cylinders: "Sıralı 6 Silindir", displacement: "7.700 cc (7.7L)", fuel: "Marin Dizel", aspiration: "Twin-Entry Turboşarj", propulsion: "IPS15 Pod Drive", weight: "1.410 kg" },
+      "Volvo Penta IPS 1050 (D11)": { title: "Volvo Penta IPS 1050", hp: "750 HP", cylinders: "Sıralı 6 Silindir", displacement: "10.800 cc (10.8L)", fuel: "Marin Dizel", aspiration: "Turboşarj & Intercooler", propulsion: "IPS20 Pod Drive", weight: "1.980 kg" },
+      "Volvo Penta IPS 1350 (D13)": { title: "Volvo Penta IPS 1350", hp: "1.000 HP (1.350 HP Efektif)", cylinders: "Sıralı 6 Silindir", displacement: "12.800 cc (12.8L)", fuel: "Marin Dizel", aspiration: "Çift Kademeli Turbo", propulsion: "IPS30 Pod Drive", weight: "2.300 kg" },
+      "Volvo Penta D16-850": { title: "Volvo Penta D16 MH", hp: "850 HP Ağır Hizmet", cylinders: "Sıralı 6 Silindir", displacement: "16.100 cc (16.1L)", fuel: "Marin Dizel", aspiration: "Turboşarjlı", propulsion: "Ağır Ticari Düz Şaft", weight: "1.750 kg" },
+
+      // 2. MAN ENGINES
+      "MAN i6-730 / 800": { title: "MAN i6-800", hp: "800 HP", cylinders: "Sıralı 6 Silindir", displacement: "12.400 cc (12.4L)", fuel: "Marin Dizel", aspiration: "Wastegate Turbo & Intercooler", propulsion: "V-Drive / Düz Şaft", weight: "1.215 kg" },
+      "MAN V8-1000": { title: "MAN V8-1000", hp: "1.000 HP", cylinders: "V8 Silindir 90°", displacement: "16.200 cc (16.2L)", fuel: "Marin Dizel (Common Rail)", aspiration: "Çift Turboşarjlı", propulsion: "Şaft Tahrikli", weight: "1.780 kg" },
+      "MAN V8-1200": { title: "MAN V8-1200", hp: "1.200 HP", cylinders: "V8 Silindir 90°", displacement: "16.200 cc (16.2L)", fuel: "Marin Dizel", aspiration: "Çift Su Soğutmalı Turbo", propulsion: "Şaft Tahrikli", weight: "1.875 kg" },
+      "MAN V12-1400": { title: "MAN V12-1400", hp: "1.400 HP", cylinders: "V12 Silindir 90°", displacement: "24.200 cc (24.2L)", fuel: "Marin Dizel", aspiration: "Biturbo & Intercooler", propulsion: "Direkt Şaft", weight: "2.270 kg" },
+      "MAN V12-1900": { title: "MAN V12-1900", hp: "1.900 HP", cylinders: "V12 Silindir 90°", displacement: "24.200 cc (24.2L)", fuel: "Marin Dizel", aspiration: "İki Kademeli Biturbo", propulsion: "Şaft / Yüzey Tahrik (Arneson)", weight: "2.365 kg" },
+      "MAN V12-2000": { title: "MAN V12-2000 (Sektör Lideri)", hp: "2.000 HP", cylinders: "V12 Silindir 90°", displacement: "24.200 cc (24.2L)", fuel: "Marin Dizel", aspiration: "Biturbo Common Rail 2200 bar", propulsion: "Yüksek Hızlı Şaft", weight: "2.380 kg" },
+
+      // 3. CATERPILLAR (CAT)
+      "CAT C7.1": { title: "Caterpillar C7.1", hp: "500 HP", cylinders: "Sıralı 6 Silindir", displacement: "7.010 cc (7.0L)", fuel: "Marin Dizel", aspiration: "Turboşarjlı & Aftercooler", propulsion: "Düz Şaft", weight: "760 kg" },
+      "CAT C8.7": { title: "Caterpillar C8.7", hp: "650 HP", cylinders: "Sıralı 6 Silindir", displacement: "8.700 cc (8.7L)", fuel: "Marin Dizel", aspiration: "Süperşarj + Turbo", propulsion: "Şaft & Pod Drive", weight: "1.040 kg" },
+      "CAT C12.9": { title: "Caterpillar C12.9", hp: "1.000 HP", cylinders: "Sıralı 6 Silindir", displacement: "12.900 cc (12.9L)", fuel: "Marin Dizel", aspiration: "Çift Turboşarjlı", propulsion: "Ağır Hizmet Şaft", weight: "1.670 kg" },
+      "CAT C18 ACERT": { title: "Caterpillar C18 ACERT", hp: "1.150 HP", cylinders: "Sıralı 6 Silindir", displacement: "18.100 cc (18.1L)", fuel: "Marin Dizel", aspiration: "Turboşarjlı & Su Soğutmalı", propulsion: "Ağır Hizmet Düz Şaft", weight: "1.950 kg" },
+      "CAT C32 ACERT": { title: "Caterpillar C32 ACERT V12", hp: "1.925 HP", cylinders: "V12 Silindir", displacement: "32.100 cc (32.1L)", fuel: "Marin Dizel", aspiration: "Biturbo Su Soğutmalı", propulsion: "Mega Yat Şaft Sistemi", weight: "3.220 kg" },
+
+      // 4. SCANIA MARINE
+      "Scania DI09": { title: "Scania DI09 5-Silindir", hp: "400 HP", cylinders: "Sıralı 5 Silindir", displacement: "9.300 cc (9.3L)", fuel: "Marin Dizel", aspiration: "Turboşarj & Intercooler", propulsion: "Deplasman Şaftı", weight: "1.125 kg" },
+      "Scania DI13 092M": { title: "Scania DI13 550 Heavy Duty", hp: "550 HP", cylinders: "Sıralı 6 Silindir Trawler", displacement: "12.700 cc (12.7L)", fuel: "Marin Dizel", aspiration: "Turboşarj & Intercooler", propulsion: "Ağır Deplasman Şaft Sistemi", weight: "1.285 kg" },
+      "Scania DI13 093M": { title: "Scania DI13 900 Racing", hp: "900 HP", cylinders: "Sıralı 6 Silindir", displacement: "12.700 cc (12.7L)", fuel: "Marin Dizel (XPI)", aspiration: "Wastegate Turbo", propulsion: "Hızlı Şaft / Jet", weight: "1.285 kg" },
+      "Scania DI16 090M V8": { title: "Scania DI16 1150 V8", hp: "1.150 HP", cylinders: "V8 Silindir 90°", displacement: "16.400 cc (16.4L)", fuel: "Marin Dizel", aspiration: "Çift Turboşarjlı", propulsion: "Şaft Tahrikli", weight: "1.660 kg" },
+
+      // 5. CUMMINS MARINE
+      "Cummins QSB 6.7": { title: "Cummins QSB 6.7", hp: "550 HP", cylinders: "Sıralı 6 Silindir", displacement: "6.700 cc (6.7L)", fuel: "Marin Dizel (Common Rail)", aspiration: "Turboşarj & Aftercooler", propulsion: "V-Drive / Şaft / Zeus Pod", weight: "658 kg" },
+      "Cummins QSC 8.3": { title: "Cummins QSC 8.3", hp: "600 HP", cylinders: "Sıralı 6 Silindir", displacement: "8.300 cc (8.3L)", fuel: "Marin Dizel", aspiration: "Turboşarj & Aftercooler", propulsion: "Şaft Tahrikli", weight: "896 kg" },
+      "Cummins QSM 11": { title: "Cummins QSM 11", hp: "715 HP", cylinders: "Sıralı 6 Silindir", displacement: "10.800 cc (10.8L)", fuel: "Marin Dizel", aspiration: "Turboşarj & Su Soğutmalı", propulsion: "Ağır Hizmet Şaft", weight: "1.188 kg" },
+      "Cummins QSK 19": { title: "Cummins QSK 19 Commercial", hp: "800 HP", cylinders: "Sıralı 6 Silindir Endüstriyel", displacement: "19.000 cc (19L)", fuel: "Marin Dizel", aspiration: "Ağır Ticari Turbo", propulsion: "Sürekli Görev Şaftı", weight: "2.180 kg" },
+
+      // 6. MERCURY MARINE
+      "Mercury 150 FourStroke": { title: "Mercury 150 FourStroke", hp: "150 HP", cylinders: "Sıralı 4 Silindir", displacement: "3.000 cc (3.0L)", fuel: "Benzin", aspiration: "Doğal Emişli EFI", propulsion: "Dıştan Takma", weight: "206 kg" },
+      "Mercury 200 / 225 V6": { title: "Mercury FourStroke V6", hp: "225 HP", cylinders: "V6 Silindir", displacement: "3.400 cc (3.4L)", fuel: "Benzin", aspiration: "Doğal Emişli", propulsion: "Dıştan Takma", weight: "216 kg" },
+      "Mercury Verado 250 / 300 V8": { title: "Mercury Verado 300 V8", hp: "300 HP", cylinders: "V8 Silindir 32V", displacement: "4.600 cc (4.6L)", fuel: "Benzin", aspiration: "Transient Spark EFI", propulsion: "Dıştan Takma AMS", weight: "272 kg" },
+      "Mercury Verado 350 / 400 V10": { title: "Mercury Verado 400 V10", hp: "400 HP", cylinders: "V10 Silindir", displacement: "5.700 cc (5.7L)", fuel: "Benzin", aspiration: "Doğal Emişli DOHC", propulsion: "Dıştan Takma Entegre Direksiyon", weight: "316 kg" },
+      "Mercury Verado 600 V12": { title: "Mercury Verado 600 V12 (Amiral)", hp: "600 HP", cylinders: "V12 Silindir", displacement: "7.600 cc (7.6L)", fuel: "Benzin", aspiration: "Dört Kamlı / DOHC 48V", propulsion: "2 Vitesli Dönen Kuyruk Sistemi", weight: "572 kg" },
+      "Mercury Racing 450R / 500R": { title: "Mercury Racing 500R", hp: "500 HP Yarış Motoru", cylinders: "V8 Silindir", displacement: "4.600 cc", fuel: "Yüksek Oktan Benzin", aspiration: "Süperşarjlı (Kompresör)", propulsion: "Yarış Kuyruğu Sport Master", weight: "326 kg" },
+
+      // 7. YAMAHA MARINE
+      "Yamaha F115 / F150": { title: "Yamaha F150", hp: "150 HP", cylinders: "Sıralı 4 Silindir", displacement: "2.670 cc (2.7L)", fuel: "Benzin", aspiration: "DOHC 16-Sübap EFI", propulsion: "Dıştan Takma", weight: "222 kg" },
+      "Yamaha F200 / F225": { title: "Yamaha F200", hp: "200 HP", cylinders: "Sıralı 4 Silindir", displacement: "2.785 cc (2.8L)", fuel: "Benzin", aspiration: "Değişken Eksantrik (VCT)", propulsion: "Dıştan Takma", weight: "226 kg" },
+      "Yamaha F250 / F300 V6 Offshore": { title: "Yamaha F300 V6 Offshore", hp: "300 HP", cylinders: "V6 Silindir 60° 24V", displacement: "4.200 cc (4.2L)", fuel: "Benzin", aspiration: "Çok Noktalı Enjeksiyon (EFI)", propulsion: "Dıştan Takma Helm Master", weight: "260 kg" },
+      "Yamaha XTO 425 V8": { title: "Yamaha XTO 425 Offshore", hp: "425 HP", cylinders: "V8 Silindir 32V", displacement: "5.600 cc (5.6L)", fuel: "Benzin (Doğrudan Enjeksiyon)", aspiration: "Direkt Püskürtme DOHC", propulsion: "Entegre Elektrikli Dümen", weight: "442 kg" },
+      "Yamaha XTO 450 V8 Offshore": { title: "Yamaha XTO 450 V8 (Amiral)", hp: "450 HP", cylinders: "V8 Silindir", displacement: "5.600 cc (5.6L)", fuel: "Benzin", aspiration: "Yüksek Basınç Direkt Enjeksiyon", propulsion: "Dıştan Takma Ağır Hizmet İtki", weight: "450 kg" }
     };
 
     let activeSelectedEngine = "";
@@ -1170,7 +1258,7 @@
       { name: "Cobalt Boats", url: "https://cobaltboats.com", country: "ABD", series: [{ name: "R & A Serisi", models: ["R30", "R35", "A36", "A40"] }] },
       { name: "Cobra Yacht", url: "https://www.cobrayacht.com", country: "Türkiye", series: [{ name: "Custom Trawler & Yat", models: ["Cobra King 38M", "Infinity 46M", "Maestro 24M"] }] },
       { name: "Cranchi", url: "https://www.cranchi.com", country: "İtalya", series: [{ name: "Cruiser & Hardtop", models: ["E26", "CSL 27", "Z35", "Endurance 30", "M44 HT", "50 Mediterranee", "Settantotto 78"] }] },
-      { name: "Crownline", url: "https://crownline.com", country: "ABD", series: [{ name: "CR Cruiser", models: ["250 CR", "270 CR", "315 CR", "335 SS"] }] },
+      { name: "Crownline", url: "crownline.com", country: "ABD", series: [{ name: "CR Cruiser", models: ["250 CR", "270 CR", "315 CR", "335 SS"] }] },
       { name: "Cruisers Yachts", url: "https://www.cruisersyachts.com", country: "ABD", series: [{ name: "Cantius & Express", models: ["338 Bowrider", "390 Express", "42 Cantius", "50 Cantius", "60 Cantius"] }] },
       { name: "Custom Line", url: "https://www.customline-yacht.com", country: "İtalya", series: [{ name: "Navetta & Planante", models: ["Navetta 30", "Navetta 33", "Navetta 37", "Custom Line 106", "Custom Line 140"] }] },
       { name: "Delta Powerboats", url: "https://deltapowerboats.se", country: "İsveç", series: [{ name: "Carbon Serisi", models: ["26 Open", "33 Coupé", "54 Carbon", "60 Open", "88 Carbon"] }] },
@@ -1311,50 +1399,75 @@
     let currentCountryFilter = 'ALL';
 
     const alphabet = ['ALL', ...new Set(brands.map(b => b.name.charAt(0).toUpperCase()))].sort((a,b) => a === 'ALL' ? -1 : a.localeCompare(b, 'tr'));
-    
-    alphabet.forEach(letter => {
-      const btn = document.createElement("button");
-      btn.className = `az-btn ${letter === 'ALL' ? 'active' : ''}`;
-      btn.innerText = letter;
-      btn.onclick = () => {
-        document.querySelectorAll(".az-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        currentLetter = letter;
-        checkFilterResetState();
-        render();
-      };
-      azBar.appendChild(btn);
-    });
+
+    function renderAlphabetPagination() {
+      const container = document.getElementById("alphabetPaginationContainer");
+      if (!container) return;
+
+      const currentIndex = alphabet.indexOf(currentLetter);
+      let html = `<div class="alphabet-pagination">`;
+
+      if (currentIndex > 0) {
+        const prevLetter = alphabet[currentIndex - 1];
+        html += `<button type="button" class="alpha-page-btn" onclick="selectAlphabetLetter('${prevLetter}')">&lt;</button>`;
+      }
+
+      alphabet.forEach((letter, index) => {
+        const isFirstOrLast = (index === 0 || index === alphabet.length - 1);
+        const isNearCurrent = Math.abs(index - currentIndex) <= 1;
+
+        if (isFirstOrLast || isNearCurrent) {
+          const activeClass = (letter === currentLetter) ? "active" : "";
+          html += `<button type="button" class="alpha-page-btn ${activeClass}" onclick="selectAlphabetLetter('${letter}')">${letter}</button>`;
+        } else if (index === currentIndex - 2 || index === currentIndex + 2) {
+          html += `<span class="alpha-dots">...</span>`;
+        }
+      });
+
+      if (currentIndex < alphabet.length - 1) {
+        const nextLetter = alphabet[currentIndex + 1];
+        html += `<button type="button" class="alpha-page-btn" onclick="selectAlphabetLetter('${nextLetter}')">&gt;</button>`;
+      }
+
+      html += `</div>`;
+      container.innerHTML = html;
+    }
+
+    function selectAlphabetLetter(letter) {
+      currentLetter = letter;
+      renderAlphabetPagination();
+      checkFilterResetState();
+      render(searchInput.value);
+    }
 
     function getModelEngine(brandName, modelName) {
       const b = brandName.toLowerCase();
       const m = modelName.toLowerCase();
 
       if (b.includes("ada yat") || b.includes("kargı") || b.includes("trawler")) {
-        return "2x Scania DI13 Heavy Duty";
+        return "Scania DI13 092M";
       }
       if (b.includes("beneteau") && m.includes("swift")) {
-        return "2x Cummins QSB / QSC";
+        return "Cummins QSB 6.7";
       }
 
       if (b.includes("boston") || b.includes("axopar") || b.includes("quicksilver") || b.includes("brabus") || b.includes("saxdor") || b.includes("dromeas")) {
-        return "Mercury Verado V8 Outboard";
+        return "Mercury Verado 250 / 300 V8";
       }
       if (b.includes("jeanneau") || b.includes("safter") || b.includes("yerliyurt") || b.includes("capelli") || b.includes("zodiac") || b.includes("rota") || b.includes("anka")) {
-        return "Yamaha V6 Offshore Outboard";
+        return "Yamaha F250 / F300 V6 Offshore";
       }
 
       let num = parseInt(modelName.replace(/\D/g, "")) || 35;
       if (num > 1000) num = Math.floor(num / 100);
 
-      if (num >= 65) return "2x MAN V8 / V12 1400";
-      if (num >= 50 && num < 65) return "2x CAT C18 ACERT";
-      if (num >= 32 && num < 50) return "2x Volvo Penta IPS 650";
+      if (num >= 65) return "MAN V12-1400";
+      if (num >= 50 && num < 65) return "CAT C18 ACERT";
+      if (num >= 32 && num < 50) return "Volvo Penta IPS 650 (D6)";
 
-      return "Mercury Verado V8 Outboard";
+      return "Mercury Verado 250 / 300 V8";
     }
 
-    // ÜLKE FİLTRELEME
     function filterByCountry(country, btnElement) {
       btnElement.parentElement.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
       btnElement.classList.add("active");
@@ -1363,7 +1476,6 @@
       render(searchInput.value);
     }
 
-    // MOTOR FİLTRELEME
     function filterByEngine(engineType, btnElement) {
       btnElement.parentElement.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
       btnElement.classList.add("active");
@@ -1386,7 +1498,6 @@
       currentLetter = 'ALL';
       searchInput.value = '';
 
-      // UI Reset
       document.querySelectorAll(".filter-sub-bar").forEach(bar => {
         bar.querySelectorAll(".filter-chip").forEach((c, idx) => {
           if (idx === 0) c.classList.add("active");
@@ -1394,11 +1505,7 @@
         });
       });
 
-      document.querySelectorAll(".az-btn").forEach((b, idx) => {
-        if (idx === 0) b.classList.add("active");
-        else b.classList.remove("active");
-      });
-
+      renderAlphabetPagination();
       checkFilterResetState();
       render();
     }
@@ -1406,7 +1513,7 @@
     function isEngineMatch(brandName, modelName, filter) {
       if (filter === 'ALL') return true;
       const eng = getModelEngine(brandName, modelName);
-      if (filter === 'Volvo IPS') return eng.includes('Volvo Penta');
+      if (filter === 'Volvo IPS') return eng.includes('Volvo');
       if (filter === 'MAN') return eng.includes('MAN');
       if (filter === 'CAT') return eng.includes('CAT');
       if (filter === 'Scania') return eng.includes('Scania');
@@ -1416,36 +1523,150 @@
       return true;
     }
 
+    const engineConfigs = [
+      { key: 'Volvo', filterVal: 'Volvo IPS', label: 'Volvo Penta Marine' },
+      { key: 'MAN', filterVal: 'MAN', label: 'MAN Engines' },
+      { key: 'CAT', filterVal: 'CAT', label: 'Caterpillar (CAT) Marine' },
+      { key: 'Scania', filterVal: 'Scania', label: 'Scania Marine' },
+      { key: 'Cummins', filterVal: 'Cummins', label: 'Cummins Marine' },
+      { key: 'Mercury', filterVal: 'Mercury', label: 'Mercury Marine' },
+      { key: 'Yamaha', filterVal: 'Yamaha', label: 'Yamaha Marine' }
+    ];
+
+    // MOTOR DROPDOWN DOLDURMA (TIKLANABİLİR MOTOR ÖZELLİKLERİ VE TAM LİSTE)
+    function populateEngineDropdowns() {
+      engineConfigs.forEach(eng => {
+        const box = document.getElementById('dropdown-' + eng.key);
+        if (!box) return;
+
+        let dbModels = [];
+        Object.keys(engineDatabase).forEach(dbKey => {
+          if (dbKey.toLowerCase().includes(eng.key.toLowerCase())) {
+            dbModels.push({ name: dbKey, data: engineDatabase[dbKey] });
+          }
+        });
+
+        let matchedBoats = [];
+        rawBrands.forEach(b => {
+          b.series.forEach(s => {
+            s.models.forEach(m => {
+              if (isEngineMatch(b.name, m, eng.filterVal)) {
+                matchedBoats.push({ brand: b.name, series: s.name, model: m });
+              }
+            });
+          });
+        });
+
+        let html = `<div style="color:#38bdf8; font-weight:800; font-size:12px; border-bottom:1px solid rgba(56,189,248,0.25); padding-bottom:4px; margin-bottom:8px;">⚓ ${eng.label}</div>`;
+        
+        // TIKLANABİLİR MOTOR MODELLERİ (ÖZELLİKLERİ MODALDA GÖRMEK İÇİN)
+        html += `<div style="margin-bottom:8px;">`;
+        html += `<div style="color:#94a3b8; font-size:10px; font-weight:700; text-transform:uppercase; margin-bottom:4px;">Dünya Motor Serileri (${dbModels.length} Model - Tıkla & İncele):</div>`;
+        
+        dbModels.forEach(mItem => {
+          // Güvenli tırnak formatı
+          const safeKey = mItem.name.replace(/'/g, "\\'");
+          html += `
+            <button type="button" class="engine-sub-item-btn" onclick="openSpecificEngineModal('${safeKey}')" title="Teknik föyü ve özelliklerini görüntüle">
+              <span>⚡ ${mItem.name}</span>
+              <span class="hp-tag">${mItem.data.hp}</span>
+            </button>
+          `;
+        });
+        html += `</div>`;
+
+        // KULLANAN TEKNELER & MATRİS BUTONU
+        html += `<div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:6px;">`;
+        html += `<div style="color:#94a3b8; font-size:10px; font-weight:700; text-transform:uppercase; margin-bottom:4px;">Kullanan Tekneler (${matchedBoats.length}):</div>`;
+        
+        matchedBoats.slice(0, 3).forEach(bItem => {
+          html += `<div style="color:#cbd5e1; font-size:10.5px; padding:1px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">🔹 ${bItem.brand} ${bItem.model}</div>`;
+        });
+
+        if (matchedBoats.length > 3) {
+          html += `
+            <button type="button" onclick="openAllBoatsModal('${eng.key}', '${eng.label}')" style="margin-top:6px; width:100%; background:rgba(56,189,248,0.15); border:1px solid var(--neon-blue); color:#38bdf8; padding:5px 8px; border-radius:6px; font-size:10.5px; font-weight:700; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='var(--neon-blue)';this.style.color='#020617'" onmouseout="this.style.background='rgba(56,189,248,0.15)';this.style.color='#38bdf8'">
+              🔍 +${matchedBoats.length - 3} Model Daha (Tam Listeyi Gör &bull; ${matchedBoats.length} Tekne)
+            </button>
+          `;
+        }
+        html += `</div>`;
+
+        box.innerHTML = html;
+      });
+    }
+
+    // DOĞRUDAN MOTOR ADINA TIKLANDIĞINDA ÖZELLİKLERİ AÇAN FONKSİYON
+    function openSpecificEngineModal(engineKey) {
+      const data = engineDatabase[engineKey];
+      if (!data) return;
+
+      document.getElementById("eTitle").innerText = data.title;
+      document.getElementById("e_hp").innerText = data.hp;
+      document.getElementById("e_cylinders").innerText = data.cylinders;
+      document.getElementById("e_displacement").innerText = data.displacement;
+      document.getElementById("e_fuel").innerText = data.fuel;
+      document.getElementById("e_aspiration").innerText = data.aspiration;
+      document.getElementById("e_propulsion").innerText = data.propulsion;
+      document.getElementById("e_weight").innerText = data.weight;
+
+      document.getElementById("engineDetailModal").style.display = "flex";
+    }
+
+    // TÜM TEKNELERİ LİSTELEYEN MODAL
+    function openAllBoatsModal(engineKey, engineLabel) {
+      const cfg = engineConfigs.find(c => c.key === engineKey);
+      if (!cfg) return;
+
+      let matchedBoats = [];
+      rawBrands.forEach(b => {
+        b.series.forEach(s => {
+          s.models.forEach(m => {
+            if (isEngineMatch(b.name, m, cfg.filterVal)) {
+              matchedBoats.push({ brand: b.name, series: s.name, model: m });
+            }
+          });
+        });
+      });
+
+      document.getElementById("aebTitle").innerText = `${engineLabel} Kullanan Tekneler`;
+      document.getElementById("aebSubtitle").innerText = `Katalogda ${matchedBoats.length} Tekne ve Motoryat Bu Güç Ünitesiyle Eşleşti`;
+
+      const gridContainer = document.getElementById("allEngineBoatsGrid");
+      gridContainer.innerHTML = "";
+
+      matchedBoats.forEach(item => {
+        const pill = document.createElement("div");
+        pill.className = "matrix-boat-pill";
+        pill.title = "Tekne detayını açmak için tıkla";
+        pill.innerHTML = `
+          <span class="matrix-brand">${item.brand}</span>
+          <span class="matrix-model">${item.model}</span>
+        `;
+        pill.onclick = () => {
+          document.getElementById("allEngineBoatsModal").style.display = "none";
+          openModal(item.brand, item.series, item.model);
+        };
+        gridContainer.appendChild(pill);
+      });
+
+      document.getElementById("allEngineBoatsModal").style.display = "flex";
+    }
+
     function render(query = "") {
       grid.innerHTML = "";
       const q = query.toLowerCase().trim();
 
       const filtered = brands.filter(b => {
-        // A-Z Filtresi
-        if (currentLetter !== 'ALL' && !b.name.toUpperCase().startsWith(currentLetter)) {
-          return false;
-        }
-
-        // Ülke Filtresi
-        if (currentCountryFilter !== 'ALL' && !b.country.includes(currentCountryFilter)) {
-          return false;
-        }
-
-        // Motor Filtresi
+        if (currentLetter !== 'ALL' && !b.name.toUpperCase().startsWith(currentLetter)) return false;
+        if (currentCountryFilter !== 'ALL' && !b.country.includes(currentCountryFilter)) return false;
         if (currentEngineFilter !== 'ALL') {
-          const hasEngine = b.series.some(s => 
-            s.models.some(m => isEngineMatch(b.name, m, currentEngineFilter))
-          );
+          const hasEngine = b.series.some(s => s.models.some(m => isEngineMatch(b.name, m, currentEngineFilter)));
           if (!hasEngine) return false;
         }
-
-        // Arama Kutusu
         if (!q) return true;
         const brandMatch = b.name.toLowerCase().includes(q) || b.country.toLowerCase().includes(q);
-        const seriesMatch = b.series.some(s => 
-          s.name.toLowerCase().includes(q) || 
-          s.models.some(m => m.toLowerCase().includes(q))
-        );
+        const seriesMatch = b.series.some(s => s.name.toLowerCase().includes(q) || s.models.some(m => m.toLowerCase().includes(q)));
         return brandMatch || seriesMatch;
       });
 
@@ -1557,7 +1778,9 @@
       render(e.target.value);
     });
 
+    renderAlphabetPagination();
     render();
+    populateEngineDropdowns();
   </script>
 </body>
 </html>
