@@ -3,315 +3,404 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>A-Z Tüm Markalar | Global & Yerli Tekne Portalı</title>
+  <title>A-Z Global & Yerli Tekne Portalı | Superyacht & Marine Directory</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #030712;
-      --card-bg: rgba(11, 20, 38, 0.85);
-      --card-border: rgba(56, 189, 248, 0.16);
+      /* Modern Deep Mediterranean Blue Paleti */
+      --bg-base: #060e1f;
+      --bg-surface: rgba(13, 27, 56, 0.72);
+      --bg-surface-hover: rgba(18, 38, 77, 0.85);
+      --card-border: rgba(56, 189, 248, 0.22);
+      --card-border-hover: rgba(0, 210, 255, 0.75);
       --neon-blue: #00d2ff;
-      --neon-glow: 0 0 25px rgba(0, 210, 255, 0.55);
+      --neon-cyan: #38bdf8;
+      --accent-glow: 0 0 25px rgba(0, 210, 255, 0.35);
       --text: #f8fafc;
       --text-muted: #94a3b8;
-    }
-
-    html, body {
-      width: 100%;
-      max-width: 100vw;
-      overflow-x: hidden;
-      margin: 0;
-      padding: 0;
-      -webkit-font-smoothing: antialiased;
+      --text-dim: #64748b;
+      --accent-gradient: linear-gradient(135deg, #0284c7 0%, #00d2ff 100%);
     }
 
     * { 
       box-sizing: border-box; 
       margin: 0; 
       padding: 0; 
-      font-family: 'Montserrat', sans-serif; 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
       -webkit-tap-highlight-color: transparent;
     }
 
-    body {
-      background-color: var(--bg);
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(2, 132, 199, 0.35) 0%, transparent 60%),
-        radial-gradient(circle at 100% 50%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 0% 100%, rgba(30, 58, 138, 0.28) 0%, transparent 50%),
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    html, body {
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      background-color: var(--bg-base);
       color: var(--text);
-      min-height: 100vh;
+    }
+
+    /* MODERN, HAVADAR VE IŞILTILI ARKA PLAN */
+    body {
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.35) 0%, transparent 60%),
+        radial-gradient(circle at 85% 20%, rgba(56, 189, 248, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 15% 85%, rgba(30, 64, 175, 0.35) 0%, transparent 55%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 42px 42px, 42px 42px;
       display: flex;
       flex-direction: column;
     }
 
+    /* 1. ÜST SABİT KONSOL */
+    .top-fixed-wrapper {
+      flex-shrink: 0;
+      width: 100%;
+      background: rgba(6, 14, 31, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.22);
+      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+      z-index: 100;
+    }
+
+    /* Kayan Güvenlik Bandı */
     .top-security-bar {
       width: 100%;
-      max-width: 100vw;
-      background: linear-gradient(90deg, #0284c7 0%, #0369a1 50%, #0284c7 100%);
+      background: linear-gradient(90deg, #0284c7, #0369a1, #0284c7);
       border-bottom: 1px solid rgba(56, 189, 248, 0.4);
-      box-shadow: 0 2px 15px rgba(0, 210, 255, 0.25);
       overflow: hidden;
       white-space: nowrap;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
     .marquee-link {
       display: inline-flex;
       align-items: center;
-      gap: 30px;
-      padding: 9px 0;
+      gap: 35px;
+      padding: 7px 0;
       color: #ffffff;
       text-decoration: none;
-      font-size: 12.5px;
+      font-size: 11.5px;
       font-weight: 700;
       letter-spacing: 0.5px;
-      animation: marquee 22s linear infinite;
+      animation: marquee 24s linear infinite;
     }
     .top-security-bar:hover .marquee-link { animation-play-state: paused; }
     .marquee-item { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
-    .marquee-item svg { width: 15px; height: 15px; fill: #fff; flex-shrink: 0; }
-    .marquee-item span.highlight { color: #bae6fd; text-decoration: underline; text-underline-offset: 3px; }
+    .marquee-item svg { width: 14px; height: 14px; fill: #ffffff; flex-shrink: 0; }
+    .marquee-item span.highlight { 
+      color: #bae6fd; 
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+      text-decoration: underline; 
+      text-underline-offset: 3px; 
+    }
     @keyframes marquee {
       0% { transform: translateX(0%); }
       100% { transform: translateX(-50%); }
     }
 
     header {
-      padding: 30px 16px 16px;
-      text-align: center;
-      position: relative;
+      padding: 12px 18px 10px;
+      max-width: 1440px;
+      margin: 0 auto;
       width: 100%;
     }
+
+    .header-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .brand-title-group { text-align: left; }
     header h1 {
-      font-size: 26px;
+      font-size: 19px;
       font-weight: 800;
-      letter-spacing: 1px;
-      background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #00d2ff 100%);
+      letter-spacing: 0.8px;
+      background: linear-gradient(135deg, #ffffff 10%, #e0f2fe 55%, #00d2ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
-      line-height: 1.25;
+      text-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+      line-height: 1.2;
     }
-    header p { color: var(--text-muted); font-size: 13px; margin-top: 6px; }
+    .portal-subtitle {
+      font-size: 10.5px;
+      color: var(--neon-cyan);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      opacity: 0.9;
+    }
 
     .readme-trigger-btn {
-      margin-top: 14px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid var(--neon-blue);
-      color: var(--neon-blue);
-      padding: 6px 14px;
+      background: rgba(15, 28, 54, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #e0f2fe;
+      padding: 5px 13px;
       border-radius: 99px;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.2s;
+      transition: all 0.25s;
+      white-space: nowrap;
     }
     .readme-trigger-btn:hover {
       background: var(--neon-blue);
-      color: #030712;
-      box-shadow: 0 0 15px var(--neon-blue);
+      color: #020617;
+      border-color: #ffffff;
+      box-shadow: var(--accent-glow);
+      transform: translateY(-1px);
     }
 
-    /* MOTOR KONTROL PANELİ */
-    .motor-filter-wrapper {
-      max-width: 1100px;
-      margin: 18px auto 0;
-      padding: 14px 18px;
-      background: rgba(11, 20, 38, 0.75);
+    /* Arama Çubuğu */
+    .controls-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .search-wrapper { position: relative; flex: 1; }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      fill: var(--text-dim);
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      background: rgba(15, 28, 54, 0.7);
       border: 1px solid rgba(56, 189, 248, 0.25);
-      border-radius: 16px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+      padding: 9px 16px 9px 38px;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 12.5px;
+      outline: none;
+      transition: all 0.25s;
     }
-    .motor-filter-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    .search-input:focus {
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 18px rgba(0, 210, 255, 0.4);
+      background: rgba(18, 38, 77, 0.9);
     }
-    .motor-filter-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: #38bdf8;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
+
+    /* KOMBİNE FİLTRE PANELİ (ÜLKE + MOTOR) */
+    .filter-dashboard {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 6px;
+      margin-bottom: 8px;
     }
-    .clear-filter-btn {
-      background: none;
-      border: none;
-      color: #ef4444;
-      font-size: 11.5px;
+
+    .filter-sub-bar {
+      background: rgba(13, 27, 56, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      border-radius: 10px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-label {
+      font-size: 10.5px;
       font-weight: 700;
-      cursor: pointer;
-      display: none;
+      color: var(--neon-cyan);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
     }
-    .clear-filter-btn:hover { text-decoration: underline; }
-    
-    .motor-grid-chips {
+    .filter-chips-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
+      gap: 5px;
+      flex: 1;
+      justify-content: flex-start;
+      align-items: center;
     }
-    .lux-motor-chip {
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(56, 189, 248, 0.22);
+
+    /* Çip Butonları */
+    .filter-chip {
+      background: rgba(15, 28, 54, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.2);
       color: #cbd5e1;
-      padding: 6px 14px;
-      border-radius: 10px;
-      font-size: 12px;
+      padding: 3.5px 9px;
+      border-radius: 7px;
+      font-size: 10.5px;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      gap: 5px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .lux-motor-chip .motor-logo-mini {
-      width: 22px;
-      height: 22px;
+    .filter-chip .chip-logo-mini {
+      width: 16px;
+      height: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       background: #ffffff;
-      border-radius: 4px;
-      padding: 2px;
+      border-radius: 3px;
+      padding: 1px;
     }
-    .lux-motor-chip .motor-logo-mini img {
+    .filter-chip .chip-logo-mini img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       display: block;
     }
-    .lux-motor-chip .count-badge {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8;
-      padding: 2px 6px;
-      border-radius: 99px;
-      font-size: 10px;
-      font-weight: 700;
-    }
-    .lux-motor-chip:hover {
+    .filter-chip:hover {
       border-color: var(--neon-blue);
-      transform: translateY(-2px);
-      box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+      transform: translateY(-1px);
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
       color: #fff;
     }
-    .lux-motor-chip.active {
-      background: linear-gradient(135deg, #0284c7 0%, #00d2ff 100%);
-      color: #030712;
-      border-color: #fff;
+    .filter-chip.active {
+      background: var(--accent-gradient);
+      color: #020617;
+      border-color: #ffffff;
       font-weight: 800;
-      box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
-      transform: translateY(-2px);
+      box-shadow: 0 0 16px rgba(0, 210, 255, 0.65);
+      transform: translateY(-1px);
     }
-    .lux-motor-chip.active .count-badge {
-      background: #030712;
-      color: #00d2ff;
+    .filter-chip.active .chip-badge {
+      background: #020617;
+      color: var(--neon-blue);
+    }
+    .chip-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--neon-cyan);
+      padding: 1px 4px;
+      border-radius: 99px;
+      font-size: 9px;
+      font-weight: 700;
     }
 
+    .clear-all-filters-btn {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+      transition: all 0.2s;
+    }
+    .clear-all-filters-btn:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    /* A-Z Harf İndeksi */
     .az-bar {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 4px;
-      max-width: 1000px;
-      margin: 14px auto 0;
-      padding: 0 8px;
+      gap: 3px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
     .az-btn {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--card-border);
+      background: rgba(15, 28, 54, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.16);
       color: var(--text-muted);
-      width: 30px;
-      height: 30px;
+      width: 26px;
+      height: 25px;
       border-radius: 6px;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s;
+      transition: all 0.15s;
     }
     .az-btn:hover, .az-btn.active {
       background: var(--neon-blue);
-      color: #030712;
-      border-color: #fff;
+      color: #020617;
+      border-color: #ffffff;
       box-shadow: 0 0 10px var(--neon-blue);
+      transform: scale(1.05);
     }
 
-    .controls { max-width: 600px; margin: 16px auto 0; padding: 0 12px; width: 100%; }
-    .search-input {
-      width: 100%;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid var(--card-border);
-      padding: 12px 20px;
-      border-radius: 99px;
-      color: #fff;
-      font-size: 13.5px;
-      outline: none;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s;
-    }
-    .search-input:focus {
-      border-color: var(--neon-blue);
-      box-shadow: var(--neon-glow);
-    }
-
+    /* 2. ORTA BÖLÜM: SADECE BURASI KAYAR */
     main {
-      max-width: 1560px;
-      margin: 20px auto 40px;
-      padding: 0 16px;
-      flex-grow: 1;
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
       width: 100%;
+      padding: 16px 20px 28px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    main::-webkit-scrollbar { width: 5px; }
+    main::-webkit-scrollbar-track { background: transparent; }
+    main::-webkit-scrollbar-thumb {
+      background: rgba(56, 189, 248, 0.35);
+      border-radius: 99px;
+    }
+    main::-webkit-scrollbar-thumb:hover {
+      background: var(--neon-blue);
+      box-shadow: 0 0 10px var(--neon-blue);
     }
 
     .stats-info {
       text-align: center;
-      font-size: 12.5px;
-      color: var(--neon-blue);
-      font-weight: 600;
-      margin-bottom: 16px;
+      font-size: 11.5px;
+      color: var(--neon-cyan);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
     }
 
+    /* IZGARA VE YENİ LÜKS KART TASARIMI */
     .brands-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
       gap: 16px;
       width: 100%;
     }
 
     .brand-card {
-      background: var(--card-bg);
+      background: var(--bg-surface);
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      width: 100%;
+      position: relative;
+    }
+    .brand-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.45), transparent);
     }
     .brand-card:hover, .brand-card:active {
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 20px rgba(0, 210, 255, 0.45);
+      background: var(--bg-surface-hover);
+      border-color: var(--card-border-hover);
+      box-shadow: 0 10px 32px rgba(2, 6, 23, 0.7), 0 0 22px rgba(0, 210, 255, 0.28);
+      transform: translateY(-2px);
     }
 
     .brand-head {
@@ -324,41 +413,69 @@
     }
 
     .brand-logo-frame {
-      width: 60px;
+      width: 62px;
       height: 42px;
       background: #ffffff;
-      border-radius: 6px;
+      border-radius: 7px;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 3px;
       flex-shrink: 0;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       text-decoration: none;
       transition: transform 0.25s, box-shadow 0.25s;
     }
     .brand-card:hover .brand-logo-frame {
-      transform: scale(1.04);
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.75);
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.85);
     }
     .brand-logo-frame svg { width: 100%; height: 100%; display: block; }
 
+    .brand-meta { flex: 1; min-width: 0; }
     .brand-link {
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      flex-wrap: wrap;
+      max-width: 100%;
     }
-    .brand-link h2 { font-size: 15px; font-weight: 700; color: #fff; }
-    .brand-link svg { width: 12px; height: 12px; fill: var(--text-muted); }
-    .brand-meta span { font-size: 10.5px; color: var(--neon-blue); text-transform: uppercase; font-weight: 600; }
+    .brand-link h2 { 
+      font-size: 14.5px; 
+      font-weight: 700; 
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: color 0.2s;
+    }
+    .brand-link svg { 
+      width: 12px; 
+      height: 12px; 
+      fill: var(--text-dim); 
+      flex-shrink: 0;
+      transition: fill 0.2s, transform 0.2s;
+    }
+    .brand-link:hover h2 { color: var(--neon-blue); }
+    .brand-link:hover svg { fill: var(--neon-blue); transform: translate(1px, -1px); }
+
+    .brand-country-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10.5px;
+      color: var(--neon-cyan);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      margin-top: 2px;
+    }
 
     .brand-body {
-      padding: 14px 16px;
+      padding: 12px 16px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 9px;
       flex-grow: 1;
     }
     .series-block {
@@ -367,42 +484,44 @@
     }
     .brand-card:hover .series-block { border-left-color: var(--neon-blue); }
     .series-title {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      color: #cbd5e1;
+      color: #94a3b8;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      letter-spacing: 0.8px;
+      margin-bottom: 5px;
     }
 
-    .models-list { display: flex; flex-wrap: wrap; gap: 5px; }
+    .models-list { display: flex; flex-wrap: wrap; gap: 4px; }
 
     .model-btn {
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(56, 189, 248, 0.2);
+      background: rgba(15, 28, 54, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.18);
       color: #cbd5e1;
-      padding: 5px 9px;
+      padding: 4px 8px;
       border-radius: 5px;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .model-btn:active {
+    .model-btn:hover {
       background: var(--neon-blue);
-      color: #030712;
+      color: #020617;
       border-color: #ffffff;
-      box-shadow: 0 0 15px var(--neon-blue);
+      box-shadow: 0 0 12px var(--neon-blue);
+      transform: translateY(-1px);
     }
+    .model-btn:active { transform: scale(0.96); }
+
     .model-btn.highlighted {
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 12px rgba(0, 210, 255, 0.85);
-      background: rgba(2, 132, 199, 0.35);
-      color: #ffffff;
-      font-weight: 700;
+      border-color: #ffffff;
+      box-shadow: 0 0 14px rgba(0, 210, 255, 0.95);
+      background: var(--accent-gradient);
+      color: #020617;
+      font-weight: 800;
     }
-    .model-btn.dimmed {
-      opacity: 0.25;
-    }
+    .model-btn.dimmed { opacity: 0.22; }
 
     .engine-clickable-link {
       color: var(--neon-blue);
@@ -420,33 +539,51 @@
       text-shadow: 0 0 8px var(--neon-blue);
     }
 
+    /* 3. ALT SABİT BAR */
     footer {
-      background: rgba(11, 20, 38, 0.95);
-      border-top: 1px solid var(--card-border);
-      padding: 24px 16px;
-      text-align: center;
-      margin-top: auto;
+      flex-shrink: 0;
       width: 100%;
+      background: rgba(6, 14, 31, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(56, 189, 248, 0.22);
+      box-shadow: 0 -8px 25px rgba(2, 6, 23, 0.6);
+      padding: 9px 18px;
+      z-index: 100;
     }
-    footer p { color: var(--text-muted); font-size: 12px; line-height: 1.8; }
-    footer a { color: var(--neon-blue); text-decoration: none; font-weight: 600; }
+    .footer-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    footer p { 
+      color: var(--text-dim); 
+      font-size: 11px; 
+      line-height: 1.4; 
+      text-align: left; 
+    }
+    footer a { color: var(--neon-cyan); text-decoration: none; font-weight: 600; }
+    footer a:hover { text-decoration: underline; color: #fff; }
 
     .neon-badge-wrapper {
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      margin-top: 18px;
     }
     .neon-rotating-badge {
       position: relative;
-      padding: 10px 24px;
+      padding: 6px 18px;
       border-radius: 999px;
-      background: #070d1a;
+      background: #050b17;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      box-shadow: 0 0 20px rgba(0, 210, 255, 0.25);
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
     }
     .neon-rotating-badge::before {
       content: '';
@@ -466,32 +603,34 @@
       content: '';
       position: absolute;
       inset: 2px;
-      background: #091322;
+      background: #08152e;
       border-radius: 999px;
     }
     .neon-badge-text {
       position: relative;
       z-index: 2;
-      font-size: 11.5px;
-      letter-spacing: 2px;
+      font-size: 10.5px;
+      letter-spacing: 1.6px;
       text-transform: uppercase;
-      color: #94a3b8;
+      color: #cbd5e1;
     }
     .neon-badge-text span {
       color: #00d2ff;
       font-weight: 800;
-      text-shadow: 0 0 12px rgba(0, 210, 255, 0.65);
+      text-shadow: 0 0 12px rgba(0, 210, 255, 0.75);
     }
     @keyframes rotateNeon {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
+    /* MODAL */
     .modal-overlay {
       position: fixed;
       inset: 0;
       background: rgba(2, 6, 17, 0.88);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -499,140 +638,202 @@
       z-index: 1200;
     }
     .modal-box {
-      background: #0d172a;
+      background: #0c1833;
       border: 1px solid var(--neon-blue);
-      box-shadow: 0 0 35px rgba(0, 210, 255, 0.4);
-      border-radius: 14px;
+      box-shadow: 0 0 45px rgba(0, 210, 255, 0.35);
+      border-radius: 16px;
       width: 100%;
       max-width: 480px;
-      padding: 20px;
+      padding: 22px;
     }
     .modal-box.large { max-width: 680px; max-height: 85vh; overflow-y: auto; }
-    .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 10px; }
-    .modal-head h3 { font-size: 18px; color: #fff; font-weight: 700; }
-    .modal-head button { background: none; border: none; color: #94a3b8; font-size: 24px; cursor: pointer; padding: 4px; }
+    .modal-head { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      margin-bottom: 14px; 
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+      padding-bottom: 10px; 
+    }
+    .modal-head h3 { font-size: 17px; color: #fff; font-weight: 700; }
+    .modal-head button { 
+      background: none; 
+      border: none; 
+      color: #94a3b8; 
+      font-size: 22px; 
+      cursor: pointer; 
+      padding: 4px; 
+      transition: color 0.2s;
+    }
+    .modal-head button:hover { color: #fff; }
     .specs-table { width: 100%; border-collapse: collapse; }
-    .specs-table td { padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); font-size: 13px; }
-    .specs-table td:first-child { color: var(--text-muted); width: 45%; }
+    .specs-table td { 
+      padding: 8px 0; 
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06); 
+      font-size: 12.5px; 
+    }
+    .specs-table td:first-child { color: var(--text-muted); width: 44%; }
     .specs-table td:last-child { text-align: right; font-weight: 700; color: #fff; }
 
-    .readme-content { color: #cbd5e1; font-size: 13px; line-height: 1.6; text-align: left; }
-    .readme-content h4 { color: var(--neon-blue); margin: 14px 0 4px; font-size: 14px; }
+    .readme-content { color: #cbd5e1; font-size: 12.5px; line-height: 1.6; text-align: left; }
+    .readme-content h4 { color: var(--neon-cyan); margin: 14px 0 4px; font-size: 13.5px; }
     .readme-content ul { padding-left: 18px; margin-bottom: 8px; }
 
+    @media (max-width: 768px) {
+      .header-top-row { flex-direction: column; text-align: center; }
+      .brand-title-group { text-align: center; }
+      .footer-inner { justify-content: center; text-align: center; }
+      footer p { text-align: center; }
+    }
+
     @media (max-width: 480px) {
-      header h1 { font-size: 21px; }
+      header h1 { font-size: 17px; }
       .brands-grid { grid-template-columns: 1fr; }
     }
+    .alt-baslik {
+      font-size: 0.75rem;          /* Küçük ve zarif (11-12px) */
+      font-weight: 500;
+      letter-spacing: 3px;         /* Harf aralığı o elit havayı verir */
+      text-transform: uppercase;   /* Tüm harfleri büyük yapar */
+      color: #38bdf8;              /* Açık/neon mavi tonu (istersen #94a3b8 gri de yapabilirsin) */
+      opacity: 0.85;
+      margin-top: 6px;
+      margin-bottom: 16px;         /* Arama çubuğu ile arasına ferah bir boşluk bırakır */
+      text-align: center;          /* Başlık ortalıysa ortalar */
+}
   </style>
 </head>
 <body>
 
-  <div class="top-security-bar">
-    <a href="https://vanemar.com/tr?srsltid=AU7gw4VqYNOMNEIy35uDoTHDUZlyL6fA8hgnRcfTx1G02sMlhjTkj_48" target="_blank" rel="noopener noreferrer" class="marquee-link" title="Vanemar Akıllı Tekne Takip & Güvenlik Sistemleri">
-      <div class="marquee-item">
-        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-        <span>Aklın kalmasın limanda, <span class="highlight">Vanemar</span> her an yanında. Tekneni 7/24 cebinden takip et!</span>
+  <!-- 1. ÜST SABİT KONSOL -->
+  <div class="top-fixed-wrapper">
+    <div class="top-security-bar">
+      <a href="https://vanemar.com/tr?srsltid=AU7gw4VqYNOMNEIy35uDoTHDUZlyL6fA8hgnRcfTx1G02sMlhjTkj_48" target="_blank" rel="noopener noreferrer" class="marquee-link" title="Vanemar Akıllı Tekne Takip & Güvenlik Sistemleri">
+        <div class="marquee-item">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          <span>Aklın kalmasın limanda, <span class="highlight">Vanemar</span> her an yanında. Tekneni 7/24 cebinden takip et!</span>
+        </div>
+        <div class="marquee-item">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          <span>Sintine alarmı, akü voltajı, GPS konum & sahil besleme &bull; Tıkla!</span>
+        </div>
+      </a>
+    </div>
+
+    <header>
+      <div class="header-top-row">
+        <div class="brand-title-group">
+          <h1>KÜRESEL TEKNE VE TERSANE REHBERİ</h1>
+          <div class="portal-subtitle">Rotanızdaki her tersane, aradığınız her tekne</div>
+        </div>
+        <button class="readme-trigger-btn" onclick="openReadme()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          Veri Kaynakçası (README)
+        </button>
       </div>
-      <div class="marquee-item">
-        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-        <span>Sintine alarmı, akü voltajı, GPS konum & sahil besleme &bull; Tıkla!</span>
+
+      <div class="controls-row">
+        <div class="search-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Tersane, model, ülke veya güç ünitesi ara (örn: Safter, Riva, İtalya, Volvo, MAN)...">
+        </div>
       </div>
-      <div class="marquee-item">
-        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-        <span>Aklın kalmasın limanda, <span class="highlight">Vanemar</span> her an yanında.</span>
+
+      <!-- KOMBİNE FİLTRE PANELİ (ÜLKE + MOTOR) -->
+      <div class="filter-dashboard">
+        
+        <!-- 1. ÜLKE FİLTRESİ -->
+        <div class="filter-sub-bar">
+          <span class="filter-label">🌍 Ülke:</span>
+          <div class="filter-chips-row" id="countryChipsContainer">
+            <button class="filter-chip active" onclick="filterByCountry('ALL', this)">Tümü</button>
+            <button class="filter-chip" onclick="filterByCountry('Türkiye', this)">🇹🇷 Türkiye</button>
+            <button class="filter-chip" onclick="filterByCountry('İtalya', this)">🇮🇹 İtalya</button>
+            <button class="filter-chip" onclick="filterByCountry('İngiltere', this)">🇬🇧 İngiltere</button>
+            <button class="filter-chip" onclick="filterByCountry('ABD', this)">🇺🇸 ABD</button>
+            <button class="filter-chip" onclick="filterByCountry('Fransa', this)">🇫🇷 Fransa</button>
+            <button class="filter-chip" onclick="filterByCountry('Almanya', this)">🇩🇪 Almanya</button>
+            <button class="filter-chip" onclick="filterByCountry('Finlandiya', this)">🇫🇮 Finlandiya</button>
+            <button class="filter-chip" onclick="filterByCountry('İsveç', this)">🇸🇪 İsveç</button>
+            <button class="filter-chip" onclick="filterByCountry('Hollanda', this)">🇳🇱 Hollanda</button>
+            <button class="filter-chip" onclick="filterByCountry('İspanya', this)">🇪🇸 İspanya</button>
+          </div>
+          <button id="clearAllFiltersBtn" class="clear-all-filters-btn" onclick="resetAllFilters()">Filtreleri Sıfırla ✕</button>
+        </div>
+
+        <!-- 2. MOTOR FİLTRESİ -->
+        <div class="filter-sub-bar">
+          <span class="filter-label">⚡ Makine:</span>
+          <div class="filter-chips-row">
+            <button class="filter-chip active" onclick="filterByEngine('ALL', this)">Tümü</button>
+            <button class="filter-chip" onclick="filterByEngine('Volvo IPS', this)">
+              <span class="chip-logo-mini"><img src="logolar/volvo.png" alt="Volvo" onerror="this.style.display='none'"></span>
+              Volvo IPS
+            </button>
+            <button class="filter-chip" onclick="filterByEngine('MAN', this)">
+              <span class="chip-logo-mini"><img src="logolar/man.png" alt="MAN" onerror="this.style.display='none'"></span>
+              MAN V8/V12
+            </button>
+            <button class="filter-chip" onclick="filterByEngine('CAT', this)">
+              <span class="chip-logo-mini"><img src="logolar/cat.png" alt="CAT" onerror="this.style.display='none'"></span>
+              CAT C18
+            </button>
+            <button class="filter-chip" onclick="filterByEngine('Scania', this)">
+              <span class="chip-logo-mini"><img src="logolar/scania.png" alt="Scania" onerror="this.style.display='none'"></span>
+              Scania
+            </button>
+            <button class="filter-chip" onclick="filterByEngine('Cummins', this)">
+              <span class="chip-logo-mini"><img src="logolar/cummins.png" alt="Cummins" onerror="this.style.display='none'"></span>
+              Cummins
+            </button>
+            <button class="filter-chip" onclick="filterByEngine('Mercury', this)">
+              <span class="chip-logo-mini"><img src="logolar/mercury.png" alt="Mercury" onerror="this.style.display='none'"></span>
+              Mercury
+            </button>
+            <button class="filter-chip" onclick="filterByEngine('Yamaha', this)">
+              <span class="chip-logo-mini"><img src="logolar/yamaha.png" alt="Yamaha" onerror="this.style.display='none'"></span>
+              Yamaha
+            </button>
+          </div>
+        </div>
+
       </div>
-    </a>
+
+      <div class="az-bar" id="azBar"></div>
+    </header>
   </div>
 
-  <header>
-    <h1>A-Z TÜM DÜNYA VE TÜRKİYE TEKNE KATALOĞU</h1>
-    <p>Marka İsimlerine Tıklayarak Resmi Web Sitelerine Gidebilirsiniz</p>
-    <button class="readme-trigger-btn" onclick="openReadme()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-      Veri Kaynakçası (README)
-    </button>
-    <div class="controls">
-      <input type="text" id="searchInput" class="search-input" placeholder="Tüm marka, model veya motor tipinde ara (örn: Safter, Ada 18M, MAN, Volvo)...">
-    </div>
-
-    <!-- MOTOR TİPİ KONTROL PANELİ -->
-    <div class="motor-filter-wrapper">
-      <div class="motor-filter-header">
-        <span class="motor-filter-title">⚡ Güç Ünitesi & Makine Tipi</span>
-        <button id="clearEngineBtn" class="clear-filter-btn" onclick="clearEngineFilter()">Filtreyi Temizle ✕</button>
-      </div>
-      <div class="motor-grid-chips">
-        <button class="lux-motor-chip active" onclick="filterByEngine('ALL', this)">
-          <span>🌐</span> Tümü
-        </button>
-
-        <button class="lux-motor-chip" onclick="filterByEngine('Volvo IPS', this)">
-          <span class="motor-logo-mini"><img src="logolar/volvo.png" alt="Volvo Penta" onerror="this.style.display='none'"></span>
-          Volvo Penta <span class="count-badge">IPS</span>
-        </button>
-
-        <button class="lux-motor-chip" onclick="filterByEngine('MAN', this)">
-          <span class="motor-logo-mini"><img src="logolar/man.png" alt="MAN" onerror="this.style.display='none'"></span>
-          MAN <span class="count-badge">V8/V12</span>
-        </button>
-
-        <button class="lux-motor-chip" onclick="filterByEngine('CAT', this)">
-          <span class="motor-logo-mini"><img src="logolar/cat.png" alt="CAT" onerror="this.style.display='none'"></span>
-          CAT <span class="count-badge">C18</span>
-        </button>
-
-        <button class="lux-motor-chip" onclick="filterByEngine('Scania', this)">
-          <span class="motor-logo-mini"><img src="logolar/scania.png" alt="Scania" onerror="this.style.display='none'"></span>
-          Scania <span class="count-badge">DI13</span>
-        </button>
-
-        <button class="lux-motor-chip" onclick="filterByEngine('Cummins', this)">
-          <span class="motor-logo-mini"><img src="logolar/cummins.png" alt="Cummins" onerror="this.style.display='none'"></span>
-          Cummins <span class="count-badge">QSB/QSC</span>
-        </button>
-
-        <button class="lux-motor-chip" onclick="filterByEngine('Mercury', this)">
-          <span class="motor-logo-mini"><img src="logolar/mercury.png" alt="Mercury" onerror="this.style.display='none'"></span>
-          Mercury <span class="count-badge">Verado</span>
-        </button>
-
-        <button class="lux-motor-chip" onclick="filterByEngine('Yamaha', this)">
-          <span class="motor-logo-mini"><img src="logolar/yamaha.png" alt="Yamaha" onerror="this.style.display='none'"></span>
-          Yamaha <span class="count-badge">Offshore</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="az-bar" id="azBar"></div>
-  </header>
-
-  <main>
+  <!-- 2. SADECE BURASI AŞAĞI YUKARI KAYACAK -->
+  <main id="mainScrollArea">
     <div class="stats-info" id="statsCount">Yükleniyor...</div>
     <div class="brands-grid" id="catalogGrid"></div>
   </main>
 
+  <!-- 3. ALT SABİT KONSOL -->
   <footer>
-    <p>
-      Bu veritabanı <strong>Sahibinden.com, YachtWorld, Powerboat Guide ve resmi kataloglardan</strong> derlenmiştir.<br>
-      <a href="javascript:void(0)" onclick="openReadme()">Veri Kaynakçası ve README</a> | Tekne Takip: <a href="https://vanemar.com/tr?srsltid=AU7gw4VqYNOMNEIy35uDoTHDUZlyL6fA8hgnRcfTx1G02sMlhjTkj_48" target="_blank" rel="noopener noreferrer">Vanemar</a>
-    </p>
+    <div class="footer-inner">
+      <p>
+        Bu veritabanı <strong>Sahibinden.com, YachtWorld, Powerboat Guide ve üretici kataloglarından</strong> derlenmiştir.<br>
+        <a href="javascript:void(0)" onclick="openReadme()">Veri Kaynakçası ve README</a> | Tekne Takip: <a href="https://vanemar.com/tr?srsltid=AU7gw4VqYNOMNEIy35uDoTHDUZlyL6fA8hgnRcfTx1G02sMlhjTkj_48" target="_blank" rel="noopener noreferrer">Vanemar</a>
+      </p>
 
-    <div class="neon-badge-wrapper">
-      <div class="neon-rotating-badge">
-        <div class="neon-badge-text">
-          Crafted &amp; Engineered by <span>CAFER ÇELİK</span>
+      <div class="neon-badge-wrapper">
+        <div class="neon-rotating-badge">
+          <div class="neon-badge-text">
+            Crafted &amp; Engineered by <span>CAFER ÇELİK</span>
+          </div>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- MODEL TEKNİK ÖZELLİK MODALI -->
   <div class="modal-overlay" id="specsModal" onclick="this.style.display='none'">
     <div class="modal-box" onclick="event.stopPropagation()">
       <div class="modal-head">
         <div>
           <h3 id="mTitle">-</h3>
-          <p id="mSubtitle" style="font-size: 11.5px; color: var(--neon-blue); margin-top: 2px;">-</p>
+          <p id="mSubtitle" style="font-size: 11px; color: var(--neon-blue); margin-top: 2px;">-</p>
         </div>
         <button onclick="document.getElementById('specsModal').style.display='none'">&times;</button>
       </div>
@@ -650,12 +851,13 @@
     </div>
   </div>
 
+  <!-- MOTOR DETAY MODALI -->
   <div class="modal-overlay" id="engineDetailModal" onclick="this.style.display='none'" style="z-index: 1300;">
     <div class="modal-box" onclick="event.stopPropagation()">
       <div class="modal-head">
         <div>
           <h3 id="eTitle">Motor Teknik Özellikleri</h3>
-          <p id="eSubtitle" style="font-size: 11.5px; color: var(--neon-blue); margin-top: 2px;">Denizcilik Güç Ünitesi Föyü</p>
+          <p id="eSubtitle" style="font-size: 11px; color: var(--neon-blue); margin-top: 2px;">Denizcilik Güç Ünitesi Föyü</p>
         </div>
         <button onclick="document.getElementById('engineDetailModal').style.display='none'">&times;</button>
       </div>
@@ -671,7 +873,7 @@
     </div>
   </div>
 
-  <!-- README MODAL (GÜNCEL KAYNAKÇA) -->
+  <!-- README MODAL -->
   <div class="modal-overlay" id="readmeModal" onclick="this.style.display='none'">
     <div class="modal-box large" onclick="event.stopPropagation()">
       <div class="modal-head">
@@ -680,32 +882,45 @@
       </div>
       <div class="readme-content">
         <p>Türkiye'de ve dünyada faaliyet gösteren 160'tan fazla tersanenin, model serilerinin, gövde hidrostatiklerinin ve güç ünitelerinin listelendiği açık kaynaklı bir denizcilik bilgi bankasıdır.</p>
-        
         <h4>1. Tekne & Tersane Veri Tabanı</h4>
         <ul>
-          <li><strong>Sahibinden.com (Deniz Araçları > Motoryat):</strong> Türkiye piyasasındaki tescilli yerli polyester atölyeleri (Safter, Rota, Yerliyurt, Isatek, Mursan vb.) ve popüler ithal seriler.</li>
-          <li><strong>Yatvitrini & Denizbülten:</strong> Türkiye sularındaki geleneksel sac/ahşap trawler ve lüks motoryatlar (Mengi Yay, Bilgin, Ada Yatçılık, Kargı Trawler vb.).</li>
+          <li><strong>Sahibinden.com:</strong> Türkiye'deki tescilli yerli polyester atölyeleri (Safter, Rota, Yerliyurt, Isatek vb.) ve popüler seriler.</li>
+          <li><strong>Yatvitrini & Denizbülten:</strong> Türkiye sularındaki geleneksel sac/ahşap trawler ve lüks motoryatlar (Mengi Yay, Bilgin, Ada Yatçılık vb.).</li>
           <li><strong>YachtWorld & Powerboat Guide:</strong> 10.000+ motoryatın fabrika arşivleri, LOA, beam, draft ve kabin kapasiteleri.</li>
         </ul>
-
-        <h4>2. Motor & Güç Ünitesi Teknik Kaynakçası (YENİ)</h4>
-        <p>Modellerde yer alan beygir gücü (HP), silindir hacmi (CC), silindir dizilimi, besleme tipi ve tahrik/şanzıman mekanizmaları doğrudan üretici marin servis dokümantasyonlarından derlenmiştir:</p>
+        <h4>2. Motor & Güç Ünitesi Teknik Kaynakçası</h4>
+        <p>Beygir gücü, silindir hacmi, tork ve şanzıman verileri doğrudan üretici teknik servis föylerinden derlenmiştir:</p>
         <ul>
-          <li><strong>Volvo Penta Marine:</strong> D4/D6 Aquamatic ve D6/D11/D13 IPS Pod Drive teknik ürün föyleri.</li>
-          <li><strong>MAN Engines:</strong> V8-1000/1200 ve V12-1400/1900/2000 lüks yat serisi yüksek hızlı marin dizel arşivleri.</li>
-          <li><strong>Caterpillar Marine (CAT):</strong> C18 ACERT ağır hizmet deplasman ve semi-displacement makine şartnameleri.</li>
-          <li><strong>Scania & Cummins Marine:</strong> Scania DI13 Heavy Duty ve Cummins Quantum Serisi (QSB 6.7 / QSC 8.3) trawler güç üniteleri.</li>
-          <li><strong>Mercury Marine:</strong> Verado V8 (4.6L) ve V12 (7.6L) AMS dıştan takma şanzıman ve motor verileri.</li>
-          <li><strong>Yamaha Motor Marine:</strong> F300 / F350 Offshore V6/V8 çok noktalı elektronik enjeksiyon (EFI) servis kılavuzları.</li>
+          <li><strong>Volvo Penta Marine:</strong> D4/D6 Aquamatic ve IPS Pod Drive ürün föyleri.</li>
+          <li><strong>MAN Engines:</strong> V8-1200 ve V12-1400 yüksek hızlı marin dizel arşivleri.</li>
+          <li><strong>Caterpillar Marine (CAT):</strong> C18 ACERT ağır hizmet deplasman şartnameleri.</li>
+          <li><strong>Scania & Cummins Marine:</strong> Scania DI13 Heavy Duty ve Cummins Quantum Serisi (QSB) trawler güç üniteleri.</li>
+          <li><strong>Mercury & Yamaha Marine:</strong> Verado V8 ve Offshore V6 dıştan takma servis kılavuzları.</li>
         </ul>
-
-        <h4>3. Güvenlik & Donanım Sponsorluğu</h4>
+        <h4>3. Güvenlik Sponsorluğu</h4>
         <p><strong>Vanemar Akıllı Tekne Takip:</strong> Limandaki teknelerin 7/24 sintine seviyesi, akü voltajı, GPS konumu ve sahil besleme güvenliği entegrasyonu.</p>
       </div>
     </div>
   </div>
 
   <script>
+    function getCountryFlag(country) {
+      if (country.includes("Türkiye")) return "🇹🇷";
+      if (country.includes("İtalya")) return "🇮🇹";
+      if (country.includes("İngiltere")) return "🇬🇧";
+      if (country.includes("ABD")) return "🇺🇸";
+      if (country.includes("Fransa")) return "🇫🇷";
+      if (country.includes("Almanya")) return "🇩🇪";
+      if (country.includes("Finlandiya")) return "🇫🇮";
+      if (country.includes("İsveç")) return "🇸🇪";
+      if (country.includes("Hollanda")) return "🇳🇱";
+      if (country.includes("İspanya")) return "🇪🇸";
+      if (country.includes("Norveç")) return "🇳🇴";
+      if (country.includes("Polonya")) return "🇵🇱";
+      if (country.includes("Yunanistan")) return "🇬🇷";
+      return "📍";
+    }
+
     function getBrandVectorLogo(brandName) {
       const b = brandName.toLowerCase();
 
@@ -713,75 +928,75 @@
         return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#042f2e"/><text x="50" y="38" font-family="'Cinzel', serif" font-weight="700" font-size="20" fill="#2dd4bf" text-anchor="middle" font-style="italic" letter-spacing="2">Riva</text></svg>`;
       }
       if (b.includes("ferretti")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M22 18h56v3H22zm0 8h38v3H22zm0 8h24v3H22z" fill="#38bdf8"/><text x="50" y="50" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1">FERRETTI</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M22 18h56v3H22zm0 8h38v3H22zm0 8h24v3H22z" fill="#38bdf8"/><text x="50" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1">FERRETTI</text></svg>`;
       }
       if (b.includes("pershing")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#18181b"/><polygon points="20,16 50,28 20,40" fill="#71717a"/><polygon points="35,16 65,28 35,40" fill="#e4e4e7"/><polygon points="50,16 80,28 50,40" fill="#38bdf8"/><text x="50" y="52" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">PERSHING</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#18181b"/><polygon points="20,16 50,28 20,40" fill="#71717a"/><polygon points="35,16 65,28 35,40" fill="#e4e4e7"/><polygon points="50,16 80,28 50,40" fill="#38bdf8"/><text x="50" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">PERSHING</text></svg>`;
       }
       if (b.includes("sunseeker")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#07111e"/><circle cx="50" cy="22" r="9" fill="none" stroke="#38bdf8" stroke-width="2.5"/><circle cx="50" cy="22" r="4" fill="#38bdf8"/><text x="50" y="47" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">SUNSEEKER</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#07111e"/><circle cx="50" cy="22" r="9" fill="none" stroke="#38bdf8" stroke-width="2.5"/><circle cx="50" cy="22" r="4" fill="#38bdf8"/><text x="50" y="47" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">SUNSEEKER</text></svg>`;
       }
       if (b.includes("fairline")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f1c33"/><path d="M30 20 L50 28 L70 20 L50 34 Z" fill="#38bdf8"/><circle cx="50" cy="18" r="3" fill="#ffffff"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="1">FAIRLINE</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f1c33"/><path d="M30 20 L50 28 L70 20 L50 34 Z" fill="#38bdf8"/><circle cx="50" cy="18" r="3" fill="#ffffff"/><text x="50" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="1">FAIRLINE</text></svg>`;
       }
       if (b.includes("princess")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f2b48"/><path d="M25 32 L32 18 L50 26 L68 18 L75 32 Z" fill="#ffffff"/><circle cx="32" cy="16" r="2" fill="#38bdf8"/><circle cx="50" cy="24" r="2" fill="#38bdf8"/><circle cx="68" cy="16" r="2" fill="#38bdf8"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9.5" fill="#ffffff" text-anchor="middle" letter-spacing="2">PRINCESS</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f2b48"/><path d="M25 32 L32 18 L50 26 L68 18 L75 32 Z" fill="#ffffff"/><circle cx="32" cy="16" r="2" fill="#38bdf8"/><circle cx="50" cy="24" r="2" fill="#38bdf8"/><circle cx="68" cy="16" r="2" fill="#38bdf8"/><text x="50" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9.5" fill="#ffffff" text-anchor="middle" letter-spacing="2">PRINCESS</text></svg>`;
       }
       if (b.includes("azimut")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0a1120"/><circle cx="42" cy="22" r="7" fill="none" stroke="#ffffff" stroke-width="2.5"/><circle cx="58" cy="22" r="7" fill="none" stroke="#38bdf8" stroke-width="2.5"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="11" fill="#ffffff" text-anchor="middle" letter-spacing="2">AZIMUT</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0a1120"/><circle cx="42" cy="22" r="7" fill="none" stroke="#ffffff" stroke-width="2.5"/><circle cx="58" cy="22" r="7" fill="none" stroke="#38bdf8" stroke-width="2.5"/><text x="50" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11" fill="#ffffff" text-anchor="middle" letter-spacing="2">AZIMUT</text></svg>`;
       }
       if (b.includes("sanlorenzo")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><text x="50" y="28" font-family="'Cinzel', serif" font-weight="700" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="2">SANLORENZO</text><line x1="25" y1="36" x2="75" y2="36" stroke="#94a3b8" stroke-width="1.5"/><text x="50" y="47" font-family="'Montserrat', sans-serif" font-size="6" fill="#38bdf8" text-anchor="middle" letter-spacing="1">YACHTS</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><text x="50" y="28" font-family="'Cinzel', serif" font-weight="700" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="2">SANLORENZO</text><line x1="25" y1="36" x2="75" y2="36" stroke="#94a3b8" stroke-width="1.5"/><text x="50" y="47" font-family="'Plus Jakarta Sans', sans-serif" font-size="6" fill="#38bdf8" text-anchor="middle" letter-spacing="1">YACHTS</text></svg>`;
       }
       if (b.includes("wally")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#000000"/><text x="50" y="38" font-family="'Montserrat', sans-serif" font-weight="800" font-size="17" fill="#ffffff" text-anchor="middle" letter-spacing="2">wally</text><circle cx="82" cy="27" r="3" fill="#00d2ff"/></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#000000"/><text x="50" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="17" fill="#ffffff" text-anchor="middle" letter-spacing="2">wally</text><circle cx="82" cy="27" r="3" fill="#00d2ff"/></svg>`;
       }
       if (b.includes("axopar")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#000000"/><path d="M22 18 L78 42 M78 18 L22 42" stroke="#ffffff" stroke-width="3"/><rect x="42" y="24" width="16" height="12" fill="#000000"/><text x="50" y="34" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8" fill="#38bdf8" text-anchor="middle">AXOPAR</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#000000"/><path d="M22 18 L78 42 M78 18 L22 42" stroke="#ffffff" stroke-width="3"/><rect x="42" y="24" width="16" height="12" fill="#000000"/><text x="50" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8" fill="#38bdf8" text-anchor="middle">AXOPAR</text></svg>`;
       }
       if (b.includes("sea ray")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0369a1"/><path d="M20 28 Q 35 15, 50 28 T 80 28" fill="none" stroke="#ffffff" stroke-width="3"/><path d="M20 36 Q 35 23, 50 36 T 80 36" fill="none" stroke="#bae6fd" stroke-width="2"/><text x="50" y="50" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8" fill="#ffffff" text-anchor="middle" letter-spacing="1">SEA RAY</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0369a1"/><path d="M20 28 Q 35 15, 50 28 T 80 28" fill="none" stroke="#ffffff" stroke-width="3"/><path d="M20 36 Q 35 23, 50 36 T 80 36" fill="none" stroke="#bae6fd" stroke-width="2"/><text x="50" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8" fill="#ffffff" text-anchor="middle" letter-spacing="1">SEA RAY</text></svg>`;
       }
       if (b.includes("whaler")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#1e3a5f"/><polygon points="50,12 60,32 40,32" fill="#dc2626"/><text x="50" y="44" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle">BOSTON</text><text x="50" y="52" font-family="'Montserrat', sans-serif" font-weight="700" font-size="6.5" fill="#f87171" text-anchor="middle">WHALER</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#1e3a5f"/><polygon points="50,12 60,32 40,32" fill="#dc2626"/><text x="50" y="44" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle">BOSTON</text><text x="50" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="6.5" fill="#f87171" text-anchor="middle">WHALER</text></svg>`;
       }
       if (b.includes("viking")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M28 16 L50 38 L72 16 L62 16 L50 28 L38 16 Z" fill="#f59e0b"/><text x="50" y="50" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">VIKING</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M28 16 L50 38 L72 16 L62 16 L50 28 L38 16 Z" fill="#f59e0b"/><text x="50" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">VIKING</text></svg>`;
       }
       if (b.includes("sirena")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M50 14 L74 30 L50 24 L26 30 Z" fill="#38bdf8"/><text x="50" y="47" font-family="'Montserrat', sans-serif" font-weight="800" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="2">SIRENA</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M50 14 L74 30 L50 24 L26 30 Z" fill="#38bdf8"/><text x="50" y="47" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="2">SIRENA</text></svg>`;
       }
       if (b.includes("numarine")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#111827"/><circle cx="50" cy="22" r="10" fill="none" stroke="#ef4444" stroke-width="3"/><path d="M46 16 L54 28" stroke="#ffffff" stroke-width="2.5"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">NUMARINE</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#111827"/><circle cx="50" cy="22" r="10" fill="none" stroke="#ef4444" stroke-width="3"/><path d="M46 16 L54 28" stroke="#ffffff" stroke-width="2.5"/><text x="50" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">NUMARINE</text></svg>`;
       }
       if (b.includes("vicem")) {
         return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#451a03"/><circle cx="50" cy="22" r="9" fill="none" stroke="#fef3c7" stroke-width="2"/><text x="50" y="26" font-family="'Cinzel', serif" font-weight="700" font-size="9" fill="#fef3c7" text-anchor="middle">V</text><text x="50" y="47" font-family="'Cinzel', serif" font-weight="700" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1">VICEM</text></svg>`;
       }
       if (b.includes("ada yat")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#78350f"/><path d="M22 30 L32 20 L68 20 L78 30 L70 36 L30 36 Z" fill="#fef3c7"/><text x="50" y="49" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">ADA YAT</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#78350f"/><path d="M22 30 L32 20 L68 20 L78 30 L70 36 L30 36 Z" fill="#fef3c7"/><text x="50" y="49" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">ADA YAT</text></svg>`;
       }
       if (b.includes("safter")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#991b1b"/><circle cx="50" cy="22" r="8" fill="#ffffff"/><polygon points="46,18 56,22 46,26" fill="#991b1b"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">SAFTER</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#991b1b"/><circle cx="50" cy="22" r="8" fill="#ffffff"/><polygon points="46,18 56,22 46,26" fill="#991b1b"/><text x="50" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="10" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">SAFTER</text></svg>`;
       }
       if (b.includes("rota")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#1e3a8a"/><circle cx="50" cy="21" r="8" fill="none" stroke="#ffffff" stroke-width="2.5"/><path d="M50 10v22M39 21h22" stroke="#38bdf8" stroke-width="2"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">ROTA</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#1e3a8a"/><circle cx="50" cy="21" r="8" fill="none" stroke="#ffffff" stroke-width="2.5"/><path d="M50 10v22M39 21h22" stroke="#38bdf8" stroke-width="2"/><text x="50" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">ROTA</text></svg>`;
       }
       if (b.includes("yerliyurt")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0369a1"/><circle cx="50" cy="18" r="4" fill="#ffffff"/><path d="M50 22v10M40 28q10 8 20 0" stroke="#ffffff" stroke-width="2.5" fill="none"/><text x="50" y="50" font-family="'Montserrat', sans-serif" font-weight="800" font-size="7.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">YERLİYURT</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0369a1"/><circle cx="50" cy="18" r="4" fill="#ffffff"/><path d="M50 22v10M40 28q10 8 20 0" stroke="#ffffff" stroke-width="2.5" fill="none"/><text x="50" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="7.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">YERLİYURT</text></svg>`;
       }
       if (b.includes("williams")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><circle cx="50" cy="21" r="9" fill="none" stroke="#38bdf8" stroke-width="2.5"/><circle cx="50" cy="21" r="3" fill="#ffffff"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">WILLIAMS</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><circle cx="50" cy="21" r="9" fill="none" stroke="#38bdf8" stroke-width="2.5"/><circle cx="50" cy="21" r="3" fill="#ffffff"/><text x="50" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="1">WILLIAMS</text></svg>`;
       }
       if (b.includes("zodiac")) {
-        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M30 16h40l-36 16h36" stroke="#ef4444" stroke-width="3" fill="none"/><text x="50" y="48" font-family="'Montserrat', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1">ZODIAC</text></svg>`;
+        return `<svg viewBox="0 0 100 60"><rect width="100" height="60" fill="#0f172a"/><path d="M30 16h40l-36 16h36" stroke="#ef4444" stroke-width="3" fill="none"/><text x="50" y="48" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="1">ZODIAC</text></svg>`;
       }
 
       const initials = brandName.substring(0, 3).toUpperCase();
       return `<svg viewBox="0 0 100 60">
-        <rect width="100" height="60" fill="#0f172a"/>
-        <rect x="6" y="6" width="88" height="48" rx="6" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3,2"/>
-        <text x="50" y="32" font-family="'Montserrat', sans-serif" font-weight="800" font-size="${brandName.length > 9 ? '8.5' : '10.5'}" fill="#ffffff" text-anchor="middle" letter-spacing="1">${brandName.substring(0, 11).toUpperCase()}</text>
-        <text x="50" y="44" font-family="'Montserrat', sans-serif" font-weight="700" font-size="6.5" fill="#38bdf8" text-anchor="middle" letter-spacing="0.5">${initials} YACHT</text>
+        <rect width="100" height="60" fill="#0c1833"/>
+        <rect x="6" y="6" width="88" height="48" rx="6" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <text x="50" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="${brandName.length > 9 ? '8.5' : '10.5'}" fill="#ffffff" text-anchor="middle" letter-spacing="1">${brandName.substring(0, 11).toUpperCase()}</text>
+        <text x="50" y="44" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="6.5" fill="#38bdf8" text-anchor="middle" letter-spacing="0.5">${initials} YACHT</text>
       </svg>`;
     }
 
@@ -860,7 +1075,6 @@
 
     let activeSelectedEngine = "";
 
-    // 160+ TERSANENİN TAM LİSTESİ
     const rawBrands = [
       { name: "Absolute Yachts", url: "https://www.absoluteyachts.com", country: "İtalya", series: [{ name: "Navetta & Fly", models: ["45 Navetta", "52 Navetta", "58 Navetta", "47 Fly", "52 Fly", "60 Fly"] }] },
       { name: "Ada Yatçılık", url: "https://adayacht.com", country: "Türkiye", series: [{ name: "Ahşap & Sac Trawler", models: ["Ada 18M", "Ada 24M", "Ada 30M"] }] },
@@ -1032,6 +1246,7 @@
 
     rawBrands.forEach(b => {
       b.logo = getBrandVectorLogo(b.name);
+      b.flag = getCountryFlag(b.country);
     });
 
     const brands = rawBrands.sort((a, b) => a.name.localeCompare(b.name, 'tr'));
@@ -1040,9 +1255,11 @@
     const searchInput = document.getElementById("searchInput");
     const azBar = document.getElementById("azBar");
     const statsCount = document.getElementById("statsCount");
+    const clearAllFiltersBtn = document.getElementById("clearAllFiltersBtn");
 
     let currentLetter = 'ALL';
     let currentEngineFilter = 'ALL';
+    let currentCountryFilter = 'ALL';
 
     const alphabet = ['ALL', ...new Set(brands.map(b => b.name.charAt(0).toUpperCase()))].sort((a,b) => a === 'ALL' ? -1 : a.localeCompare(b, 'tr'));
     
@@ -1054,13 +1271,12 @@
         document.querySelectorAll(".az-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
         currentLetter = letter;
-        searchInput.value = "";
+        checkFilterResetState();
         render();
       };
       azBar.appendChild(btn);
     });
 
-    // TEKNEYE ÖZGÜ MOTOR BELİRLEME
     function getModelEngine(brandName, modelName) {
       const b = brandName.toLowerCase();
       const m = modelName.toLowerCase();
@@ -1089,27 +1305,55 @@
       return "Mercury Verado V8 Outboard";
     }
 
-    function filterByEngine(engineType, btnElement) {
-      document.querySelectorAll(".lux-motor-chip").forEach(c => c.classList.remove("active"));
+    // ÜLKE FİLTRELEME
+    function filterByCountry(country, btnElement) {
+      btnElement.parentElement.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
       btnElement.classList.add("active");
-      currentEngineFilter = engineType;
-
-      const clearBtn = document.getElementById("clearEngineBtn");
-      if (engineType === 'ALL') {
-        clearBtn.style.display = 'none';
-      } else {
-        clearBtn.style.display = 'inline-block';
-      }
-
+      currentCountryFilter = country;
+      checkFilterResetState();
       render(searchInput.value);
     }
 
-    function clearEngineFilter() {
-      const allBtn = document.querySelector(".lux-motor-chip");
-      filterByEngine('ALL', allBtn);
+    // MOTOR FİLTRELEME
+    function filterByEngine(engineType, btnElement) {
+      btnElement.parentElement.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+      btnElement.classList.add("active");
+      currentEngineFilter = engineType;
+      checkFilterResetState();
+      render(searchInput.value);
     }
 
-    // MOTOR FİLTRE EŞLEŞTİRMESİ
+    function checkFilterResetState() {
+      if (currentCountryFilter !== 'ALL' || currentEngineFilter !== 'ALL' || currentLetter !== 'ALL' || searchInput.value.trim() !== '') {
+        clearAllFiltersBtn.style.display = 'inline-block';
+      } else {
+        clearAllFiltersBtn.style.display = 'none';
+      }
+    }
+
+    function resetAllFilters() {
+      currentCountryFilter = 'ALL';
+      currentEngineFilter = 'ALL';
+      currentLetter = 'ALL';
+      searchInput.value = '';
+
+      // UI Reset
+      document.querySelectorAll(".filter-sub-bar").forEach(bar => {
+        bar.querySelectorAll(".filter-chip").forEach((c, idx) => {
+          if (idx === 0) c.classList.add("active");
+          else c.classList.remove("active");
+        });
+      });
+
+      document.querySelectorAll(".az-btn").forEach((b, idx) => {
+        if (idx === 0) b.classList.add("active");
+        else b.classList.remove("active");
+      });
+
+      checkFilterResetState();
+      render();
+    }
+
     function isEngineMatch(brandName, modelName, filter) {
       if (filter === 'ALL') return true;
       const eng = getModelEngine(brandName, modelName);
@@ -1128,10 +1372,17 @@
       const q = query.toLowerCase().trim();
 
       const filtered = brands.filter(b => {
+        // A-Z Filtresi
         if (currentLetter !== 'ALL' && !b.name.toUpperCase().startsWith(currentLetter)) {
           return false;
         }
 
+        // Ülke Filtresi
+        if (currentCountryFilter !== 'ALL' && !b.country.includes(currentCountryFilter)) {
+          return false;
+        }
+
+        // Motor Filtresi
         if (currentEngineFilter !== 'ALL') {
           const hasEngine = b.series.some(s => 
             s.models.some(m => isEngineMatch(b.name, m, currentEngineFilter))
@@ -1139,6 +1390,7 @@
           if (!hasEngine) return false;
         }
 
+        // Arama Kutusu
         if (!q) return true;
         const brandMatch = b.name.toLowerCase().includes(q) || b.country.toLowerCase().includes(q);
         const seriesMatch = b.series.some(s => 
@@ -1151,7 +1403,7 @@
       statsCount.innerText = `Toplam ${filtered.length} Tersane / Marka Listeleniyor`;
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px 10px;">Aradığınız kriterlere uygun tersane veya model bulunamadı.</div>`;
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 50px 10px; font-size: 13px;">Seçilen kriterlere uygun tekne veya tersane bulunamadı. <br><button onclick="resetAllFilters()" style="margin-top: 10px; background: var(--neon-blue); border: none; color: #020617; padding: 6px 14px; border-radius: 6px; font-weight: 700; cursor: pointer;">Filtreleri Sıfırla</button></div>`;
         return;
       }
 
@@ -1187,7 +1439,9 @@
                 <h2>${b.name}</h2>
                 <svg viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zm5 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
               </a>
-              <div><span>${b.country}</span></div>
+              <div class="brand-country-badge">
+                <span>${b.flag}</span><span>${b.country}</span>
+              </div>
             </div>
           </div>
           <div class="brand-body">
@@ -1250,9 +1504,7 @@
     }
 
     searchInput.addEventListener("input", (e) => {
-      currentLetter = 'ALL';
-      document.querySelectorAll(".az-btn").forEach(b => b.classList.remove("active"));
-      azBar.children[0].classList.add("active");
+      checkFilterResetState();
       render(e.target.value);
     });
 
