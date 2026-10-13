@@ -700,7 +700,53 @@
       margin-top: 6px;
       margin-bottom: 16px;         /* Arama çubuğu ile arasına ferah bir boşluk bırakır */
       text-align: center;          /* Başlık ortalıysa ortalar */
+      @media (max-width: 480px) {
+        header h1 { font-size: 15px; margin-bottom: 2px; }
+       .alt-baslik { font-size: 0.6rem; letter-spacing: 1px; margin-bottom: 8px; }
+  
+      /* Filtre kutularının dikey boşluklarını kıs */
+      .filter-section, .filter-box, .search-container {
+        padding: 6px 10px !important;
+        margin-bottom: 6px !important;
+  
+      }
+
+        /* Ülke ve Makine butonlarını tek satırda parmakla kaydırılabilir yap */
+        .filter-buttons-container, /* Kullandığın buton wrapper class adı neyse */
+        .country-filters, 
+        .engine-filters {
+                            display: flex !important;
+                            flex-wrap: nowrap !important;
+                            overflow-x: auto !important;
+                            -webkit-overflow-scrolling: touch;
+                            gap: 6px !important;
+                            padding-bottom: 4px;
+  
+                          }
+  
+  /* Buton boyutlarını mobilde biraz küçült */
+  .filter-btn, button {
+    font-size: 11px !important;
+    padding: 4px 8px !important;
+    white-space: nowrap !important;
+  }
+
+  /* A-Z klavye harflerini de tek satır yatay kaydırmalı yap (3 satır yer kaplamasın) */
+  .alphabet-filter, .az-container {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 4px !important;
+    padding: 4px 0 !important;
+  }
+  .alphabet-filter button {
+    min-width: 28px !important;
+    height: 28px !important;
+    padding: 0 !important;
+    font-size: 11px !important;
+  }
 }
+    }
   </style>
 </head>
 <body>
