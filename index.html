@@ -774,6 +774,119 @@
       .filter-chips-row { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch; gap: 5px !important; }
       .filter-chip { flex-shrink: 0 !important; }
     }
+    /* ==========================================
+   BN-MARIN MOBİL ARAYÜZ OPTİMİZASYONU
+   ========================================== */
+@media (max-width: 768px) {
+  /* Üst kayan bant yüksekliği ve boyutu */
+  .top-security-bar {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+  }
+
+  /* Header üst satırını derli toplu yap */
+  .header-top-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 12px !important;
+    padding: 10px 12px !important;
+  }
+
+  /* Logo ve Başlık bloğu */
+  .brand-title-group {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+
+  .brand-title-group svg {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .portal-subtitle {
+    font-size: 10px !important;
+    letter-spacing: 0.3px !important;
+  }
+
+  /* README ve Asistan butonlarını yan yana al, kompakt yap */
+  .header-top-row > div:has(.readme-trigger-btn),
+  .header-top-row {
+    width: 100% !important;
+  }
+
+  /* Butonların yan yana eşit oturması */
+  .readme-trigger-btn {
+    flex: 1 !important;
+    padding: 7px 10px !important;
+    font-size: 11.5px !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+  }
+
+  /* Eğer butonlar alt alta diziliyorsa yan yana sarmalayacak stil */
+  .header-top-row button {
+    margin: 0 !important;
+  }
+
+  /* Arama çubuğu mobilde tam ekran genişliğinde */
+  .controls-row {
+    padding: 0 10px 10px 10px !important;
+  }
+
+  /* Filtre barlarının dokunmatik kaydırılması */
+  .filter-row {
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 4px 2px !important;
+  }
+  .filter-row::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Alfabe çubuğu butonları */
+  .alpha-nav {
+    gap: 3px !important;
+  }
+  .alpha-btn {
+    padding: 4px 7px !important;
+    font-size: 11px !important;
+  }
+
+  /* Tekne kartları mobilde kenarlardan boşluklu dursun */
+  .card-grid {
+    padding: 10px !important;
+    gap: 12px !important;
+  }
+  /* Mobil Header Buton Hizalaması */
+  .header-top-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 12px !important;
+    padding: 10px 12px !important;
+  }
+  .brand-title-group {
+    justify-content: center !important;
+  }
+  .header-top-row > div:last-child {
+    width: 100% !important;
+    max-width: 420px !important;
+  }
+  .readme-trigger-btn {
+    flex: 1 !important;
+    justify-content: center !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -819,14 +932,18 @@
             <div class="portal-subtitle" style="margin-top: 2px; font-size: 11px; color: #94A3B8;">Kapsamlı Tekne &amp; Güç Veri Portalı</div>
           </div>
         </div>
-        <button class="readme-trigger-btn" onclick="openReadme()">
+        <!-- Mobilde ve Masaüstünde Butonları Hizalayan Kapsayıcı -->
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <button type="button" class="readme-trigger-btn" onclick="openReadme()">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-          Veri Kaynakçası (README)
+          README
         </button>
+
         <button type="button" class="readme-trigger-btn" onclick="openAssistantModal()" style="border-color: #a855f7; color: #d8b4fe; background: rgba(88, 28, 135, 0.3);">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13z"/></svg>
-  🤖 Asistan (AI Finder)
-</button>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5 2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13z"/></svg>
+          Asistan (AI Finder)
+        </button>
+      </div>
       </div>
 
       <div class="controls-row">
