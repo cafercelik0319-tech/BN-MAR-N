@@ -64,28 +64,115 @@
       z-index: 100;
     }
 
+   /* ==========================================
+       VANEMAR ULTRA-PREMIUM SONSUS AKIŞ BANTI
+       ========================================== */
     .top-security-bar {
-  padding: 4px 0 !important;          /* Üst-alt boşluğu daraltıp bandı inceltir */
-  font-size: 11px !important;         /* Yazı boyutunu daha zarif yapar */
-  letter-spacing: 0.3px !important;
-}
+      position: relative;
+      display: flex;
+      overflow: hidden;
+      user-select: none;
+      /* Lüks gece mavisi & siber mor degrade + cam hissi */
+      background: linear-gradient(90deg, rgba(3, 10, 26, 0.95) 0%, rgba(10, 25, 55, 0.85) 50%, rgba(3, 10, 26, 0.95) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.28);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(0, 210, 255, 0.15);
+      padding: 6px 0;
+      /* Sağ ve sol kenarlardan yumuşak şeffaflaşarak kaybolma maskesi */
+      mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    }
 
-.top-security-bar svg {
-  width: 12px !important;             /* İkonları yazı boyuyla dengeler */
-  height: 12px !important;
-}
-   .marquee-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 35px;
-  padding: 7px 0;
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 12,5px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  animation: marquee 11s linear infinite;
-}
+    .marquee-track {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 60px;
+      min-width: 100%;
+      padding-right: 60px;
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      animation: continuousScroll 26s linear infinite;
+      transition: filter 0.3s ease;
+    }
+
+    .top-security-bar:hover .marquee-track {
+      animation-play-state: paused;
+      filter: brightness(1.1);
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    /* İkonların arkasındaki zarif parlayan mini rozet */
+    .marquee-icon-box {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(0, 210, 255, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.25);
+    }
+
+    .marquee-icon-box svg {
+      width: 12px;
+      height: 12px;
+      fill: #38bdf8;
+    }
+
+    /* Canlı sistem radar noktası (Pulsing Dot) */
+    .live-indicator {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseRadar 1.5s infinite;
+      margin-right: 4px;
+    }
+
+    @keyframes pulseRadar {
+      0% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.3); box-shadow: 0 0 12px #34d399; }
+      100% { opacity: 0.4; transform: scale(0.9); }
+    }
+
+    .marquee-item span.highlight {
+      color: #00d2ff;
+      font-weight: 800;
+      text-shadow: 0 0 12px rgba(0, 210, 255, 0.65);
+      letter-spacing: 0.8px;
+    }
+
+    .marquee-tag {
+      font-size: 10px;
+      font-weight: 800;
+      background: rgba(168, 85, 247, 0.2);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      padding: 2px 7px;
+      border-radius: 99px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-left: 6px;
+    }
+
+    @keyframes continuousScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
     }
     .top-security-bar:hover .marquee-link { animation-play-state: paused; }
     .marquee-item { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
@@ -889,6 +976,40 @@
     font-size: 12px !important;
     white-space: nowrap !important;
   }
+/* Sadece "Premium" Yazısının Kendisi Parlasın (Arka plansız / Kutusuz) */
+    .premium-text-glow {
+      background: transparent !important;
+      border: none !important;
+      cursor: pointer;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #94a3b8;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .premium-text-glow .glow-word {
+      color: #38bdf8;
+      font-weight: 800;
+      animation: textPulse 1.8s infinite alternate;
+    }
+
+    .premium-text-glow:hover .glow-word {
+      color: #00d2ff;
+      text-shadow: 0 0 14px rgba(0, 210, 255, 1), 0 0 25px rgba(0, 210, 255, 0.8);
+    }
+
+    /* Yazı parıldama animasyonu */
+    @keyframes textPulse {
+      0% {
+        text-shadow: 0 0 4px rgba(56, 189, 248, 0.4);
+      }
+      100% {
+        text-shadow: 0 0 12px rgba(0, 210, 255, 0.95), 0 0 22px rgba(56, 189, 248, 0.7);
+      }
+    }
 }
 
   </style>
@@ -896,15 +1017,28 @@
 <body>
 
   <div class="top-fixed-wrapper">
-    <div class="top-security-bar">
-      <a href="https://vanemar.com/tr?srsltid=AU7gw4VqYNOMNEIy35uDoTHDUZlyL6fA8hgnRcfTx1G02sMlhjTkj_48" target="_blank" rel="noopener noreferrer" class="marquee-link" title="Vanemar Akıllı Tekne Takip & Güvenlik Sistemleri">
+  <div class="top-security-bar">
+      <!-- 1. GRUP -->
+      <a href="https://vanemar.com/tr?srsltid=AU7gw4VqYNOMNEIy35uDoTHDUZlyL6fA8hgnRcfTx1G02sMlhjTkj_48" target="_blank" rel="noopener noreferrer" class="marquee-track" title="Vanemar Akıllı Tekne Takip & Güvenlik Sistemleri">
         <div class="marquee-item">
           <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
           <span>Aklın kalmasın limanda, <span class="highlight">Vanemar</span> her an yanında. Tekneni 7/24 cebinden takip et!</span>
         </div>
         <div class="marquee-item">
           <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-          <span>Sintine alarmı, akü voltajı, GPS konum & sahil besleme &bull; Tıkla!</span>
+          <span>Sintine alarmı, akü voltajı, GPS konum &amp; sahil besleme &bull; Tıkla!</span>
+        </div>
+      </a>
+
+      <!-- 2. GRUP (Sonsuz Döngü Tamamlayıcısı) -->
+      <a href="https://vanemar.com/tr?srsltid=AU7gw4VqYNOMNEIy35uDoTHDUZlyL6fA8hgnRcfTx1G02sMlhjTkj_48" target="_blank" rel="noopener noreferrer" class="marquee-track" aria-hidden="true" tabindex="-1">
+        <div class="marquee-item">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          <span>Aklın kalmasın limanda, <span class="highlight">Vanemar</span> her an yanında. Tekneni 7/24 cebinden takip et!</span>
+        </div>
+        <div class="marquee-item">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          <span>Sintine alarmı, akü voltajı, GPS konum &amp; sahil besleme &bull; Tıkla!</span>
         </div>
       </a>
     </div>
@@ -933,7 +1067,7 @@
               <span style="font-size: 22px; font-weight: 900; letter-spacing: 1.5px; color: #ffffff;">BN</span>
               <span style="font-size: 22px; font-weight: 300; letter-spacing: 1px; color: #00D2FF;">MARİN</span>
              </div>
-            <div class="portal-subtitle" style="margin-top: 2px; font-size: 11px; color: #94A3B8;">Kapsamlı Tekne &amp; Güç Veri Portalı</div>
+            <div class="portal-subtitle" style="margin-top: 2px; font-size: 11px; color: #94A3B8;">Rotanızdaki her tersane, aradığınız her tekne.</div>
           </div>
         </div>
         <!-- Mobilde ve Masaüstünde Butonları Hizalayan Kapsayıcı -->
@@ -1086,6 +1220,24 @@
         </tr>
         <tr><td>Maksimum Hız</td><td id="m_speed">-</td></tr>
         <tr><td>Kamara Kapasitesi</td><td id="m_cabins">-</td></tr>
+        <tr>
+          <td>Özellik:</td>
+          <td>
+            <span class="premium-text-glow" onclick="toggleVanemarSpecs()" title="Uyumlu Vanemar IoT Cihazlarını Göster">
+              <span class="glow-word">Premium</span> Seçenekler ↗
+            </span>
+          </td>
+        </tr>
+      </table>
+
+      <!-- AÇILIR VANEMAR UYUMLU ÜRÜNLER ALANI -->
+      <div id="vanemarSpecsBox" class="vanemar-compatible-box">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(250,204,21,0.25); padding-bottom:4px; margin-bottom:6px;">
+          <span style="font-size:11px; font-weight:800; color:#fde047;">🛡️ Bu Modele Uyumlu Vanemar IoT Donanımları</span>
+          <span style="font-size:9.5px; color:#94a3b8;">(Mağazada İncele ↗)</span>
+        </div>
+        <div id="vanemarProductsList"></div>
+      </div>
       </table>
     </div>
   </div>
@@ -1134,8 +1286,8 @@
         <h3>📌 Proje & Kapsamlı Veri Kaynakçası (README)</h3>
         <button onclick="document.getElementById('readmeModal').style.display='none'">&times;</button>
       </div>
-      <div class="readme-content">
-       <div style="margin-bottom: 16px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 12px; display: flex; align-items: center; gap: 12px;">
+     <div class="readme-content">
+        <div style="margin-bottom: 16px; border-bottom: 1px solid rgba(56, 189, 248, 0.2); padding-bottom: 12px; display: flex; align-items: center; gap: 12px;">
           <!-- BN MARIN Mini Logo -->
           <svg width="38" height="38" viewBox="0 0 100 100" style="flex-shrink: 0;">
             <defs>
@@ -1162,28 +1314,38 @@
             <p style="color: #94a3b8; margin: 0; font-size: 0.82rem; font-style: italic;">"Rotanızdaki her tersane, aradığınız her tekne."</p>
           </div>
         </div>
+
         <p style="color: #cbd5e1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 14px;">
           Türkiye'de ve dünyada faaliyet gösteren 160'tan fazla tersanenin, model serilerinin, gövde hidrostatiklerinin ve sevk sistemlerinin teknik parametrelerle derlendiği interaktif açık deniz referans kütüphanesidir.
         </p>
+
         <h4>1. Tekne &amp; Tersane Veri Tabanı</h4>
         <ul>
-          <li><strong>Sahibinden.com:</strong> Türkiye'deki tescilli yerli polyester atölyeleri ve güncel piyasa envanteri.</li>
-          <li><strong>Yatvitrini &amp; Denizbülten:</strong> Türkiye sularındaki geleneksel sac/ahşap trawler ve motoryat imalatçıları.</li>
-          <li><strong>YachtWorld &amp; Powerboat Guide:</strong> 10.000+ motoryatın fabrika arşivleri, LOA, beam, draft ve deplasman spesifikasyonları.</li>
+          <li><strong>Sahibinden.com:</strong> Türkiye'deki tescilli yerli polyester atölyeleri ve güncel piyasa envanteri[cite: 5].</li>
+          <li><strong>Yatvitrini &amp; Denizbülten:</strong> Türkiye sularındaki geleneksel sac/ahşap trawler ve motoryat imalatçıları[cite: 5].</li>
+          <li><strong>YachtWorld &amp; Powerboat Guide:</strong> 10.000+ motoryatın fabrika arşivleri, LOA, beam, draft ve deplasman spesifikasyonları[cite: 5].</li>
         </ul>
+
         <h4>2. Motor &amp; Güç Ünitesi Teknik Kaynakçası</h4>
         <ul>
-          <li><strong>Volvo Penta Marine:</strong> D-Serisi (D1-D16) ve IPS Pod Drive ürün föyleri.</li>
-          <li><strong>MAN Engines:</strong> V8-1200 ve V12-2000 marin dizel arşivleri.</li>
-          <li><strong>Caterpillar Marine (CAT):</strong> C18 ACERT ve C32 deplasman şartnameleri.</li>
-          <li><strong>Scania &amp; Cummins Marine:</strong> Scania DI13/DI16 ve Cummins Quantum serisi föyleri.</li>
-          <li><strong>Mercury &amp; Yamaha Marine:</strong> Verado ve Offshore servis kılavuzları.</li>
+          <li><strong>Volvo Penta Marine:</strong> D-Serisi (D1-D16) ve IPS Pod Drive ürün föyleri[cite: 5].</li>
+          <li><strong>MAN Engines:</strong> V8-1200 ve V12-2000 marin dizel arşivleri[cite: 5].</li>
+          <li><strong>Caterpillar Marine (CAT):</strong> C18 ACERT ve C32 deplasman şartnameleri[cite: 5].</li>
+          <li><strong>Scania &amp; Cummins Marine:</strong> Scania DI13/DI16 ve Cummins Quantum serisi föyleri[cite: 5].</li>
+          <li><strong>Mercury &amp; Yamaha Marine:</strong> Verado ve Offshore servis kılavuzları[cite: 5].</li>
         </ul>
-        <h4>3. Güvenlik Sponsorluğu</h4>
-        <p><strong>Vanemar Akıllı Tekne Takip:</strong> Limandaki teknelerin 7/24 telemetri güvenliği.</p>
+
+        <h4>3. Telemetri &amp; Akıllı IoT Donanım Eşleştirmesi (Vanemar Entegrasyonu)</h4>
+        <p>Her modelin teknik föyünde boyuta (LOA/Feet) ve kullanım tipine göre doğrudan Vanemar donanımları dinamik olarak önerilir ve ilgili ürün sayfalarına yönlendirilir:</p>
+        <ul>
+          <li><strong>Küçük &amp; Açık Tekneler (&lt; 35 ft):</strong> Vanemar Gateway, kablosuz sintine suyu alarmı ve tekli akü sensörü kiti.</li>
+          <li><strong>Lüks Motoryat &amp; Flybridge (35 - 55 ft):</strong> Canlı yayın HD kablosuz tekne kamerası, duman/yangın dedektörü ve sahil besleme akıllı prizi.</li>
+          <li><strong>Mega Yat &amp; Trawler (&gt; 55 ft):</strong> NMEA 2000 motor/tank entegrasyon adaptörü ve çoklu kamera gözetim ağı.</li>
+        </ul>
+
+        <h4>4. Doğal Dil İşleme &amp; Akıllı Asistan (AI Finder)</h4>
+        <p>Kullanıcıların <em>"Volvo kullanan İtalyan tekneleri"</em>, <em>"300 hp üstü Mercury"</em> veya <em>"Yerli sac trawler"</em> gibi serbest metin sorgularını anlık filtreleyebilen kural tabanlı yapay zeka arama motoru[cite: 5].</p>
       </div>
-    </div>
-  </div>
     <!-- AKILLI ASİSTAN MODAL -->
   <div class="modal-overlay" id="assistantModal" onclick="this.style.display='none'" style="z-index: 1600;">
     <div class="modal-box large" onclick="event.stopPropagation()" style="border-color: #a855f7; box-shadow: 0 0 35px rgba(168, 85, 247, 0.4);">
@@ -1219,6 +1381,94 @@
   </div>
   
   <script>
+    // Vanemar kutusunu açıp kapatan tetikleyici
+    function toggleVanemarSpecs() {
+      const box = document.getElementById("vanemarSpecsBox");
+      if (!box) return;
+      box.style.display = (box.style.display === "block") ? "none" : "block";
+    }
+
+    // Teknenin boyuna göre uyumlu Vanemar ürünlerini eşleştirir
+    function renderVanemarRecommendations(loaFeet) {
+      const listEl = document.getElementById("vanemarProductsList");
+      if (!listEl) return;
+
+      let products = [];
+
+      // 1. Her modelde mutlaka merkez ünite Gateway
+      products.push({
+        title: "Vanemar Gateway (Merkez Ünite)",
+        desc: "GPS Seyir & Geofence, Küresel SIM ve Ana Akü Voltaj Takibi",
+        badge: "Zorunlu Merkez",
+        url: "https://vanemar.com/tr/products/vanemar-gateway"
+      });
+
+      // 2. Boyuta göre donanım tavsiyesi
+      if (loaFeet < 35) {
+        // Küçük / Açık / Günübirlik Sınıfı
+        products.push({
+          title: "Vanemar Tekne Sintine Alarmı",
+          desc: "Sintinedeki su yükselmesine karşı anlık kablosuz uyarı",
+          badge: "Su Güvenliği",
+          url: "https://vanemar.com/tr/products/bilge-sensor"
+        });
+        products.push({
+          title: "Vanemar Tekne Akü Sensörü",
+          desc: "İkinci servis/motor aküsü için anlık voltaj takibi",
+          badge: "Enerji",
+          url: "https://vanemar.com/tr/products/battery-sensor-marine"
+        });
+      } else if (loaFeet >= 35 && loaFeet <= 55) {
+        // 52 Fly gibi Orta ve Lüks Motoryatlar
+        products.push({
+          title: "Vanemar Kablosuz Tekne Kamerası",
+          desc: "Harekete duyarlı HD canlı yayın ve bulut kayıt sistemi",
+          badge: "Kamera & Güvenlik",
+          url: "https://vanemar.com/tr/products/vanemar-camera"
+        });
+        products.push({
+          title: "Vanemar Duman/Yangın Dedektörü",
+          desc: "Makine dairesi ve kamaralar için erken uyarı sireni",
+          badge: "Yangın & Su",
+          url: "https://vanemar.com/tr/products/smoke-sensor"
+        });
+        products.push({
+          title: "Vanemar Akıllı Priz",
+          desc: "Sahil beslemesi kesildiğinde anında bildirim ve uzaktan kontrol",
+          badge: "Sahil Besleme",
+          url: "https://vanemar.com/tr/products/smart-plug-power-sensor"
+        });
+      } else {
+        // 55 ft ve üzeri Mega Yatlar / Trawlerlar
+        products.push({
+          title: "Vanemar NMEA 2000 Adaptörü",
+          desc: "Çift makine, devir, yakıt, atık su ve tank verilerini tek ekranda izleme",
+          badge: "Tam Entegrasyon",
+          url: "https://vanemar.com/tr/products/nmea-2000-adapter"
+        });
+        products.push({
+          title: "Çoklu Kablosuz Kamera & PIR Hareket Ağı",
+          desc: "Flybridge, havuzluk ve makine dairesi için 360° gözetim",
+          badge: "Üst Düzey Güvenlik",
+          url: "https://vanemar.com/tr/products/vanemar-camera"
+        });
+        
+        
+      }
+
+      listEl.innerHTML = products.map(p => `
+        <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="vanemar-item-card" title="Vanemar sitesinde ürünü incele">
+          <div style="flex:1; min-width:0; padding-right:8px;">
+            <div style="font-size:11.5px; font-weight:700; color:#38bdf8; display:flex; align-items:center; gap:5px;">
+              <span>⚡ ${p.title}</span>
+              <span style="font-size:8.5px; background:rgba(250,204,21,0.2); color:#fef08a; border:1px solid rgba(250,204,21,0.4); padding:1px 4px; border-radius:3px;">${p.badge}</span>
+            </div>
+            <div style="font-size:10px; color:#94a3b8; margin-top:2px;">${p.desc}</div>
+          </div>
+          <span style="font-size:11px; color:#facc15; font-weight:700; flex-shrink:0;">İncele ↗</span>
+        </a>
+      `).join("");
+    }
       function normalizeTr(str) {
         if (!str) return "";
         return str
@@ -1548,18 +1798,23 @@
       let num = parseInt(m.replace(/\D/g, "")) || 38;
       if (num > 1000) num = Math.floor(num / 100);
 
-      if (b.includes("ada yat") || b.includes("kargı") || b.includes("hardanger") || b.includes("linssen") || (b.includes("trawler") && !b.includes("beneteau"))) {
+      // CUMMINS MOTORLAR (Bénéteau Swift Trawler, Nordhavn, Carver vb.)
+      const isBeneteau = b.includes("beneteau") || b.includes("bénéteau");
+      if ((isBeneteau && (m.includes("swift") || m.includes("trawler"))) || b.includes("nordhavn")) {
+        if (num >= 47) return "Cummins QSM 11";
+        if (num >= 40) return "Cummins QSC 8.3";
+        return "Cummins QSB 6.7";
+      }
+
+      // SAC & GELENEKSEL TRAWLERLAR (Scania & Ağır Hizmet Cummins)
+      if (b.includes("ada yat") || b.includes("kargı") || b.includes("hardanger") || b.includes("linssen") || (b.includes("trawler") && !isBeneteau)) {
         if (num >= 24) return "Scania DI16 090M V8";
         if (num >= 18) return "Scania DI13 092M";
         if (num >= 14) return "Scania DI09";
         return "Cummins QSK 19";
       }
-      if (b.includes("beneteau") && m.includes("swift")) {
-        if (num >= 45) return "Cummins QSM 11";
-        if (num >= 38) return "Cummins QSC 8.3";
-        return "Cummins QSB 6.7";
-      }
 
+      // MERCURY DIŞTAN TAKMA
       if (b.includes("boston") || b.includes("axopar") || b.includes("quicksilver") || b.includes("brabus") || b.includes("saxdor") || b.includes("dromeas") || b.includes("formula") || b.includes("flipper")) {
         if (b.includes("brabus") || m.includes("racing") || num >= 45) return "Mercury Racing 450R / 500R";
         if (num >= 37) return "Mercury Verado 600 V12";
@@ -1569,6 +1824,7 @@
         return "Mercury 150 FourStroke";
       }
 
+      // YAMAHA DIŞTAN TAKMA
       if (b.includes("jeanneau") || b.includes("safter") || b.includes("yerliyurt") || b.includes("capelli") || b.includes("zodiac") || b.includes("rota") || b.includes("anka") || b.includes("maral") || b.includes("isatek")) {
         if (num >= 38) return "Yamaha XTO 450 V8 Offshore";
         if (num >= 32) return "Yamaha XTO 425 V8";
@@ -1577,6 +1833,7 @@
         return "Yamaha F115 / F150";
       }
 
+      // BÜYÜK YATLAR & MEGA YATLAR (MAN / CAT)
       if (num >= 90 || b.includes("bilgin") || b.includes("sanlorenzo") || b.includes("mangusta") || b.includes("benetti") || b.includes("custom line") || b.includes("heesen")) {
         if (num >= 100) return "CAT C32 ACERT";
         if (num >= 80) return "MAN V12-2000";
@@ -1595,6 +1852,7 @@
         return "CAT C12.9";
       }
 
+      // VOLVO PENTA IPS & D-SERİSİ
       if (num >= 62) return "Volvo Penta IPS 1350 (D13)";
       if (num >= 56) return "Volvo Penta IPS 1050 (D11)";
       if (num >= 50 && num < 56) return "Volvo Penta IPS 800 (D8)";
@@ -1938,6 +2196,11 @@
       document.getElementById("m_speed").innerText = `${28 + (num % 8)} Knots`;
       document.getElementById("m_cabins").innerText = num > 25 ? `${Math.min(5, Math.max(1, Math.floor(num / 16)))} Kamara` : "Açık Havuzluk / Günübirlik";
 
+      // Her yeni model açıldığında kutuyu kapalı başlat ve tekne boyuna göre ürünleri hazırla
+      const vanemarBox = document.getElementById("vanemarSpecsBox");
+      if (vanemarBox) vanemarBox.style.display = "none";
+      renderVanemarRecommendations(Math.round(num * 1.02));
+      
       document.getElementById("specsModal").style.display = "flex";
     }
 
