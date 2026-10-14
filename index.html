@@ -65,12 +65,15 @@
     }
 
     .top-security-bar {
-      width: 100%;
-      background: linear-gradient(90deg, #0284c7, #0369a1, #0284c7);
-      border-bottom: 1px solid rgba(56, 189, 248, 0.4);
-      overflow: hidden;
-      white-space: nowrap;
-    }
+  padding: 4px 0 !important;          /* Üst-alt boşluğu daraltıp bandı inceltir */
+  font-size: 11px !important;         /* Yazı boyutunu daha zarif yapar */
+  letter-spacing: 0.3px !important;
+}
+
+.top-security-bar svg {
+  width: 12px !important;             /* İkonları yazı boyuyla dengeler */
+  height: 12px !important;
+}
     .marquee-link {
       display: inline-flex;
       align-items: center;
